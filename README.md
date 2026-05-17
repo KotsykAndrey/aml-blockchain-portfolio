@@ -6,7 +6,7 @@ I am preparing for a career in crypto AML Compliance. This portfolio shows my pr
 ---
 
 ### Case 1 - Bybit Hack 2025, Lazarus Group
-Blockchain forensics, DPRK attribution, $1.5 billion stolen, reasl on-chain analysis
+Blockchain forensics, DPRK attribution, $1.5 billion stolen, real on-chain analysis
 
 **Part 1** How the attack worked, how money was laundered, AML implications
 
