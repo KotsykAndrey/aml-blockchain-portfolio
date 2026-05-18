@@ -139,3 +139,40 @@ All data below is from public on-chain records. No paid tools were used only Eth
  
 ---
  
+## 2) What I Found on Etherscan?
+ 
+### Timelines:
+ 
+**~470-500 days ago, Normal Operations**
+ 
+Bybit Cold Wallet 1 received several large transfers:
+- Multiple transactions of ~30,000 ETH from other Bybit wallets
+- One transfer of ~60,000 ETH to Bybit Hot Wallet
+This looks like normal exchange treasury management and moving funds between cold and hot wallets.
+ 
+![Bybit Hot and Cold Wallets normal treasury](images/screenshot-2.png)
+ 
+---
+ 
+**~455 days ago, Staked Assets Moved In**
+ 
+Bybit Hot Wallet sent staked assets to Cold Wallet 1:
+- 10,000 stETH
+- 15,000 cmETH
+ 
+These are liquid staking tokens (ETH that is staked and earning yield). At this point the
+wallet held a large amount of different ETH-based assets, normal treasury.
+ 
+![Bybit Hot and Cold Wallets normal treasury](images/screenshot-3.png)
+ 
+---
+ 
+**~450-460 days ago, Preparation**
+ 
+4 transactions from Hot Wallet to Cold Wallet 1:
+- 20,000–25,000 ETH per transaction
+Normal treasury consolidation, nothing suspicious at this stage.
+ 
+![Bybit Hot and Cold Wallets normal treasury](images/screenshot-4.png)
+ 
+---
