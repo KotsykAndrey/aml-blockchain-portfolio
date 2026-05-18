@@ -211,4 +211,8 @@ flowchart TD
     E -->|"Asset conversion complete"| G["Cross-chain bridges BTC / XMR / THORChain and other chains"]
     F -->|"Each wallet → more wallets 2-3 levels deep = 100+ pages"| G
     G -->|"Final cash out"| H["Cash Out OTC brokers China / SE Asia — no KYC, Huione Guarantee marketplace, Russian instant exchangers — no AML, Korean IT workers — crypto salaries"]
+    style D fill:#ff4444,color:#fff
+    style G fill:#ff8800,color:#fff
+    style S fill:#cc0000,color:#fff
+    style H fill:#555555,color:#fff
 ```
