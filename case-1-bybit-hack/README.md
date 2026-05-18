@@ -176,3 +176,24 @@ Normal treasury consolidation, nothing suspicious at this stage.
 ![Bybit Hot and Cold Wallets normal treasury](images/screenshot-4.png)
  
 ---
+
+**21.02.2025 14:16:11 UTC ~451 days ago, THE HACK**
+ 
+This is the moment everything changed.
+ 
+Cold Wallet 1 sent to Bybit Exploiter 1:
+- 401,346 ETH in one transaction, staked assets and usdt also transferred later
+- 15,000 cmETH
+- 90,375 stETH
+- 8,000 mETH
+- 90 USDT
+
+![401000 eth exploit](images/screenshot-5.png)
+![stETH mETH cmETH usdt expliot](images/screenshot-6.png)
+ 
+At the same time immediate DEX swaps via Uniswap Paraswap and others to convert staked
+tokens to regular ETH and other assets.
+ 
+![immediate DEX swaps](images/screenshot-7.png)
+ 
+---
