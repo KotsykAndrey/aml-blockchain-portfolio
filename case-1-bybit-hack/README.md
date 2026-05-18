@@ -282,3 +282,30 @@ The Lazarus group used these to move value across token standards.
 ![THORchain bridge](images/screenshot-13.png)
 
 ---
+
+## 6) Fake Token. "Justice for Bybit"
+ 
+I also noticed a token called "Justice for Bybit" after the hack was sent to the Cold Wallet address with 500,000,000 tokens.
+ 
+This is a classic airdrop scam. It is not related to the hack. Scammers see that a hacked address gets attention create a token with an emotional name 
+and airdrop it hoping someone will click a phishing link to "claim" something. 
+
+From an Anti Money Laundering perspective this is noise. It shows how public high-profile hacks attract secondary scams.
+
+![fake token airdrop, justice for bybit](images/screenshot-14.png)
+
+---
+ 
+## 7) Red Flags I Identified
+ 
+| Red Flag | Pattern | Risk Level |
+|---|---|---|
+| 401,346 ETH sent in single transaction to new address | Massive unusual outflow | 🔴 CRITICAL |
+| Destination address (Exploiter 1) had zero prior history | New wallet receives huge amount | 🔴 HIGH |
+| Immediate DEX swaps after receipt | Rapid asset conversion | 🔴 HIGH |
+| Many pages of outgoing transactions within hours | Fan-out layering pattern | 🔴 HIGH |
+| Staked tokens converted immediately | Avoiding asset-specific freezes | 🟡  MEDIUM |
+| Transactions to L2 bridges | Cross-chain obfuscation attempt | 🟡 MEDIUM |
+| Fake token airdrop | Secondary scam — noise | ⚪️ LOW |
+ 
+---
