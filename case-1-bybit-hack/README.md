@@ -202,9 +202,13 @@ tokens to regular ETH and other assets.
  
 ```mermaid
 flowchart TD
-    A["Bybit Hot Wallet(treasury operations)"] -->|"~30,000 ETH × multiple transfers ~450-500 days ago"| B["Bybit Cold Wallet 1 0x1Db92e2EeBC8E0c075a02BeA49a2935BcD2dFCF4"]
-    C["Bybit Hot Wallet 0xf89d7b9c864f589bbF53a82105107622B35EaA40"] -->|"cmETH, stETH ~455 days ago"| B
+    A["Bybit Hot Wallet (treasury operations) 0xf89d7b9c864f589bbF53a82105107622B35EaA40"] -->|"~30,000 ETH × multiple transfers ~450-500 days ago"| B["Bybit Cold Wallet 1 0x1Db92e2EeBC8E0c075a02BeA49a2935BcD2dFCF4"]
+    C["Bybit Hot Wallet (treasury operations) 0xf89d7b9c864f589bbF53a82105107622B35EaA40"] -->|"cmETH, stETH ~455 days ago"| B
     B -->|"401,346 ETH + stETH + cmETH + mETH 21.02.2025 14:16:11 UTC - THE HACK"| D["Bybit Exploiter 1 (Lazarus Group)"]
     D -->|"~50 wallets funds split into smaller amounts ~10,000 ETH"| S["Splitting and Distribution"]
     S -->|"Immediate DEX swaps Uniswap / Paraswap / dodo and other"| E["ETH / USDT (converted assets)"]
+    S -->|"Thousands of transactions 100+ pages on Etherscan"| F["Wallet 1, Wallet 2, Wallet 3, ...hundreds more"]
+    E -->|"Asset conversion complete"| G["Cross-chain bridges BTC / XMR / THORChain and other chains"]
+    F -->|"Each wallet → more wallets 2-3 levels deep = 100+ pages"| G
+    G -->|"Final cash out"| H["Cash Out OTC brokers China / SE Asia — no KYC, Huione Guarantee marketplace, Russian instant exchangers — no AML, Korean IT workers — crypto salaries"]
 ```
