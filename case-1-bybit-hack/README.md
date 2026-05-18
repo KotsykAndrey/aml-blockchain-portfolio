@@ -227,3 +227,37 @@ Only 2 wallets from thousands have more than 14000 transactions(manual tracing i
 
 ---
 
+## 4) What Happened After? Layering Phase:
+ 
+After the theft, Bybit Exploiter 1 address showed 6 pages of transactions going to hundreds of different wallets.
+When I tried to follow the money deeper and opening wallets at level 2 and level 3.
+Some of those wallets had 100+ pages of transactions and more than 10000 transactions.
+This is exactly what layering looks like in practice:
+ 
+```mermaid
+flowchart LR
+    A["Bybit Exploiter 1\n$1.5B stolen"] --> B["~50 wallets\nLevel 1"]
+    A --> C["~50 wallets\nLevel 1"]
+    A --> D["~50 wallets\nLevel 1"]
+    B --> E["hundreds of wallets\nLevel 2"]
+    C --> F["hundreds of wallets\nLevel 2"]
+    D --> G["hundreds of wallets\nLevel 2"]
+    E --> H["Impossible to\ntrace manually"]
+    F --> H
+    G --> H
+    H --> I["Cross-chain\n(BTC, XMR, L2)"]
+    style A fill:#ff4444,color:#fff
+    style H fill:#cc0000,color:#fff
+    style I fill:#ff8800,color:#fff
+```
+ 
+Why this matters for Anti Money Laundering: Manual analysis is completely impossible at this scale.
+This is why blockchain intelligence tools like Chainalysis Reactor and TRM Forensics exist.
+They can cluster thousands of addresses automatically and follow the money across chains.
+ 
+![TRM graph](images/screenshot-11.png)
+![Chainalysis graph](images/screenshot-12.png)
+
+Here was TRM and Chainalysis graphs, I took them only in educational purposes, noted the sources in the end.
+ 
+---
