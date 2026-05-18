@@ -97,3 +97,20 @@ If you were an AML analyst at an exchange and these funds arrived, you would see
 | Fake token airdrop, Secondary scam | ⚪️ LOW | Don't sign any scam contracts |
  
 ---
+
+## Key takeaways from the Bybit hack
+ 
+Supply chain attacks are hard to detect as the theft looked like a normal authorized transaction.
+Standard KYC/AML controls do not help in these cases.
+ 
+Speed matters, as the Lazarus Group moved funds within minutes and real-time blockchain monitoring is essential.
+ 
+Blockchain intelligence tools work as $400 million was frozen because Chainalysis and TRM pushed real-time alerts to exchanges.
+ 
+DEX is a regulatory gap. DEX swaps don't trigger Travel Rule. This is a big problem for AML compliance right now.
+ 
+DPRK crypto funds a nuclear program, this is not just a compliance issue, it is a national security issue.
+Any DPRK-attributed transaction requires immediate escalation.
+ 
+---
+ 
