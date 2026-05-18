@@ -261,3 +261,24 @@ They can cluster thousands of addresses automatically and follow the money acros
 Here was TRM and Chainalysis graphs, I took them only in educational purposes, noted the sources in the end.
  
 ---
+
+## 5) Swaps and Why They Used Different Assets
+ 
+I noticed things about the tokens used: stETH, cmETH, mETH. These are liquid staking tokens.
+They are not Ethereum. Not every exchange or tool tracks them the same way.
+By holding these assets the Lazarus group made the initial theft harder to value and freeze quickly.
+ 
+Immediate swaps via Uniswap and Paraswap. Right after the theft they converted everything to regular Ethereum, DAI, USDC, USDT and other cryptocurrencies.
+Why did they do this?
+ 
+- It is easier to move across chains. It is liquid. Easier to cash out.
+- DEX swaps do not trigger the Travel Rule. No Know Your Customer, no Anti Money Laundering reporting required.
+I saw unknown and flagged tokens have been used for laundering (several tokens on Etherscan marked as unverified or suspicious).
+The Lazarus group used these to move value across token standards.
+ 
+- Exit to Layer 2 networks. It is cheaper faster and less monitored.
+- Create additional noise in the transaction graph.
+
+![THORchain bridge](images/screenshot-13.png)
+
+---
