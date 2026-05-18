@@ -309,3 +309,51 @@ From an Anti Money Laundering perspective this is noise. It shows how public hig
 | Fake token airdrop | Secondary scam — noise | ⚪️ LOW |
  
 ---
+
+## 8) What this analysis shows?
+ 
+```mermaid
+flowchart LR
+    A[" Open address\non Etherscan"] --> B[" Read transaction\nhistory"]
+    B --> C[" Build timeline\nof events"]
+    C --> D[" Identify the\nexact theft moment"]
+    D --> E[" Follow money\nto next wallets"]
+    E --> F[" Document\nred flags"]
+    F --> G[" Write SAR\n and conclusions"]
+```
+ 
+Key conclusions from this real analysis:
+ 
+1. The theft moment is clearly visible one massive transaction to a new address with zero history is an obvious red flag.
+2. Layering makes manual tracing impossible (6 pages → 100 pages per wallet). You need tools.
+3. DEX is the biggest AML gap, all swaps happened on DEX with no KYC and no Travel Rule. This is where regulation needs to catch up.
+4. Speed is the defence and the only way to stop this is real-time alerts, not manual review. By the time a human analyst sees it, the money is already 10 layers deep
+   
+---
+ 
+## 9) Conclusions
+ 
+Working through this case on Etherscan surprised me in two ways. The first surprise was how fast it all happened. I thought I'd see a setup before the theft.
+Instead 401,346 ETH disappeared in one transaction at 14:16:11 UTC. Within the block range the hackers were already swapping staked assets on Uniswap and other DEX.
+There was no delay. This was clearly a planned operation. The second surprise was how the hackers split the stolen assets.
+When I opened Level 2 and Level 3 wallets on Etherscan I saw over 100 pages of transactions per address. That's when I realized. Not in theory but in practice. 
+Why manually tracing the assets is impossible. It's not a matter of having resources. It's a data volume problem that only automated tools can solve.
+
+**Could AML have prevented this?**
+
+The theft itself. No. This was a supply chain attack on Safe{Wallet}. No KYC process, no CDD checklist no transaction monitoring rule would have flagged
+a transaction that looked fully authorized from the blockchains perspective. Standard AML was blind here. The response is a different story.
+Alerts from Chainalysis and TRM Labs resulted in around $400M being frozen across exchanges in the weeks after the hack. That outcome was only possible because of 
+automated blockchain monitoring, not review. By the time a human analyst finished tracing one wallet level the funds were already three chains deep.
+This tells me that the value of AML in crypto is not about preventing attacks. It's about detecting and responding quickly after the fact.
+
+**What I want to show with this case:**
+
+- I can work with on-chain data using free public tools and extract meaningful conclusions.
+- I understand how DPRK-attributed hackers think and operate. Not the compliance checklist version, but the operational pattern: why they used liquid staking tokens
+- Why DEX was chosen over CEX, why THORChain and XMR appear at specific stages.
+- I can see the gaps. DEX has no Travel Rule obligation, no KYC, no SAR requirement and understand why that matters for the future of crypto AML.
+
+This is not just theory. Every transaction, every timestamp, every wallet in this case is publicly verifiable, on Etherscan now.
+
+---
