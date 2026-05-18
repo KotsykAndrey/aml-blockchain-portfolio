@@ -113,4 +113,29 @@ DPRK crypto funds a nuclear program, this is not just a compliance issue, it is 
 Any DPRK-attributed transaction requires immediate escalation.
  
 ---
+
+# Part 2: Real on-chain investigation
+On-Chain Analysis: Bybit Hack Transaction Tracing
+ 
+Type: Hands-on Blockchain Analysis
+ 
+Tool Used: Etherscan.io (free, public data)
+ 
+Blockchain: Ethereum (ETH)
+ 
+Address Analyzed: `0x1db92e2eebc8e0c075a02bea49a2935bcd2dfcf4` (Bybit Cold Wallet 1)
+ 
+Date of Analysis: May 2026
+ 
+---
+ 
+## 1) What I Did?
+ 
+I opened the real Bybit hack address on Etherscan and manually traced the transactions to
+understand how the theft happened and how the money was moved after.
+All data below is from public on-chain records. No paid tools were used only Etherscan.io
+ 
+![Bybit Cold Wallet 1 on Etherscan](images/screenshot-1.png)
+ 
+---
  
