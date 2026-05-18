@@ -25,7 +25,9 @@ The Bybit hack is an example of how the Lazarus Group operates.
  
 ---
  
-## How the attack worked? Step by step:
+## How the attack worked? 
+
+Step by step:
 
 **1) The hackers compromised Safe{Wallet}.**
 They got access to a developers computer at Safe{Wallet}. Injected malicious code into the interface.
