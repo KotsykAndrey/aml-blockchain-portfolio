@@ -216,3 +216,14 @@ flowchart TD
     style S fill:#cc0000,color:#fff
     style H fill:#555555,color:#fff
 ```
+---
+
+![Splitting and Distribution to small amounts = 10000 eth](images/screenshot-8.png)
+
+Only 2 wallets from thousands have more than 14000 transactions(manual tracing is near impossible):
+
+![Bybit Exploiter amount transactions](images/screenshot-9.png)
+![Bybit Exploit related address amount transactios](images/screenshot-10.png)
+
+---
+
