@@ -43,7 +43,9 @@ The Lazarus Group used this address to receive the stolen funds.
  
 ---
  
-## How they laundered the money?(proofs you will see in part 2 on-chain analysis)
+## How they laundered the money?
+
+(proofs you will see in part 2 on-chain analysis)
  
 **Phase 1) Split through thousands of wallets.**
 Automated scripts split the funds across thousands of wallets.
