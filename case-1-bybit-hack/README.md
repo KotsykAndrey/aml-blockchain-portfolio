@@ -72,3 +72,28 @@ They also used Huione Guarantee, a marketplace in Southeast Asia and Russian ins
 Additionally Korean IT workers who work at Western companies and receive crypto salaries were also used to cash out the funds.
  
 ---
+
+## How the industry responded?
+ 
+How the industry responded is an example of why public-private cooperation in AML matters.
+Several exchanges received real-time alerts from Chainalysis and TRM Labs when the Lazarus funds arrived.
+Around $400 millions was frozen in the weeks after the hack.
+This would not have been possible without blockchain intelligence tools.
+ 
+---
+ 
+## Red Flags
+ 
+If you were an AML analyst at an exchange and these funds arrived, you would see:
+ 
+| Red Flag | Risk Level | Action |
+|---|---|---|
+| Funds from OFAC sanctioned address | 🔴 CRITICAL | Immediate freeze + SAR |
+| Large inflow right after known hack | 🔴 HIGH | Immediate escalation |
+| Cross-chain bridge origin | 🟡 MEDIUM | Enhanced review |
+| New wallet with no prior history | 🟡 MEDIUM | Source of funds request |
+| Many rapid small splits | 🔴 HIGH | SAR + escalation |
+| Destination, high-risk OTC broker | 🔴 HIGH | Freeze + SAR |
+| Fake token airdrop, Secondary scam | ⚪️ LOW | Don't sign any scam contracts |
+ 
+---
