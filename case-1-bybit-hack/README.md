@@ -43,3 +43,28 @@ The Lazarus Group used this address to receive the stolen funds.
  
 ---
  
+## How they laundered the money?(proofs you will see in part 2 on-chain analysis)
+ 
+**Phase 1) Split through thousands of wallets.**
+Automated scripts split the funds across thousands of wallets.
+Each wallet held an amount creating a huge transaction graph that is very hard to analyze manually.
+The hackers split the funds into smaller amounts making it difficult to track.
+One stolen wallet split into hundreds of wallets then each split into thousands wallets into smaller and smaller amounts and after it cash out points.
+
+**Phase 2) Conversion.**
+After the theft the hackers started converting ETH to other assets through DEX exchanges to prevent freezing.
+They stole 1.5 billion dollars in ETH. Swapped it via DEX, such as Uniswap and Paraswap and converted it to BTC, USDT, DAI and much of no-name tokens.
+The reason they did this fast is that Bybit could ask exchanges to freeze specific ETH addresses.
+Once converted through DEX the trail splits across assets and chains.
+ 
+**Phase 3) Chain hopping.**
+The hackers used the THORChain bridge to move ETH to BTC.
+Then used TornadoCash, BTC mixers and P2P exchanges to further launder the funds.
+They also used XMR, a privacy coin to break traceability and then moved the funds back to BTC via OTC brokers.
+ 
+**Phase 4) Cash out.**
+The hackers used OTC brokers in China and Southeast Asia where there is no KYC to cash out the funds.
+They also used Huione Guarantee, a marketplace in Southeast Asia and Russian instant exchangers, which do not have KYC or AML controls.
+Additionally Korean IT workers who work at Western companies and receive crypto salaries were also used to cash out the funds.
+ 
+---
