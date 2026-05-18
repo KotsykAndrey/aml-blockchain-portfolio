@@ -350,7 +350,8 @@ This tells me that the value of AML in crypto is not about preventing attacks. I
 **What I want to show with this case:**
 
 - I can work with on-chain data using free public tools and extract meaningful conclusions.
-- I understand how DPRK-attributed hackers think and operate. Not the compliance checklist version, but the operational pattern: why they used liquid staking tokens
+- I understand how DPRK-attributed hackers think and operate. Not the compliance checklist version, but the operational pattern
+- Why they used liquid staking tokens.
 - Why DEX was chosen over CEX, why THORChain and XMR appear at specific stages.
 - I can see the gaps. DEX has no Travel Rule obligation, no KYC, no SAR requirement and understand why that matters for the future of crypto AML.
 
