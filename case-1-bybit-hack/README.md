@@ -12,7 +12,7 @@ Sources: Chainalysis, TRM Labs, Etherscan, on-chain data.
  
 ---
  
-## What happened?
+## What happened
 In February 2025 is that hackers from North Korea stole 1.5 billion dollars from the crypto exchange Bybit.
 This is the biggest crypto theft in history.
  
@@ -25,7 +25,7 @@ The Bybit hack is an example of how the Lazarus Group operates.
  
 ---
  
-## How the attack worked? 
+## How the attack worked
 
 Step by step:
 
@@ -45,22 +45,22 @@ The Lazarus Group used this address to receive the stolen funds.
  
 ---
  
-## How they laundered the money?
+## How they laundered the money
 
 (proofs you will see in part 2 on-chain analysis)
- 
-**Phase 1) Split through thousands of wallets.**
+
+**Phase 1) Rapid Conversion.**
+After the theft the hackers started converting ETH to other assets through DEX exchanges to prevent freezing.
+They stole 1.5 billion dollars in ETH. Swapped it via DEX, such as Uniswap and Paraswap and converted it to BTC, USDT, DAI and much of no-name tokens.
+The reason they did this fast is that Bybit could ask exchanges to freeze specific ETH addresses.
+Once converted through DEX the trail splits across assets and chains.
+
+**Phase 2) Split through thousands of wallets.**
 Automated scripts split the funds across thousands of wallets.
 Each wallet held an amount creating a huge transaction graph that is very hard to analyze manually.
 The hackers split the funds into smaller amounts making it difficult to track.
 One stolen wallet split into hundreds of wallets then each split into thousands wallets into smaller and smaller amounts and after it cash out points.
 
-**Phase 2) Conversion.**
-After the theft the hackers started converting ETH to other assets through DEX exchanges to prevent freezing.
-They stole 1.5 billion dollars in ETH. Swapped it via DEX, such as Uniswap and Paraswap and converted it to BTC, USDT, DAI and much of no-name tokens.
-The reason they did this fast is that Bybit could ask exchanges to freeze specific ETH addresses.
-Once converted through DEX the trail splits across assets and chains.
- 
 **Phase 3) Chain hopping.**
 The hackers used the THORChain bridge to move ETH to BTC.
 Then used TornadoCash, BTC mixers and P2P exchanges to further launder the funds.
@@ -69,11 +69,11 @@ They also used XMR, a privacy coin to break traceability and then moved the fund
 **Phase 4) Cash out.**
 The hackers used OTC brokers in China and Southeast Asia where there is no KYC to cash out the funds.
 They also used Huione Guarantee, a marketplace in Southeast Asia and Russian instant exchangers, which do not have KYC or AML controls.
-Additionally Korean IT workers who work at Western companies and receive crypto salaries were also used to cash out the funds.
+Additionally North Korean IT workers who work at Western companies and receive crypto salaries were also used to cash out the funds.
  
 ---
 
-## How the industry responded?
+## How the industry responded
  
 How the industry responded is an example of why public-private cooperation in AML matters.
 Several exchanges received real-time alerts from Chainalysis and TRM Labs when the Lazarus funds arrived.
@@ -129,7 +129,7 @@ Date of Analysis: May 2026
  
 ---
  
-## 1) What I Did?
+## 1) What I Did
  
 I opened the real Bybit hack address on Etherscan and manually traced the transactions to
 understand how the theft happened and how the money was moved after.
@@ -139,7 +139,7 @@ All data below is from public on-chain records. No paid tools were used only Eth
  
 ---
  
-## 2) What I Found on Etherscan?
+## 2) What I Found on Etherscan
  
 ### Timelines:
  
@@ -310,7 +310,7 @@ From an Anti Money Laundering perspective this is noise. It shows how public hig
  
 ---
 
-## 8) What this analysis shows?
+## 8) What this analysis shows
  
 ```mermaid
 flowchart LR
@@ -405,7 +405,7 @@ would be entered in separate form fields, not in the narrative itself.
  
 | Field | Detail |
 |---|---|
-| Date of Report | Febuary 26, 2025 |
+| Date of Report | February 26, 2025 |
 | SAR Type | Suspected proceeds of cybercrime / DPRK sanctions evasion / WMD proliferation financing |
 | Filing Deadline | Within 30 days of detection per BSA requirements met |
 | Prior SARs on Subject | None on file |
@@ -453,7 +453,7 @@ Between February 21 and February 24, 2025, the following laundering activity was
 A full list of approximately 50 Level 1 wallet addresses directly funded from Bybit Exploiter 1 is attached to this report as **Attachment 1 (layer1-addresses.csv)**.
 Hundreds of Level 2–3 addresses are maintained in our internal blocklist and are available to law enforcement upon request.
  
-The 14,200 ETH deposited at ClearPath Exchange represents a portion of the original stolen funds that passed through multiple layering stages before reaching our platform.
+The 14,200 ETH deposited at Clear Exchange represents a portion of the original stolen funds that passed through multiple layering stages before reaching our platform.
  
 ### Activity at Clear Exchange
  
@@ -547,7 +547,7 @@ any investigation and will provide all requested documentation including Attachm
 > Filed with: FinCEN — BSA E-Filing System
 > Filing date: February 26, 2025
 > OFAC notification: Filed separately — February 24, 2025
-> Records retention: Minimum 5 years
+> Records retention: Minimum 5 years 31 CFR § 1010.430(d)
  
 ---
 
@@ -566,6 +566,7 @@ any investigation and will provide all requested documentation including Attachm
 - 31 U.S.C. § 5318(g)(2) https://www.law.cornell.edu/uscode/text/31/5318
 - UN Security Council Resolutions 1718 (2006) https://unscr.com/en/resolutions/1718/
 - UN Security Council Resolutions 2270 (2016) https://unscr.com/en/resolutions/2270/\
+- 31 CFR § 1010.430 https://www.law.cornell.edu/cfr/text/31/1010.430
 
 ---
 
