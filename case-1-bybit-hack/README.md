@@ -570,6 +570,7 @@ END OF MOCK SAR
 ---
 
 *Prepared by Andrey Kotsyk — AML/Blockchain Forensics Portfolio*
+
 *This is a fictional scenario for educational and portfolio purposes only. All institution details are fictional. Wallet addresses are publicly available on-chain.*
 
 *www/linkedin.com/in/andrey-kotsyk*
