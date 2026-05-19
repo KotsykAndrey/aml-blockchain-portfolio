@@ -427,3 +427,16 @@ rapid fan-out layering, cross-chain bridging, and privacy coin usage is consiste
 and US Treasury OFAC.
 
 ---
+
+**Red Flags Identified:**
+
+| Indicator | Risk Level |
+|---|---|
+| Funds originating from OFAC SDN-listed address | 🔴 CRITICAL |
+| 401,346 ETH in single transaction to wallet with zero prior history | 🔴 CRITICAL |
+| Immediate DEX swaps. No KYC, no Travel Rule triggered | 🔴 HIGH |
+| Fan-out layering across thousands of wallets within hours | 🔴 HIGH |
+| Cross-chain bridge activity via THORChain to BTC and XMR | 🔴 HIGH |
+| Cash-out via high-risk OTC and unregulated exchangers | 🔴 HIGH |
+
+---
