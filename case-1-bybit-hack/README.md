@@ -331,7 +331,7 @@ Key conclusions from this real analysis:
    
 ---
 
-## Key AML Limitation — Why Most Funds Were Not Frozen?
+## 9) Key AML Limitation — Why Most Funds Were Not Frozen?
 
 The fundamental challenge in this case: blockchain wallets cannot be frozen directly. AML controls only work at 
 the on/off ramp — when funds touch a centralized exchange or a centralised stablecoin like USDT or USDC.
@@ -374,69 +374,202 @@ This is not just theory. Every transaction, every timestamp, every wallet in thi
 
 ---
 
-## Part 3: Mock SAR — Suspicious Activity Report
+## Part 3: Mock SAR (Suspicious Activity Report)
 
-This is a simulated SAR written for educational and portfolio purposes.
-Based on publicly available on-chain data and industry reporting.
-No confidential information was used.
+**Inbound deposit from DPRK Lazarus Group address**
+ 
+**Disclaimer:** This is a simulated SAR written for educational and portfolio purposes. Based on publicly available on-chain data and industry reporting.
+No confidential information was used. All institution details are fictional.
 
+**Note on format:** In a real FinCEN BSA E-Filing System, this document would be submitted as plain text with no tables or markdown formatting. 
+Red flags would be listed as numbered plain text paragraphs. Tables and formatting are used here for portfolio readability only. Filing Details 
+would be entered in separate form fields, not in the narrative itself.
+ 
 ---
-
-**SUSPICIOUS ACTIVITY REPORT**
-
-**Filing Institution:** [Crypto Exchange, anonymous for mock purposes]
-
-**Date of Report:** May 2026
-
-**SAR Type:** Suspected proceeds of cybercrime / DPRK sanctions evasion / WMD proliferation financing
-
----
-
-**Reporting Jurisdiction & Recipients:**
-
-| Recipient | Reason |
+ 
+## Filing Institution
+ 
+| Field | Detail |
 |---|---|
-| FinCEN (Financial Crimes Enforcement Network) | Primary SAR filing US-regulated exchange, WMD proliferation financing flag |
-| OFAC (Office of Foreign Assets Control) | Mandatory separate notification SDN-listed address, DPRK attribution |
-| FBI Cyber Division | DPRK state-sponsored cyber threat |
-| National FIU (jurisdiction of exchange registration) | Local regulatory obligation |
-| National security channels | UN Security Council reporting obligations — WMD proliferation |
-
-Note: OFAC notification is filed separately from the SAR and is required immediately
-upon identification of any SDN-listed address, no matter if the money actually came in or only attempted to be sent
-
+| Institution Name | Clear Exchange Ltd. |
+| Institution Type | Virtual Asset Service Provider (VASP) / Money Services Business (MSB) |
+| FinCEN Registration | MSB Registration No. XXXXXXX |
+| Registered Address | 123 Compliance Street, Wilmington, DE 19801, USA |
+| Compliance Contact | AML Compliance Department |
+| Contact Email | compliance@clear-exchange.com |
+| Contact Phone | +1 (XXX) XXX XXX |
+ 
 ---
-
-**Description of Suspicious Activity:**
-
-On 21 February 2025 at 14:16:11 UTC, address `0x1Db92e2EeBC8E0c075a02BeA49a2935BcD2dFCF4` sent 401,346 ETH (~$1.5 billion USD) in a single transaction to
-`0x47666Fab8bd0Ac7003bce3f5C3585383F09486E2` (Bybit Exploiter 1). The destination address had zero prior transaction history before this transfer.
-
-Within minutes of receipt, the following activity was observed:
-
-- Immediate conversion of staked assets (stETH, cmETH, mETH) via Uniswap and Paraswap to ETH and USDT bypassing any asset-specific freeze mechanism
-- Fan-out distribution to approximately 50 intermediate wallets (Level 1) with amounts of ~10,000 ETH each
-- Each Level 1 wallet split funds further into hundreds of wallets (Level 2), generating 80+ pages of outgoing transactions at Level 1 and 100+ pages
-  per wallet at Level 2–3 on Etherscan
-- Cross-chain bridge activity via THORChain moving ETH to BTC
-- Use of Monero (XMR) to break transaction traceability
-- Cash-out via no-KYC OTC brokers in China and Southeast Asia, Huione Guarantee marketplace, and Russian instant exchangers with no AML controls
-
-The first layering transactions were executed within 30–40 minutes of the initial theft. The overall pattern is single massive inflow to a new address, immediate asset conversion,
-rapid fan-out layering, cross-chain bridging, and privacy coin usage is consistent with the post-theft laundering methodology attributed to the Lazarus Group by Chainalysis, TRM Labs
-and US Treasury OFAC.
-
+ 
+## Report Details
+ 
+| Field | Detail |
+|---|---|
+| Date of Report | Febuary 26, 2025 |
+| SAR Type | Suspected proceeds of cybercrime / DPRK sanctions evasion / WMD proliferation financing |
+| Filing Deadline | Within 30 days of detection per BSA requirements met |
+| Prior SARs on Subject | None on file |
+ 
 ---
+ 
+## Subject of Report
+ 
+| Field | Detail |
+|---|---|
+| Name | Unknown, unhosted wallet, no account at this institution |
+| Account Number at Clear Exchange | N/A — no account held by sending address |
+| Receiving Account | XXX-XXXXXX (John Smith — account holder at Clear Exchange) |
+| Sending Wallet Address | 0x47666Fab8bd0Ac7003bce3f5C3585383F09486E2 |
+| Attribution | Lazarus Group (DPRK) — Reconnaissance General Bureau (RGB) |
+| OFAC Status | SDN List — active designation |
+| Blockchain | Ethereum (ETH) |
+ 
+Attribution is based on publicly available cluster data from Chainalysis and TRM Labs, consistent with OFAC SDN designation of Lazarus Group addresses.
+ 
+---
+ 
+## Description of Suspicious Activity
+ 
+On February 24, 2025 at 09:41 UTC, Clear Exchange Ltd. received a real-time alert from our blockchain analytics system (Chainalysis KYT)
+flagging an inbound deposit of **14,200 ETH (~$37.8M USD)** to customer account XXX-XXXXXX (John Smith).
+ 
+The sending address — 0x47666Fab8bd0Ac7003bce3f5C3585383F09486E2 — was identified as **Bybit Exploiter 1**, directly attributed to 
+Lazarus Group (DPRK) per Chainalysis and TRM Labs cluster data and consistent with OFAC SDN designation.
+ 
+### Background — Source of Funds
+ 
+The sending address received 401,346 ETH (~$1.5B USD) on February 21, 2025 at 14:16:11 UTC in a single transaction from Bybit Cold Wallet 1
+(0x1Db92e2EeBC8E0c075a02BeA49a2935BcD2dFCF4) - the address compromised in the Bybit exchange hack of February 21, 2025. This event has been publicly 
+attributed to Lazarus Group by Chainalysis, TRM Labs, and is consistent with OFAC SDN designation of the involved addresses.
+ 
+Between February 21 and February 24, 2025, the following laundering activity was observed from the sending address prior to the deposit attempt at Clear Exchange:
+ 
+- Immediate conversion of staked assets (stETH, cmETH, mETH) to ETH via Uniswap and Paraswap within 30 minutes of initial receipt, bypassing any asset-specific freeze mechanisms
+- Fan-out distribution to approximately 50 intermediate wallets (Level 1), approximately 10,000 ETH each
+- Further splitting across hundreds of Level 2–3 wallets generating 80–100+ pages of outgoing transactions per wallet on Etherscan
+- Cross-chain bridge activity via THORChain converting ETH to BTC
+- Partial conversion to Monero (XMR) to break transaction traceability
 
-**Red Flags Identified:**
-
+A full list of approximately 50 Level 1 wallet addresses directly funded from Bybit Exploiter 1 is attached to this report as **Attachment 1 (layer1-addresses.csv)**.
+Hundreds of Level 2–3 addresses are maintained in our internal blocklist and are available to law enforcement upon request.
+ 
+The 14,200 ETH deposited at ClearPath Exchange represents a portion of the original stolen funds that passed through multiple layering stages before reaching our platform.
+ 
+### Activity at Clear Exchange
+ 
+The deposit was directed to account XXX-XXXXXX registered under the name **John Smith**, opened on January 15, 2025 — 37 days prior to this deposit.
+The account had no prior transaction history consistent with a deposit of this size or origin.
+ 
+Upon receipt of the Chainalysis KYT alert:
+ 
+- The deposit of 14,200 ETH was **automatically held** by our compliance system
+- The account was **immediately restricted** from all activity
+- Compliance Officer was notified within 5 minutes of alert
+- Funds remain frozen pending law enforcement instruction
+  
+The account holder was not notified of the reason for restriction in accordance with tipping off prohibition 31 U.S.C. § 5318(g)(2).
+ 
+---
+ 
+## Red Flags Identified
+ 
+> Note: In a real FinCEN filing these would be submitted as numbered plain text.
+> Table format is used here for portfolio readability only.
+ 
 | Indicator | Risk Level |
 |---|---|
-| Funds originating from OFAC SDN-listed address | 🔴 CRITICAL |
-| 401,346 ETH in single transaction to wallet with zero prior history | 🔴 CRITICAL |
-| Immediate DEX swaps. No KYC, no Travel Rule triggered | 🔴 HIGH |
-| Fan-out layering across thousands of wallets within hours | 🔴 HIGH |
-| Cross-chain bridge activity via THORChain to BTC and XMR | 🔴 HIGH |
-| Cash-out via high-risk OTC and unregulated exchangers | 🔴 HIGH |
+| Inbound deposit received from OFAC SDN-listed address attributed to Lazarus Group (DPRK) — funds frozen upon receipt | 🔴 CRITICAL |
+| Sending address directly linked to $1.5B Bybit hack publicly documented and OFAC designated | 🔴 CRITICAL |
+| 14,200 ETH (~$37.8M) received in single transaction | 🔴 CRITICAL |
+| Funds passed through 3 layers of intermediate wallets before reaching platform | 🔴 HIGH |
+| Sending address funded via DEX swaps, no Travel Rule triggered at source | 🔴 HIGH |
+| Cross-chain bridge activity (THORChain) observed prior to deposit | 🔴 HIGH |
+| Deposit inconsistent with account holder's established transaction profile | 🔴 HIGH |
+| Receiving account opened 37 days prior, no prior high-volume activity | 🟡 MEDIUM |
+ 
+---
+ 
+## Actions Taken
+ 
+| Date / Time | Action |
+|---|---|
+| Feb 24, 2025 — 09:41 UTC | Chainalysis KYT alert received, sending address flagged as Lazarus Group / OFAC SDN |
+| Feb 24, 2025 — 09:43 UTC | Deposit automatically held by compliance system |
+| Feb 24, 2025 — 09:46 UTC | Compliance Officer notified, case escalated to senior management |
+| Feb 24, 2025 — 10:15 UTC | Account XXX-XXXXXX restricted,  all activity suspended |
+| Feb 24, 2025 — 10:30 UTC | OFAC notification filed separately - mandatory for SDN match, independent of SAR filing |
+| Feb 24, 2025 — 14:00 UTC | All identified cluster addresses (~50 Level 1 + hundreds Level 2–3) added to internal blocklist |
+| Feb 25, 2025 | FBI Cyber Division notified — DPRK state-sponsored cyber threat |
+| Feb 26, 2025 | SAR filed with FinCEN within 30-day BSA requirement |
+ 
+> Note: OFAC notification was filed separately and immediately upon SDN match on February 24, 2025.
+> This is a separate legal obligation from SAR filing and does not replace it.
+ 
+> Note: Account holder was not informed of SAR filing or reason for account restriction per tipping off prohibition 31 U.S.C. § 5318(g)(2).
+ 
+---
+ 
+## WMD Proliferation Financing Flag
+ 
+This SAR requires escalation beyond standard AML/CTF procedure.
+ 
+Per publicly available attribution by Chainalysis, TRM Labs, and consistent with OFAC SDN designation, Lazarus Group operates under North Korea's 
+Reconnaissance General Bureau (RGB). UN Security Council Resolutions 1718 (2006) and 2270 (2016) prohibit all member states from facilitating transactions 
+that could contribute to DPRK's nuclear or ballistic missile programs.
+ 
+This filing includes a WMD proliferation financing flag and has been escalated to national security channels in addition to standard FinCEN SAR filing.
+ 
+---
+ 
+## Analyst Note
+ 
+This activity is consistent with post-theft laundering methodology publicly attributed to Lazarus Group by Chainalysis and TRM Labs following the
+February 21, 2025 Bybit hack.
+ 
+**Ongoing monitoring required:** Any future transaction originating from identified cluster addresses must trigger an immediate freeze and re-escalation.
+This case should not be treated as resolved — Lazarus Group clusters remain active and continue to move funds.
+ 
+**Regulatory gap observed:** DEX protocols used in this case (Uniswap, Paraswap, THORChain) do not currently fall under Travel Rule obligations per FATF
+Recommendation 16. This allowed layering to proceed without triggering inter-VASP reporting at the most critical stage. This gap is noted for law enforcement context.
+ 
+**Frozen funds status:** 14,200 ETH remains frozen at Clear Exchange Ltd. pending law enforcement instruction. This institution will cooperate fully with
+any investigation and will provide all requested documentation including Attachment 1 and internal blocklist data.
+ 
+---
+ 
+END OF MOCK SAR
+ 
+---
+ 
+> **Filing Details Note:** In a real FinCEN BSA E-Filing System, the following
+> information would be entered in separate form fields, not in the narrative itself.
+>
+> Filed with: FinCEN — BSA E-Filing System
+> Filing date: February 26, 2025
+> OFAC notification: Filed separately — February 24, 2025
+> Records retention: Minimum 5 years
+ 
+---
+
+## Sources:
+ 
+- Chainalysis article
+  https://www.chainalysis.com/blog/bybit-exchange-hack-february-2025-crypto-security-dprk/
+- Chainalysis Crypto Crime Reports 2025 on youtube
+  https://www.youtube.com/watch?v=EZJW4PWoEjM&t=33s&pp=ygUkY2hhaW5hbHlzaXMgY3J5cHRvIGNyaW1lIHJlcG9ydCAyMDI1
+  https://www.youtube.com/watch?v=XlTTeZbz_34&pp=ygUkY2hhaW5hbHlzaXMgY3J5cHRvIGNyaW1lIHJlcG9ydCAyMDI10gcJCQQLAYcqIYzv
+- TRM Labs articles
+  https://www.trmlabs.com/resources/blog/the-bybit-hack-following-north-koreas-largest-exploit
+  https://www.trmlabs.com/resources/blog/bybit-hack-update-north-korea-moves-to-next-stage-of-laundering
+- TRM Labs youtube video
+  https://www.youtube.com/watch?v=MJjP5ZIyu0k&pp=ygUTdHJtIGxhYnMgYnliaXQgaGFjaw%3D%3D
+- 31 U.S.C. § 5318(g)(2) https://www.law.cornell.edu/uscode/text/31/5318
+- UN Security Council Resolutions 1718 (2006) https://unscr.com/en/resolutions/1718/
+- UN Security Council Resolutions 2270 (2016) https://unscr.com/en/resolutions/2270/\
 
 ---
+
+*Prepared by Andrey Kotsyk — AML/Blockchain Forensics Portfolio*
+*This is a fictional scenario for educational and portfolio purposes only.*
+*All institution details are fictional. Wallet addresses are publicly available on-chain.*
+*linkedin.com/in/andrey-kotsyk*
