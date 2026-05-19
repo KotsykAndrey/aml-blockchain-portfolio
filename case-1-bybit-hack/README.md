@@ -358,3 +358,36 @@ This tells me that the value of AML in crypto is not about preventing attacks. I
 This is not just theory. Every transaction, every timestamp, every wallet in this case is publicly verifiable, on Etherscan now.
 
 ---
+
+## Part 3: Mock SAR — Suspicious Activity Report
+
+This is a simulated SAR written for educational and portfolio purposes.
+Based on publicly available on-chain data and industry reporting.
+No confidential information was used.
+
+---
+
+**SUSPICIOUS ACTIVITY REPORT**
+
+**Filing Institution:** [Crypto Exchange, anonymous for mock purposes]
+
+**Date of Report:** May 2026
+
+**SAR Type:** Suspected proceeds of cybercrime / DPRK sanctions evasion / WMD proliferation financing
+
+---
+
+**Reporting Jurisdiction & Recipients:**
+
+| Recipient | Reason |
+|---|---|
+| FinCEN (Financial Crimes Enforcement Network) | Primary SAR filing US-regulated exchange, WMD proliferation financing flag |
+| OFAC (Office of Foreign Assets Control) | Mandatory separate notification SDN-listed address, DPRK attribution |
+| FBI Cyber Division | DPRK state-sponsored cyber threat |
+| National FIU (jurisdiction of exchange registration) | Local regulatory obligation |
+| National security channels | UN Security Council reporting obligations — WMD proliferation |
+
+Note: OFAC notification is filed separately from the SAR and is required immediately
+upon identification of any SDN-listed address, no matter if the money actually came in or only attempted to be sent
+
+---
