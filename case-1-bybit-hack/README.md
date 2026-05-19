@@ -330,8 +330,23 @@ Key conclusions from this real analysis:
 4. Speed is the defence and the only way to stop this is real-time alerts, not manual review. By the time a human analyst sees it, the money is already 10 layers deep
    
 ---
- 
-## 9) Conclusions
+
+## Key AML Limitation — Why Most Funds Were Not Frozen?
+
+The fundamental challenge in this case: blockchain wallets cannot be frozen directly. AML controls only work at 
+the on/off ramp — when funds touch a centralized exchange or a centralised stablecoin like USDT or USDC.
+
+This is why Lazarus immediately:
+- Converted USDT/USDC to ETH (decentralized, unfreezable)
+- Moved to XMR (untraceable)
+- Used DEX instead of centralized exchanges (no KYC)
+- Used OTC brokers without AML controls
+
+The ~$400M that WAS frozen — was caught precisely at these on/off ramp points where centralized entities could act.
+
+---
+
+## 10) Conclusions
  
 Working through this case on Etherscan surprised me in two ways. The first surprise was how fast it all happened. I thought I'd see a setup before the theft.
 Instead 401,346 ETH disappeared in one transaction at 14:16:11 UTC. Within the block range the hackers were already swapping staked assets on Uniswap and other DEX.
@@ -389,5 +404,26 @@ No confidential information was used.
 
 Note: OFAC notification is filed separately from the SAR and is required immediately
 upon identification of any SDN-listed address, no matter if the money actually came in or only attempted to be sent
+
+---
+
+**Description of Suspicious Activity:**
+
+On 21 February 2025 at 14:16:11 UTC, address `0x1Db92e2EeBC8E0c075a02BeA49a2935BcD2dFCF4` sent 401,346 ETH (~$1.5 billion USD) in a single transaction to
+`0x47666Fab8bd0Ac7003bce3f5C3585383F09486E2` (Bybit Exploiter 1). The destination address had zero prior transaction history before this transfer.
+
+Within minutes of receipt, the following activity was observed:
+
+- Immediate conversion of staked assets (stETH, cmETH, mETH) via Uniswap and Paraswap to ETH and USDT bypassing any asset-specific freeze mechanism
+- Fan-out distribution to approximately 50 intermediate wallets (Level 1) with amounts of ~10,000 ETH each
+- Each Level 1 wallet split funds further into hundreds of wallets (Level 2), generating 80+ pages of outgoing transactions at Level 1 and 100+ pages
+  per wallet at Level 2–3 on Etherscan
+- Cross-chain bridge activity via THORChain moving ETH to BTC
+- Use of Monero (XMR) to break transaction traceability
+- Cash-out via no-KYC OTC brokers in China and Southeast Asia, Huione Guarantee marketplace, and Russian instant exchangers with no AML controls
+
+The first layering transactions were executed within 30–40 minutes of the initial theft. The overall pattern is single massive inflow to a new address, immediate asset conversion,
+rapid fan-out layering, cross-chain bridging, and privacy coin usage is consistent with the post-theft laundering methodology attributed to the Lazarus Group by Chainalysis, TRM Labs
+and US Treasury OFAC.
 
 ---
