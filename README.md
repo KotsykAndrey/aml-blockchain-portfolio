@@ -17,3 +17,6 @@ Blockchain forensics, DPRK attribution, $1.5 billion stolen, real on-chain analy
 to view case ./case-1-bybit-hack/README.md
 
 ---
+
+### Case 2 — Pig Butchering & Huione Guarantee
+Full scheme analysis, real on-chain investigation via Tronscan, Huione criminal marketplace deep dive, TRC-20 AML gaps, Mock SAR.
