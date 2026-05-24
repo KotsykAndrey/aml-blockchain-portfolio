@@ -514,4 +514,91 @@ Most compliance systems were built primarily for Bitcoin and Ethereum. Tron was 
 This gap is narrowing but remains real. Criminals exploited it heavily between 2021–2024.
  
 ---
+
+## Part 5: AML Gaps. Why Pig Butchering Is Hard to Stop
  
+### Gap 1 - The Legitimate Exchange Problem
+ 
+**The problem:** The victim buys USDT on a fully licensed, regulated exchange (Binance, Bybit, Coinbase). From the exchange's perspective this is a normal purchase. No red flags at point of purchase.
+ 
+**What the exchange sees:**
+- Customer passes KYC
+- Buys USDT — normal transaction
+- Withdraws USDT to external wallet, it is normal transaction
+**What the exchange does NOT see:**
+- Where the USDT is going
+- That the destination wallet is a pig butchering aggregation address
+**How to close the gap:** Outgoing transaction screening — check destination wallet risk score before allowing withdrawal. This is what Chainalysis KYT does. Not all exchanges use it.
+ 
+---
+ 
+### Gap 2 - Withdrawal Destination Screening
+ 
+**The problem:** Many exchanges screen incoming deposits but not outgoing withdrawals. The victim sends money OUT to a scam address, the exchange never checks if that destination is high risk.
+ 
+**Why this matters:** If exchanges screened all withdrawal destinations against known pig butchering clusters, they could warn the victim or block the transfer.
+ 
+**AML Red Flags at withdrawal stage:**
+ 
+| Red Flag | Risk Level |
+|---|---|
+| Destination wallet created less than 7 days ago | 🟡 MEDIUM |
+| Destination wallet has no prior transaction history | 🟡 MEDIUM |
+| Destination wallet associated with known scam cluster | 🔴 CRITICAL |
+| Customer made multiple withdrawals to same new wallet in short period of time | 🔴 HIGH |
+| Customer is new account making first large withdrawal | 🟡 MEDIUM |
+| Customer mentions "investment platform" in support chat | 🔴 HIGH |
+ 
+---
+ 
+### Gap 3 - TRC-20 Monitoring Gap
+ 
+**The problem:** Most compliance systems have less comprehensive Tron coverage than Ethereum. Travel Rule applies inconsistently to Tron transfers. Many smaller exchanges have limited TRC-20 transaction monitoring.
+ 
+**Result:** Pig butchering operations shifted heavily to Tron specifically because they knew AML coverage was weaker there.
+ 
+**How to close the gap:** Extend full compliance coverage to all chains. FATF guidance needs to be independent in every chain, the Travel Rule should apply to Tron transfers just as it applies to Ethereum.
+ 
+---
+ 
+### Gap 4 - Huione Jurisdictional Gap
+ 
+**The problem:** Huione is based in Cambodia. FinCEN can issue a proposed rule, but they cannot directly regulate a Cambodian company. FATF can pressure Cambodia, but Cambodia has political reasons 
+to protect Huione (Hun family connections).
+ 
+**The result:** Even after FinCEN action and Tether freezes — Huione continues to operate. They simply created new addresses and a new stablecoin.
+ 
+**How to close the gap:**
+
+- Correspondent banking restrictions (US and EU banks refuse any relationship with Cambodian banks that have Huione exposure)
+- This cuts off Huione from the USD financial system entirely
+- International law enforcement cooperation is harder but more effective long-term
+  
+---
+ 
+### Gap 5 - Victim Reporting Gap
+ 
+**The problem:** Most pig butchering victims do not report to police. Reasons:
+
+- Shame — they feel responsible for being deceived
+- Distrust of police, especially in countries where fraud reporting is difficult
+- Belief that nothing can be done
+- Language barriers for international victims
+  
+**Why this matters for AML:** Without victim reports, there are no SAR filings. Without SARs, there is no FIU data. Without FIU data there are no patterns. Without patterns there are no investigations.
+ 
+**How to close the gap:** Public awareness campaigns, simplified reporting processes, victim support programs, and protecting victims from prosecution when they were used as money mules unknowingly.
+ 
+---
+ 
+### Gap 6 - The Human Trafficking Complication
+ 
+**The problem:** The people making the calls and building relationships with victims are often themselves victims — trafficked and held against their will in scam compounds. This creates a moral and legal complexity:
+ 
+- Arresting "scammers" may result in trafficking victims being prosecuted
+- Law enforcement focus on financial crime can miss the human trafficking aspect
+- Victims in compounds need rescue, not prosecution
+  
+**AML implication:** This is why pig butchering is treated as a national security and human rights issue — not just an AML matter. It requires a multi-agency response beyond standard compliance procedures.
+ 
+---
