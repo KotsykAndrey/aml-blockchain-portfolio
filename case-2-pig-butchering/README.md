@@ -215,3 +215,122 @@ This matches the `TL8TBp...` address referenced in Bitrace reports. Verified on 
  
 The 98.8% outgoing ratio (860,825 out vs 10,463 in) confirms this is a **distribution node**, funds collected by aggregation addresses like TNVaKW are routed here and then redistributed to vendors, operators
 and OTC cash-out points. This is the layering stage of the laundering process in action.
+
+### Top Addresses by Volume, Deposits and Withdrawals Rank
+ 
+![HuionePay top addresses by volume](images/screenshot-7-dune-rank.png)
+ 
+**Top deposit addresses (639,025 total unique depositors):**
+ 
+| Address | Total Deposited (USDT) |
+|---|---|
+| TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf | 1,665,718,013 |
+| TVy8p6erwinkkfmvG3iPGpUkswMZU36uMV | 605,687,723 |
+| TPepdLYtHr8cN1Jbwf6CGNB9Ppho7L2otr | 449,218,402 |
+| TM1zzNDZD2DPASbKcgdVoTYhfmYgtfwx9R | 436,485,292 |
+| TFTWNgDBkQ5wQoP8RXpRznnHvAVV8x5jLu | 402,144,129 |
+ 
+**Top withdrawal addresses (960,910 total unique recipients):**
+ 
+| Address | Total Withdrawn (USDT) |
+|---|---|
+| TWS84SZ2GE2EgyZDCrfVuEJXpoXYuBxteS | 816,288,490 |
+| T9yFi9yxwBUjMbHwBFKDdwFdBwvzUAqBfR | 580,787,004 |
+| TTSSC4TEYtQMAMURND6i1FPYaaBJMGY4ed | 512,389,323 |
+| TDRkHLDxnBu2XtkxwKZMm5qwSuguKHmWDB | 479,470,912 |
+| TVy8p6erwinkkfmvG3iPGpUkswMZU36uMV | 379,550,762 |
+ 
+**Key observation:** TVy8p6erwinkkfmvG3iPGpUkswMZU36uMV appears in **both** top deposits and top withdrawals — this is a typical pass-through address that receives and immediately re-sends funds. 
+960,910 unique withdrawal addresses confirms the scale of the distribution network.
+ 
+### Outgoing Transfers, Layering in Action
+ 
+![TL8TBp outgoing transfers to single destination](images/screenshot-9-outgoing-transfers.png)
+ 
+Filtering for outgoing transfers reveals a critical pattern, the core business address sends massive amounts repeatedly to a **single destination address**: `TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX`
+ 
+Sample of outgoing transactions visible on a single page — all amounts in USDT:
+ 
+| Amount (USDT) | Destination |
+|---|---|
+| -67,813 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -600,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,080,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,310,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,050,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,260,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,130,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+ 
+This single page of transfers represents over **$20,000,000 USDT** in outgoing transactions and all going to the same destination address. These are not retail transfers. 
+This is wholesale movement of criminal proceeds between infrastructure layers.
+ 
+Every single outgoing transaction goes to the same destination address (a pattern that would immediately trigger a transaction monitoring alert at any regulated exchange).
+ 
+**What this shows:**
+ 
+This is textbook layering. The core business address acts as a pass-through, it receives funds from hundreds of aggregation addresses and then concentrates them into large transfers to a single next-level address. The destination `TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX` is likely either another Huione-controlled consolidation address or a direct OTC cash-out point.
+ 
+**The full layering chain visible on-chain:**
+ 
+```mermaid
+flowchart TD
+    A["Victims
+(hundreds of wallets)
+Each sends $1,000–$10,000 USDT"] --> B
+    A2["Victims
+(hundreds of wallets)"] --> B
+    A3["Victims
+(hundreds of wallets)"] --> B
+ 
+    B["TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8
+Aggregation Address
+Frozen by Tether in July 13, 2024
+48,700 transactions · 82,429 transfers
+Incoming: small amounts $1,000–$10,000 USDT"] --> C
+ 
+    C["TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf
+Core Business Address
+Created Oct 2022 · Still active May 2026
+141,734 transactions · 871,288 transfers
+$1.66B+ in deposits
+Incoming: medium amounts $10,000–$500,000 USDT"] --> D
+ 
+    D["TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX
+Next-Level Consolidation
+Receives $600,000–$2,000,000 per transaction
+OTC cash-out / further layering"]
+ 
+    style A fill:#1A4A3C,color:#fff
+    style A2 fill:#1A4A3C,color:#fff
+    style A3 fill:#1A4A3C,color:#fff
+    style B fill:#8b0000,color:#fff
+    style C fill:#8b0000,color:#fff
+    style D fill:#555555,color:#fff
+```
+ 
+This three-level structure is deliberately designed to make tracing difficult, by the time funds reach level 3, the connection to individual victims is buried under thousands of intermediate transactions.
+ 
+**Top withdrawal addresses (960,910 total unique addresses):**
+- `TWS84SZ2GE2EgyZDCrfVuEJXpoXYuBxteS` — $816M
+- `T9yFi9yxwBUjMbHwBFKDdwFdBwvzUAqBfR` — $580M
+- `TTSSC4TEYtQMAMURND6i1FPYaaBJMGY4ed` — $512M
+**639,025 unique deposit addresses**, each representing a different user or sub-account within the HuionePay ecosystem.
+ 
+#### Transaction Count
+ 
+![HuionePay transaction count](images/screenshot-5-dune-txcount.png)
+ 
+- Withdrawals peaked at **150,000 transactions per month** (Jun–Jul 2025)
+- Deposits peaked at **100,000+ transactions per month**
+- Both metrics collapsed after July 2025
+  
+150,000 monthly withdrawal transactions means approximately **5,000 transactions per day** at peak. This level of throughput requires automated infrastructure, not manual processing.
+Huione was running a fully automated money laundering platform.
+ 
+---
