@@ -31,8 +31,8 @@ All on-chain data in this case comes from publicly available blockchain records.
 Pig butchering - is a long-term investment fraud that combines romance scam tactics with fake cryptocurrency trading platforms. The name comes from the idea of fattening a pig before slaughter, the scammer builds 
 a relationship with the victim over weeks or months before draining their savings.
  
-It is not a simple scam. It is an industrialised operation run by organised crime groups from Southeast Asia. Many of the "scammers" are themselves victims — trafficked people forced to work in scam compounds
-in Cambodia, Myanmar, and Laos under threat of violence.
+It is not a simple scam. It is an industrialised operation run by organised crime groups from Southeast Asia. Many of the "scammers" are themselves victims (trafficked people forced to work in scam compounds
+in Cambodia, Myanmar, and Laos under threat of violence).
  
 ### Statistics
  
@@ -83,7 +83,7 @@ This is important for AML context. The people making the calls and building the 
 - Held in compounds against their will
 - Forced to meet daily quotas of victim conversations
   
-This is why arresting individual scammers does not stop the operation. The criminal infrastructure — the compound operators, the technology providers, the money launderers — is the real target.
+This is why arresting individual scammers does not stop the operation. The criminal infrastructure is the compound operators, the technology providers, the money launderers, they are the real target.
  
 ---
  
@@ -204,7 +204,7 @@ This matches the `TL8TBp...` address referenced in Bitrace reports. Verified on 
   
 **Comparison: aggregation address vs core business address**
  
-| | TNVaKW (aggregation) | TL8TBp (core business) |
+| | TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 (aggregation) | TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (core business) |
 |---|---|---|
 | Created | July 9, 2024 | October 6, 2022 |
 | Lifespan | 4 days before freeze | 3+ years, still active |
@@ -332,5 +332,83 @@ This three-level structure is deliberately designed to make tracing difficult, b
   
 150,000 monthly withdrawal transactions means approximately **5,000 transactions per day** at peak. This level of throughput requires automated infrastructure, not manual processing.
 Huione was running a fully automated money laundering platform.
+ 
+---
+
+## Part 3 — Huione Guarantee: The Criminal Marketplace
+ 
+### What Is Huione Group
+ 
+Huione Group is a Cambodian financial conglomerate with links to the Hun family (Cambodia's ruling political dynasty). It operates multiple business lines including:
+ - **HuionePay** — cryptocurrency payment platform
+- **Huione Guarantee** — escrow and marketplace service (became criminal marketplace)
+- Insurance, travel, and other businesses
+  
+Originally Huione Guarantee was a legitimate escrow service for high-value transactions in Southeast Asia. 
+Over time it evolved into the largest criminal marketplace for fraud infrastructure on the internet.
+ 
+### Scale of Huione
+ 
+| Metric | Data | Source |
+|---|---|---|
+| Verified illicit funds laundered (Aug 2021–Jan 2025) | **$4 billion** | FinCEN NPRM May 2025 (official) |
+| Total HuionePay flows (2024–Jun 2025) | **$55+ billion** | SlowMist / MistTrack |
+| Total crypto volume including legal (since 2021) | **$49 billion** | FinCEN NPRM |
+| Dune dashboard combined flows (Jan 2024–Jun 2025) | **~$130 billion** | SlowMist Dune dashboard |
+| Core address inflow (Jul 2023–Jun 2024) | **$2.158 billion** | Bitrace Analysis |
+| Active deposit addresses | **80,000+** | SlowMist 2025 |
+| Frozen by Tether (Jul 2024) | **$29.62 million** | Bitrace / Tronscan |
+| DPRK-linked funds laundered | **$37.6 million** | FinCEN |
+ 
+> Note: The difference between $4B (FinCEN illicit) and $55B+ (SlowMist total) is important. FinCEN explicitly acknowledged that Huione also runs legitimate businesses in Cambodia: bill payments,
+> QR codes used in restaurants and hotels. The $4B figure represents only verified criminal proceeds. The $55B+ is total platform volume.
+ 
+### What Is Sold on Huione Guarantee
+ 
+Elliptic researchers identified thousands of vendors on the platform selling:
+ 
+| Category | What Is Sold | Approx. Price |
+|---|---|---|
+| AI Tools | Deepfake software, voice cloning, fake profile generators | $50–500 |
+| Identity Documents | Fake passports, KYC bypass kits, synthetic identities | $100–2,000 |
+| Scam Infrastructure | Fake trading platform templates, romance scam scripts | $500–10,000 |
+| Money Laundering | Crypto-to-cash conversion, mixing, layering services | 3–5% commission |
+| Victim Data | Contact lists, victim databases, lead generation | $10–100 per 1,000 |
+| Physical Items | Electrified shackles for use on compound workers | Varied |
+ 
+The presence of electrified shackles in the marketplace catalogue illustrates the direct connection between Huione and human trafficking operations in scam compounds.
+ 
+### Fund Flow Risk Breakdown
+ 
+Based on Bitrace analysis of core address TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (July 2023 – June 2024):
+ 
+```mermaid
+pie title Fund Flow Risk Breakdown — Huione Core Address TL8TBp (Jul 2023 – Jun 2024)
+    "Clean / Unclassified" : 80.18
+    "Black market transactions" : 15.71
+    "Money laundering" : 2.50
+    "Online gambling" : 1.62
+    "Direct fraud" : 0.09
+```
+ 
+Note: The low "direct fraud" percentage does not mean fraud is rare. It means the funds are already layered by the time they reach the core address is direct pig butchering deposits go to 
+aggregation addresses first (like TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8), not directly to the core address.
+ 
+### Regulatory Response to Huione
+ 
+**July 2024:** Tether froze aggregation address TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 ($29.62 million USDT blocked). Huione switched to new addresses within days. Operations continued.
+ 
+**Late 2024:** Huione launched **USDH** — their own stablecoin specifically designed to be unfreezable. Also acquired a 30% stake in Tudou Guarantee is expanding their infrastructure.
+ 
+**May 1, 2025:** FinCEN issued a Notice of Proposed Rulemaking (NPRM) under Section 311 of the USA PATRIOT Act — proposing to designate Huione Group as a "primary money laundering concern." 
+This would prohibit all US financial institutions from maintaining correspondent accounts with Huione. 30-day public comment period opened.
+ 
+**October 15, 2025:** FinCEN issued the final rule under Section 311 — fully prohibiting US financial institutions from conducting business with Huione Group. OFAC and FinCEN jointly with the 
+UK FCDO conducted the largest-ever action against a Southeast Asian cyber fraud ring (sanctions against Chen Zhi of Prince Group and full disconnection of Huione from the US financial system).
+ 
+This explains the sharp activity collapse visible on the Dune dashboard after July–August 2025.
+ 
+**Key lesson for AML:** Address-level freezes (Tether July 2024) bought days. Systemic regulatory action (FinCEN Section 311 October 2025) caused real operational disruption. The difference is clear 
+on the Dune activity charts, the Tether freeze barely registers while the FinCEN designation caused a collapse from $800M+ monthly to near zero.
  
 ---
