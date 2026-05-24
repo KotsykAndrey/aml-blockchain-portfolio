@@ -523,7 +523,7 @@ This gap is narrowing but remains real. Criminals exploited it heavily between 2
  
 **What the exchange sees:**
 - Customer passes KYC
-- Buys USDT — normal transaction
+- Buys USDT - normal transaction
 - Withdraws USDT to external wallet, it is normal transaction
 **What the exchange does NOT see:**
 - Where the USDT is going
@@ -566,7 +566,7 @@ This gap is narrowing but remains real. Criminals exploited it heavily between 2
 **The problem:** Huione is based in Cambodia. FinCEN can issue a proposed rule, but they cannot directly regulate a Cambodian company. FATF can pressure Cambodia, but Cambodia has political reasons 
 to protect Huione (Hun family connections).
  
-**The result:** Even after FinCEN action and Tether freezes — Huione continues to operate. They simply created new addresses and a new stablecoin.
+**The result:** Even after FinCEN action and Tether freezes - Huione continues to operate. They simply created new addresses and a new stablecoin.
  
 **How to close the gap:**
 
@@ -580,7 +580,7 @@ to protect Huione (Hun family connections).
  
 **The problem:** Most pig butchering victims do not report to police. Reasons:
 
-- Shame — they feel responsible for being deceived
+- Shame - they feel responsible for being deceived
 - Distrust of police, especially in countries where fraud reporting is difficult
 - Belief that nothing can be done
 - Language barriers for international victims
@@ -593,12 +593,12 @@ to protect Huione (Hun family connections).
  
 ### Gap 6 - The Human Trafficking Complication
  
-**The problem:** The people making the calls and building relationships with victims are often themselves victims — trafficked and held against their will in scam compounds. This creates a moral and legal complexity:
+**The problem:** The people making the calls and building relationships with victims are often themselves victims - trafficked and held against their will in scam compounds. This creates a moral and legal complexity:
  
 - Arresting "scammers" may result in trafficking victims being prosecuted
 - Law enforcement focus on financial crime can miss the human trafficking aspect
 - Victims in compounds need rescue, not prosecution
   
-**AML implication:** This is why pig butchering is treated as a national security and human rights issue — not just an AML matter. It requires a multi-agency response beyond standard compliance procedures.
+**AML implication:** This is why pig butchering is treated as a national security and human rights issue - not just an AML matter. It requires a multi-agency response beyond standard compliance procedures.
  
 ---
