@@ -324,7 +324,7 @@ This three-level structure is deliberately designed to make tracing difficult, b
  
 #### Transaction Count
  
-![HuionePay transaction count](images/screenshot-5-dune-txcount.png)
+![HuionePay transaction count](images/screenshot-5-dune-tx-count.png)
  
 - Withdrawals peaked at **150,000 transactions per month** (Jun–Jul 2025)
 - Deposits peaked at **100,000+ transactions per month**
