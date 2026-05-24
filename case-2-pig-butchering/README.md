@@ -24,7 +24,7 @@ All on-chain data in this case comes from publicly available blockchain records.
  
 ---
  
-## Part 1:  Pig Butchering: How the Scheme Works
+## Part 1:  Pig Butchering. How the Scheme Works
  
 ### What Is Pig Butchering
  
@@ -41,7 +41,7 @@ in Cambodia, Myanmar, and Laos under threat of violence).
 - Tens of thousands of victims globally per year
 - Operates from scam compounds with hundreds to thousands of forced workers
 
-### The Psychological Cycle — 6 Stages
+### The Psychological Cycle, 6 Stages:
  
 ```mermaid
 flowchart TD
@@ -87,7 +87,7 @@ This is why arresting individual scammers does not stop the operation. The crimi
  
 ---
  
-## Part 2 — On-Chain Flow: From Victim to Cash Out
+## Part 2: On-Chain Flow, from Victim to Cash Out
  
 ### The Full Money Flow
  
@@ -115,7 +115,7 @@ flowchart TD
     style H fill:#555555,color:#fff
 ```
  
-### Real On-Chain Analysis — Aggregation Address
+### Real On-Chain Analysis. Aggregation Address
  
 **Address:** `TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8`
  
@@ -143,7 +143,7 @@ Looking at the transfers tab you can see the typical aggregation pattern:
 The smaller amounts ($1,200–$10,000) are likely individual victims at different stages of the scam. The large amounts ($270K, $2.9M) are either high-value individual victims or sub-aggregation wallets
 consolidating funds from multiple victims.
  
-### HuionePay Scale — Dune Analytics (SlowMist Dashboard)
+### HuionePay Scale, Dune Analytics (SlowMist Dashboard)
  
 > Note: Tronscan's built-in analysis tab shows TRX balance only, not USDT transfers. For real USDT volume analysis, SlowMist built a public Dune dashboard: https://dune.com/misttrack/huionepay-data
  
@@ -335,7 +335,7 @@ Huione was running a fully automated money laundering platform.
  
 ---
 
-## Part 3 — Huione Guarantee: The Criminal Marketplace
+## Part 3: Huione Guarantee. The Criminal Marketplace
  
 ### What Is Huione Group
  
@@ -412,3 +412,106 @@ This explains the sharp activity collapse visible on the Dune dashboard after Ju
 on the Dune activity charts, the Tether freeze barely registers while the FinCEN designation caused a collapse from $800M+ monthly to near zero.
  
 ---
+
+## Part 4: Why USDT on Tron (TRC-20)? Technical and AML Analysis
+ 
+### Tron vs Ethereum: Why Criminals Chose Tron
+ 
+```mermaid
+flowchart LR
+    subgraph ETH["Ethereum ERC-20 USDT"]
+        E1["Transaction fee: $5–50"]
+        E2["Speed: ~15 seconds"]
+        E3["Monitoring: Extensive"]
+        E4["Chainalysis coverage: High"]
+        E5["Regulatory attention: High"]
+    end
+ 
+    subgraph TRX["Tron TRC-20 USDT"]
+        T1["Transaction fee: $0.001–1"]
+        T2["Speed: ~3 seconds"]
+        T3["Monitoring: Lower"]
+        T4["Chainalysis coverage: Growing"]
+        T5["Regulatory attention: Lower"]
+    end
+ 
+    ETH -->|"Criminal preference"| TRX
+```
+ 
+**The economics are clear:**
+
+- A single USDT transfer on Ethereum costs $5–50 at normal gas prices, and can spike to $100–500 during network is overloaded
+- A single USDT transfer on Tron costs $0.001–1 regardless of conditions
+- Pig butchering collects from hundreds of victims daily approximately 1,000 transactions per day the fee difference is $5,000–50,000 per day on Ethereum vs under $1,000 on Tron
+- Speed matters, faster transactions means faster layering before any freeze can be applied
+  
+### USDT — Why a Stablecoin
+ 
+Scammers need stability. If they collected ETH or BTC:
+- Price fluctuates and their holdings lose value while waiting to layer
+- Conversion to fiat requires extra steps
+USDT is pegged 1:1 to USD, it is already dollars in crypto form. This makes the cash-out step simpler and reduces value leakage during layering.
+ 
+### USDH — Huione's Own Unfreezable Stablecoin
+ 
+After Tether froze $29.62M in July 2024, Huione's biggest vulnerability became clear (dependence on a centralised stablecoin that a third party could freeze). 
+Their response was to remove that dependency entirely.
+ 
+In late 2024 Huione launched **USDH** (their own stablecoin pegged 1:1 to USD, deployed on Ethereum, BNB Chain, and Tron).
+ 
+**Key difference from USDT:**
+ 
+| | USDT (Tether) | USDH (Huione) |
+|---|---|---|
+| Issuer | Tether Ltd — regulated | Huione Group — unregulated |
+| Can be frozen | ✅ Yes, Tether has freeze function | ❌ No, no central freeze authority |
+| Regulatory oversight | Growing | None |
+| Purpose | General payments | Criminal marketplace transactions |
+| Backing | US Treasury bonds (claimed) | Unknown |
+ 
+**Why this matters for AML:**
+ 
+USDH is specifically designed to be immune to the main tool (asset freezing) that stopped Huione temporarily. If exchanges and compliance systems do not screen for USDH specifically, 
+transactions in this token will pass through undetected.
+ 
+This is a direct example of **regulatory arbitrage in action** — criminals building infrastructure specifically to exploit gaps in existing AML controls. Every time a control is applied, 
+the criminal ecosystem adapts to work around it.
+ 
+**Current status:** USDH remains active. It represents an emerging AML gap that most compliance systems have not yet addressed, blockchain analytics providers are still building coverage for this token.
+ 
+USDT is issued by Tether — a centralised company that can freeze any wallet. This is actually a law enforcement tool, Tether has frozen hundreds of millions in criminal wallets.
+ 
+But Huione's response shows how criminals adapt:
+ 
+```mermaid
+flowchart TD
+    A["Huione uses USDT TRC-20 for all marketplace transactions"] --> B
+ 
+    B["Tether freezes TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 $29.62M frozen July 13 2024"] --> C
+ 
+    C["Huione creates new addresses TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf activated immediately, operations continue within days"] --> D
+ 
+    D["Huione launches USDH own stablecoin cannot be frozen by Tether issued on Ethereum, BSC, Tron"] --> E
+ 
+    E["New ecosystem less dependence on Tether harder to freeze going forward"]
+ 
+    style B fill:#1A4A3C,color:#fff
+    style D fill:#8b0000,color:#fff
+```
+ 
+### AML Coverage Gap: Tron vs Ethereum
+ 
+Most compliance systems were built primarily for Bitcoin and Ethereum. Tron was added later and coverage is less comprehensive:
+ 
+| AML Capability | Ethereum | Tron |
+|---|---|---|
+| Chainalysis address attribution | Extensive | Growing |
+| TRM Labs risk scoring | Full | Partial |
+| Travel Rule implementation | Better | Less consistent |
+| Exchange screening | Most exchanges | Fewer exchanges |
+| Regulatory guidance | Specific | General only |
+ 
+This gap is narrowing but remains real. Criminals exploited it heavily between 2021–2024.
+ 
+---
+ 
