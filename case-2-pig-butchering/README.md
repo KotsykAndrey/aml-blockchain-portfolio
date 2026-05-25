@@ -53,7 +53,7 @@ D["Stage 4 — Onboarding help victim create account on fake platform first, sma
 
 E["Stage 5 — Escalation encourage larger and larger deposits introduce 'special opportunities' fake profits grow rapidly"] --> F
 
-F["Stage 6 — The Drain victim tries to withdraw funds and is instructed to pay "taxes" or "fees." The account is frozen, and the platform disappears."]
+F["Stage 6 — The Drain victim tries to withdraw funds and is instructed to pay 'taxes' or 'fees'. The account is frozen, and the platform disappears."]
 
 style A, fill: #1A4A3C, colour: #fff
 style B, fill: #2A6E54, colour: #fff
