@@ -55,12 +55,13 @@ E["Stage 5 — Escalation encourage larger and larger deposits introduce 'specia
 
 F["Stage 6 — The Drain victim tries to withdraw funds and is instructed to pay 'taxes' or 'fees'. The account is frozen, and the platform disappears."]
 
-style A, fill: #1A4A3C, color: #fff
-style B, fill: #2A6E54, color: #fff
+style A fill: #1A4A3C, color: #fff
+style B fill: #2A6E54, color: #fff
 style C fill: #2A6E54, color: #fff
-style D, fill: #B8914A, color: #fff
-style E, fill: #cc4444, color: #fff
-style F, fill: #8b0000, color: #fff
+style D fill: #B8914A, color: #fff
+style E fill: #cc4444, color: #fff
+style F fill: #8b0000, color: #fff
+
 ```
 
 ### How the Fake Platform Works
