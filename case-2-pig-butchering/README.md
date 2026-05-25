@@ -484,7 +484,7 @@ But Huione's response demonstrates how criminals adjust:
 flowchart TD
 A["Huione utilises USDT TRC-20 for all marketplace transactions"] --> B
 
-["Tether freezes TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 $29.62M on July 13, 2024"] -> C
+B["Tether freezes TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 $29.62M on July 13, 2024"] --> C
 
 C["Huione activates new addresses TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf immediately; operations continue within days"] --> D
 
