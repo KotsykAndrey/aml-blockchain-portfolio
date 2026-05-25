@@ -47,7 +47,7 @@ A["Stage 1 — First Contact Random Message on WhatsApp/Telegram/Dating App with
 
 B["Stage 2 — Trust Building (weeks/months): daily conversations and emotional connection, sharing personal stories and photos, never rushing to financial topics"] --> C
 
-["Stage 3 — Introduction to Opportunity 'My uncle/friend taught me crypto trading' Casual mention of profits small proof shown (fake screenshots)"] --> D
+C["Stage 3 — Introduction to Opportunity 'My uncle/friend taught me crypto trading' Casual mention of profits small proof shown (fake screenshots)"] --> D
 
 D["Stage 4 — Onboarding help victim create account on fake platform first, small deposit, victim sees 'profits' and builds confidence"] --> E
 
