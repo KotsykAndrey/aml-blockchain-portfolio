@@ -386,7 +386,7 @@ The direct correlation between Huione and human trafficking operations in scam c
 Based on the Bitrace analysis of core address TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (July 2023 – June 2024):
 
 ```mermaid
-pie title: Fund Flow Risk Breakdown — Huione Core Address TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (Jul 2023 – Jun 2024)
+pie title Fund Flow Risk Breakdown — Huione Core Address TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (Jul 2023 – Jun 2024)
     "Clean / Unclassified" : 80.18
     "Black market transactions" : 15.71
     "Money laundering" : 2.50
