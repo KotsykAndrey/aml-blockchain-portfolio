@@ -13,7 +13,7 @@ Sources: Chainalysis, TRM Labs, Etherscan, and on-chain data.
 ---
  
 ## What happened
-In February 2025 is that hackers from North Korea stole 1.5 billion dollars from the cryptocurrency exchange Bybit.
+In February 2025 hackers from North Korea stole 1.5 billion dollars from the cryptocurrency exchange Bybit.
 This is the biggest crypto theft in history.
  
 The Bybit hack was carried out by the Lazarus Group, a group of hackers from North Korea.
@@ -160,7 +160,7 @@ Bybit Hot Wallet transferred staked assets to Cold Wallet 1:
 - 10,000 stETH
 - 15,000 cmETH
 These are liquid staking tokens (ETH that is staked and earning yield). At this point the
-wallet held a large amount of different ETH-based assets (standart treasury)
+wallet held a large amount of different ETH-based assets (standard treasury)
  
 ![Bybit Hot and Cold Wallets normal treasury](images/screenshot-3.png)
  
@@ -188,7 +188,7 @@ Cold Wallet 1 sent to Bybit Exploiter 1:
 - 90 USDT
 
 ![401000 eth exploit](images/screenshot-5.png)
-![stETH mETH cmETH usdt expliot](images/screenshot-6.png)
+![stETH mETH cmETH usdt exploit](images/screenshot-6.png)
  
 At the same time immediate DEX swaps via Uniswap Paraswap and others to convert staked
 tokens to regular ETH and other assets.
@@ -209,7 +209,7 @@ flowchart TD
     S -->|"Thousands of transactions 100+ pages on Etherscan"| F["Wallet 1, Wallet 2, Wallet 3, ...hundreds more"]
     E -->|"Asset conversion complete"| G["Cross-chain bridges BTC / XMR / THORChain and other chains"]
     F -->|"Each wallet → more wallets 2-3 levels deep = 100+ pages"| G
-    G -->|"Final cash out"| H["Cash Out OTC brokers China / SE Asia — no KYC, Huione Guarantee marketplace, Russian instant exchangers — no AML, Korean IT workers — crypto salaries"]
+    G -->|"Final cash out"| H["Cash Out OTC brokers China / SE Asia — no KYC, Huione Guarantee marketplace, Russian instant exchangers — no AML, North Korean IT workers — crypto salaries"]
     style D fill:#ff4444,color:#fff
     style G fill:#ff8800,color:#fff
     style S fill:#cc0000,color:#fff
@@ -222,7 +222,7 @@ flowchart TD
 Only 2 wallets from thousands have more than 14000 transactions(manual tracing is near impossible):
 
 ![Bybit Exploiter amount transactions](images/screenshot-9.png)
-![Bybit Exploit related address amount transactios](images/screenshot-10.png)
+![Bybit Exploit related address amount transactions](images/screenshot-10.png)
 
 ---
 
@@ -251,8 +251,8 @@ flowchart LR
 ```
  
 The reason this is important for anti-money laundering is that manual analysis is impossible at this scale.
-This is the reason exist blockchain intelligence tools such as Chainalysis Reactor and TRM Forensics.
-They can automatically clustering thousands of addresses and tracking the money across chains.
+That's exactly why tools like Chainalysis Reactor and TRM Forensics exist.
+They can automatically cluster thousands of addresses and tracking the money across chains.
  
 ![TRM graph](images/screenshot-11.png)
 ![Chainalysis graph](images/screenshot-12.png)
@@ -314,7 +314,7 @@ From an Anti Money Laundering perspective this is noise. It shows how public hig
 ```mermaid
 flowchart LR
     A[" Open address\non Etherscan"] --> B[" Read transaction\nhistory"]
-    B --> C[" Create timeline\nof events"]
+    B --> C[" Build timeline\nof events"]
     C --> D[" Identify the\nexact theft moment"]
     D --> E[" Follow money\nto next wallets"]
     E --> F[" Document\nred flags"]
@@ -564,7 +564,7 @@ any investigation and will provide all requested documentation including Attachm
   https://www.youtube.com/watch?v=MJjP5ZIyu0k&pp=ygUTdHJtIGxhYnMgYnliaXQgaGFjaw%3D%3D
 - 31 U.S.C. § 5318(g)(2) https://www.law.cornell.edu/uscode/text/31/5318
 - UN Security Council Resolutions 1718 (2006) https://unscr.com/en/resolutions/1718/
-- UN Security Council Resolutions 2270 (2016) https://unscr.com/en/resolutions/2270/\
+- UN Security Council Resolutions 2270 (2016) https://unscr.com/en/resolutions/2270/
 - 31 CFR § 1010.430 https://www.law.cornell.edu/cfr/text/31/1010.430
 
 ---
@@ -573,4 +573,4 @@ any investigation and will provide all requested documentation including Attachm
 
 *This is a fictional scenario for educational and portfolio purposes only. All institution details are fictional. Wallet addresses are publicly available on-chain.*
 
-*www/linkedin.com/in/andrey-kotsyk*
+*linkedin.com/in/andrey-kotsyk*
