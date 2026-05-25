@@ -21,6 +21,7 @@ This case study covers three topics:
 2. **Huione Guarantee** - the criminal marketplace that enebles to exist pig butchering ecosystem.
 3. **TRC-20 USDT and AML Gaps** and the reasons why Tron became the preferred infrastructure for organised financial crime.
 All on-chain data in this case comes from publicly available blockchain records. No paid tools.
+
 ---
 
 ## Part 1: The Process of Pig Butchering. How the Scheme Works
@@ -381,12 +382,12 @@ Elliptic researchers identified thousands of vendors on the platform that sell:
 
 The direct correlation between Huione and human trafficking operations in scam compounds is demonstrated by the presence of electrified shackles in the marketplace catalogue.
 
-### Breakdown of Fund Flow Risk
+### Fund Flow Risk breakdown
 
 Based on the Bitrace analysis of core address TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (July 2023 – June 2024):
 
 ```mermaid
-pie title Fund Flow Risk Breakdown — Huione Core Address TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (Jul 2023 – Jun 2024)
+pie title Fund Flow Risk Breakdown 
     "Clean / Unclassified" : 80.18
     "Black market transactions" : 15.71
     "Money laundering" : 2.50
@@ -510,6 +511,7 @@ attribution of chainalysis address | Extensive | Increasing |
 | Regulatory guidance | Specific | General only |
 
 Although this disparity is diminishing, it continues to exist. Between 2021 and 2024, criminals extensively exploited it.
+
 ---
 
 ## Part 5: AML Gaps. The Reasons for the Difficulty of Stopping Pig Butchering
@@ -525,6 +527,7 @@ Although this disparity is diminishing, it continues to exist. Between 2021 and 
 - The destination of the USDT
 - The destination wallet is an aggregation address for swine butchering
 **Method for bridging the gap:** Prior to permitting withdrawals, verify the risk score of the destination wallet during the outgoing transaction screening process. This is the function of Chainalysis KYT. It is not implemented by all exchanges.
+  
 ---
 
 ### Gap 2 - Screening of Withdrawal Destinations
@@ -549,6 +552,7 @@ The issue is that numerous exchanges screen incoming deposits but not outgoing w
 **The issue:** Ethereum is more comprehensively covered by most compliance systems than Tron. Tron transfers are inconsistently subject to the Travel Rule. TRC-20 transaction surveillance is restricted on numerous smaller exchanges.
 **Result:** Due to the fact that Tron's AML coverage was less robust, pig butchering operations were substantially relocated there.
 **A Method to Address the Gap:** Achieve comprehensive compliance coverage across all chains. The Travel Rule should be applicable to Tron transfers in the same way as it is to Ethereum transfers, and FATF guidance must be independent in every chain.
+
 ---
 
 ### Gap 4 - Jurisdictional Gap in Huione
@@ -564,7 +568,7 @@ to safeguard Huione (Hun family connections).
 
 ---
 
-Gap 5 - Victim Reporting Gap
+### Gap 5 - Victim Reporting Gap
 
 **The issue:** The majority of victims of pig butchering do not disclose the incident to the police. Motives:
 
@@ -575,6 +579,7 @@ Gap 5 - Victim Reporting Gap
 
 **The significance of this for AML:** SAR filings are not possible in the absence of victim reports. FIU data is not available in the absence of SARs. There are no patterns in the absence of FIU data. Investigations are impossible without patterns.
 **Strategies for bridging the gap:** Victim support programs, simplified reporting processes, public awareness campaigns, and the protection of victims from prosecution when they were unknowingly used as money couriers.
+
 ---
 
 ### Gap 6 - The Human Trafficking Complication
@@ -586,4 +591,5 @@ Arresting "scammers" may lead to the prosecution of trafficking victims.
 - Rescue is the primary concern for victims in compounds, not prosecution.
 
 **AML implication:** This is the reason why pig mutilation is regarded as a national security and human rights issue, rather than merely an AML matter. There is a need for a multi-agency response that exceeds the typical compliance procedures.
+
 ---
