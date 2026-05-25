@@ -98,18 +98,18 @@ C["The funds were immediately transferred to the aggregation address, collects d
 
 D["TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 Huione aggregation address $1B+ processed in 4 days, frozen by Tether in July 13, 2024"] --> E
 
-[E["Funds distributed to Huione Guarantee core business addresses TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf and others"]] -> F
+E["Funds distributed to Huione Guarantee core business addresses TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf and others"]] -> F
 
 F["Huione Guarantee processes and layers funds through marketplace transactions"] --> G
 
-[G["OTC brokers in China and Southeast Asia: no KYC/AML, conversion to cash"] --> H]
+G["OTC brokers in China and Southeast Asia: no KYC/AML, conversion to cash"] --> H
 
-(H["Cash out Fiat money to criminal operators"])
+H["Cash out Fiat money to criminal operators"]
 
-style A, fill: #1A4A3C, colour: #fff
-style D, fill: #8b0000, colour: #fff
-style F, fill: #8b0000, colour: #fff
-style H, fill: #555555, colour: #fff
+style A fill: #1A4A3C, color: #fff
+style D fill: #8b0000, color: #fff
+style F fill: #8b0000, color: #fff
+style H fill: #555555, color: #fff
 ```
 
 ### Real On-Chain Analysis. Aggregation Address
