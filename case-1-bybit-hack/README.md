@@ -456,8 +456,8 @@ The 14,200 ETH deposited at Clear Exchange represents a portion of the original 
  
 ### Activity at Clear Exchange
 
-The deposit was directed to account XXX-XXXXXX, which was opened on January 15, 2025, under the name **John Smith** and was deposited 37 days prior to this transaction.
-The account had no prior transaction history consistent with a deposit of this size or origin.
+The deposit was directed to account XXX-XXXXXX. The account belongs to John Smith. It was opened on January 15, 2025, just 37 days before this deposit. 
+No prior activity consistent with this volume.
  
 Upon receipt of the Chainalysis KYT alert:
  
