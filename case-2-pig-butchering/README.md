@@ -434,7 +434,7 @@ end
 subgraph TRX["Tron TRC-20 USDT"]
 T1["Transaction fee: $0.001–1"]
 T2["Speed: ~3 seconds"]
-T3 ["Monitoring: Lower"]
+T3["Monitoring: Lower"]
 T4["Chainalysis coverage: Expanding"]
 T5["Regulatory attention: Reduced"]
 end
