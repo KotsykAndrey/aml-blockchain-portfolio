@@ -1,23 +1,23 @@
 # Part 1: Bybit Hack 2025 by Lazarus Group
 
-Type: Blockchain Forensics / DPRK Attribution
+Type: DPRK Attribution/Blockchain Forensics
  
-Date of hack: February 21 2025
+Date of hack: February 21, 2025
  
 Amount Stolen: ~$1.5 billion USD (in ETH)
  
 Attributed To: Lazarus Group (North Korea, state-sponsored hackers)
  
-Sources: Chainalysis, TRM Labs, Etherscan, on-chain data.
+Sources: Chainalysis, TRM Labs, Etherscan, and on-chain data.
  
 ---
  
 ## What happened
-In February 2025 is that hackers from North Korea stole 1.5 billion dollars from the crypto exchange Bybit.
+In February 2025 is that hackers from North Korea stole 1.5 billion dollars from the cryptocurrency exchange Bybit.
 This is the biggest crypto theft in history.
  
 The Bybit hack was carried out by the Lazarus Group, a group of hackers from North Korea.
-They did not hack Bybit directly. Instead they hacked a third-party software called Safe{Wallet} that Bybit was using to manage their cold wallet.
+Bybit was not directly hacked. Rather, they compromised a third-party software called Safe{Wallet} that Bybit was using to manage their cold wallet.
 The hackers changed the transaction data in the interface.
 When Bybit employees signed the transaction they thought it was a normal transfer but actually they signed a transaction that gave full control of the wallet to the hackers.
 After the theft the money was quickly converted, chain hopped and split through thousands of wallets to confuse the trace.
@@ -47,7 +47,7 @@ The Lazarus Group used this address to receive the stolen funds.
  
 ## How they laundered the money
 
-(proofs you will see in part 2 on-chain analysis)
+(proofs will be provided in the second part, on-chain analysis)
 
 **Phase 1) Rapid Conversion.**
 After the theft the hackers started converting ETH to other assets through DEX exchanges to prevent freezing.
@@ -100,10 +100,10 @@ If you were an AML analyst at an exchange and these funds arrived, you would see
 
 ## Key takeaways from the Bybit hack
  
-Supply chain attacks are hard to detect as the theft looked like a normal authorized transaction.
-Standard KYC/AML controls do not help in these cases.
+The theft appeared to be a typical authorised transaction, which makes it difficult to detect supply chain attacks.
+Standard KYC/AML controls are ineffective in this case.
  
-Speed matters, as the Lazarus Group moved funds within minutes and real-time blockchain monitoring is essential.
+The Lazarus Group's ability to transfer funds within minutes shows the importance of speed and real-time blockchain monitoring.
  
 Blockchain intelligence tools work as $400 million was frozen because Chainalysis and TRM pushed real-time alerts to exchanges.
  
@@ -115,7 +115,7 @@ Any DPRK-attributed transaction requires immediate escalation.
 ---
 
 # Part 2: Real on-chain investigation
-On-Chain Analysis: Bybit Hack Transaction Tracing
+Bybit Hack Transaction Tracing: On-Chain Analysis
  
 Type: Hands-on Blockchain Analysis
  
@@ -131,9 +131,9 @@ Date of Analysis: May 2026
  
 ## 1) What I Did
  
-I opened the real Bybit hack address on Etherscan and manually traced the transactions to
-understand how the theft happened and how the money was moved after.
-All data below is from public on-chain records. No paid tools were used only Etherscan.io
+I opened the real Bybit hack address on Etherscan and manually traced the transactions to understand how the theft
+happened and how the money was moved after.
+The data presented below is sourced from public on-chain records. No paid tools were used, only Etherscan.io
  
 ![Bybit Cold Wallet 1 on Etherscan](images/screenshot-1.png)
  
@@ -147,8 +147,8 @@ All data below is from public on-chain records. No paid tools were used only Eth
  
 Bybit Cold Wallet 1 received several large transfers:
 - Multiple transactions of ~30,000 ETH from other Bybit wallets
-- One transfer of ~60,000 ETH to Bybit Hot Wallet
-This looks like normal exchange treasury management and moving funds between cold and hot wallets.
+- One transfer ~60,000 ETH to Bybit Hot Wallet
+This looks like a standard exchange treasury management process that involves the transfer of funds between cold and hot wallets.
  
 ![Bybit Hot and Cold Wallets normal treasury](images/screenshot-2.png)
  
@@ -156,12 +156,11 @@ This looks like normal exchange treasury management and moving funds between col
  
 **~455 days ago, Staked Assets Moved In**
  
-Bybit Hot Wallet sent staked assets to Cold Wallet 1:
+Bybit Hot Wallet transferred staked assets to Cold Wallet 1:
 - 10,000 stETH
 - 15,000 cmETH
- 
 These are liquid staking tokens (ETH that is staked and earning yield). At this point the
-wallet held a large amount of different ETH-based assets, normal treasury.
+wallet held a large amount of different ETH-based assets (standart treasury)
  
 ![Bybit Hot and Cold Wallets normal treasury](images/screenshot-3.png)
  
@@ -169,9 +168,9 @@ wallet held a large amount of different ETH-based assets, normal treasury.
  
 **~450-460 days ago, Preparation**
  
-4 transactions from Hot Wallet to Cold Wallet 1:
+Four transactions from Hot Wallet to Cold Wallet 1:
 - 20,000–25,000 ETH per transaction
-Normal treasury consolidation, nothing suspicious at this stage.
+No suspicious activity is observed at this time, standard process of treasury consolidation.
  
 ![Bybit Hot and Cold Wallets normal treasury](images/screenshot-4.png)
  
@@ -229,9 +228,9 @@ Only 2 wallets from thousands have more than 14000 transactions(manual tracing i
 
 ## 4) What Happened After? Layering Phase:
  
-After the theft, Bybit Exploiter 1 address showed 6 pages of transactions going to hundreds of different wallets.
-When I tried to follow the money deeper and opening wallets at level 2 and level 3.
-Some of those wallets had 100+ pages of transactions and more than 10000 transactions.
+After the theft, Bybit Exploiter 1 address displayed 6 pages of transactions going to hundreds of different wallets.
+When I tried to follow the money deeper and opening addresses at layer 2 and layer 3.
+Some of those addresses contained more than 10,000 transactions and 100+ pages of transactions.
 This is exactly what layering looks like in practice:
  
 ```mermaid
@@ -251,14 +250,14 @@ flowchart LR
     style I fill:#ff8800,color:#fff
 ```
  
-Why this matters for Anti Money Laundering: Manual analysis is completely impossible at this scale.
-This is why blockchain intelligence tools like Chainalysis Reactor and TRM Forensics exist.
-They can cluster thousands of addresses automatically and follow the money across chains.
+The reason this is important for anti-money laundering is that manual analysis is impossible at this scale.
+This is the reason exist blockchain intelligence tools such as Chainalysis Reactor and TRM Forensics.
+They can automatically clustering thousands of addresses and tracking the money across chains.
  
 ![TRM graph](images/screenshot-11.png)
 ![Chainalysis graph](images/screenshot-12.png)
 
-Here was TRM and Chainalysis graphs, I took them only in educational purposes, noted the sources in the end.
+Here was TRM and Chainalysis graphs, I took them only in educational purposes, documented the sources in the end.
  
 ---
 
@@ -301,10 +300,10 @@ From an Anti Money Laundering perspective this is noise. It shows how public hig
 | Red Flag | Pattern | Risk Level |
 |---|---|---|
 | 401,346 ETH sent in single transaction to new address | Massive unusual outflow | 🔴 CRITICAL |
-| Destination address (Exploiter 1) had zero prior history | New wallet receives huge amount | 🔴 HIGH |
+| The destination address (Exploiter 1) had no prior history. | New wallet receives huge amount | 🔴 HIGH |
 | Immediate DEX swaps after receipt | Rapid asset conversion | 🔴 HIGH |
 | Many pages of outgoing transactions within hours | Fan-out layering pattern | 🔴 HIGH |
-| Staked tokens converted immediately | Avoiding asset-specific freezes | 🟡  MEDIUM |
+| Staked tokens converted immediately | Attempt to avoid asset-specific freezes | 🟡  MEDIUM |
 | Transactions to L2 bridges | Cross-chain obfuscation attempt | 🟡 MEDIUM |
 | Fake token airdrop | Secondary scam — noise | ⚪️ LOW |
  
@@ -315,7 +314,7 @@ From an Anti Money Laundering perspective this is noise. It shows how public hig
 ```mermaid
 flowchart LR
     A[" Open address\non Etherscan"] --> B[" Read transaction\nhistory"]
-    B --> C[" Build timeline\nof events"]
+    B --> C[" Create timeline\nof events"]
     C --> D[" Identify the\nexact theft moment"]
     D --> E[" Follow money\nto next wallets"]
     E --> F[" Document\nred flags"]
@@ -407,7 +406,7 @@ would be entered in separate form fields, not in the narrative itself.
 |---|---|
 | Date of Report | February 26, 2025 |
 | SAR Type | Suspected proceeds of cybercrime / DPRK sanctions evasion / WMD proliferation financing |
-| Filing Deadline | Within 30 days of detection per BSA requirements met |
+| Filing Deadline | Within 30 days of detection, in accordance with BSA requirements |
 | Prior SARs on Subject | None on file |
  
 ---
@@ -417,14 +416,14 @@ would be entered in separate form fields, not in the narrative itself.
 | Field | Detail |
 |---|---|
 | Name | Unknown, unhosted wallet, no account at this institution |
-| Account Number at Clear Exchange | N/A — no account held by sending address |
+| Clear Exchange Account Number | N/A — the transmitting address does not have any accounts |
 | Receiving Account | XXX-XXXXXX (John Smith — account holder at Clear Exchange) |
 | Sending Wallet Address | 0x47666Fab8bd0Ac7003bce3f5C3585383F09486E2 |
 | Attribution | Lazarus Group (DPRK) — Reconnaissance General Bureau (RGB) |
 | OFAC Status | SDN List — active designation |
 | Blockchain | Ethereum (ETH) |
  
-Attribution is based on publicly available cluster data from Chainalysis and TRM Labs, consistent with OFAC SDN designation of Lazarus Group addresses.
+In accordance with the OFAC SDN designation of Lazarus Group addresses, attribution is based on publicly available cluster data from Chainalysis and TRM Labs.
  
 ---
  
@@ -456,15 +455,15 @@ Hundreds of Level 2–3 addresses are maintained in our internal blocklist and a
 The 14,200 ETH deposited at Clear Exchange represents a portion of the original stolen funds that passed through multiple layering stages before reaching our platform.
  
 ### Activity at Clear Exchange
- 
-The deposit was directed to account XXX-XXXXXX registered under the name **John Smith**, opened on January 15, 2025 — 37 days prior to this deposit.
+
+The deposit was directed to account XXX-XXXXXX, which was opened on January 15, 2025, under the name **John Smith** and was deposited 37 days prior to this transaction.
 The account had no prior transaction history consistent with a deposit of this size or origin.
  
 Upon receipt of the Chainalysis KYT alert:
  
-- The deposit of 14,200 ETH was **automatically held** by our compliance system
-- The account was **immediately restricted** from all activity
-- Compliance Officer was notified within 5 minutes of alert
+- Our compliance system **automatically held** the deposit of 14,200 ETH.
+- All activity on the account was **immediately restricted**.
+- The Compliance Officer was informed of the alert within five minutes.
 - Funds remain frozen pending law enforcement instruction
   
 The account holder was not notified of the reason for restriction in accordance with tipping off prohibition 31 U.S.C. § 5318(g)(2).
@@ -481,8 +480,8 @@ The account holder was not notified of the reason for restriction in accordance 
 | Inbound deposit received from OFAC SDN-listed address attributed to Lazarus Group (DPRK) — funds frozen upon receipt | 🔴 CRITICAL |
 | Sending address directly linked to $1.5B Bybit hack publicly documented and OFAC designated | 🔴 CRITICAL |
 | 14,200 ETH (~$37.8M) received in single transaction | 🔴 CRITICAL |
-| Funds passed through 3 layers of intermediate wallets before reaching platform | 🔴 HIGH |
-| Sending address funded via DEX swaps, no Travel Rule triggered at source | 🔴 HIGH |
+| Before reaching the platform, funds were routed through three layers of intermediate wallets | 🔴 HIGH |
+| Sending address funded via DEX swaps, no Travel Rule triggered at the source | 🔴 HIGH |
 | Cross-chain bridge activity (THORChain) observed prior to deposit | 🔴 HIGH |
 | Deposit inconsistent with account holder's established transaction profile | 🔴 HIGH |
 | Receiving account opened 37 days prior, no prior high-volume activity | 🟡 MEDIUM |
