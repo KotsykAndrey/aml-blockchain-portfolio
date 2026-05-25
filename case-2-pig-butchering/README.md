@@ -492,8 +492,8 @@ D["Huione launches USDH's own stablecoin, which cannot be frozen by Tether, and 
 
 E["New ecosystem less reliant on Tether; more difficult to freeze in the future"]
 
-style B, fill: #1A4A3C, colour: #fff
-style D, fill: #8b0000, colour: #fff
+style B fill: #1A4A3C, color: #fff
+style D fill: #8b0000, color: #fff
 
 ```
 
