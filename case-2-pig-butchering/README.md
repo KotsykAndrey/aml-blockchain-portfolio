@@ -98,7 +98,7 @@ C["The funds were immediately transferred to the aggregation address, collects d
 
 D["TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 Huione aggregation address $1B+ processed in 4 days, frozen by Tether in July 13, 2024"] --> E
 
-E["Funds distributed to Huione Guarantee core business addresses TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf and others"]] -> F
+E["Funds distributed to Huione Guarantee core business addresses TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf and others"] --> F
 
 F["Huione Guarantee processes and layers funds through marketplace transactions"] --> G
 
