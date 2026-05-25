@@ -480,7 +480,7 @@ The illicit ecosystem adjusts to circumvent it.
 USDT is issued by Tether, a centralised corporation that has the ability to freeze any wallet. Tether is a law enforcement instrument that has frozen hundreds of millions of dollars in criminal wallets.
 But Huione's response demonstrates how criminals adjust:
 
-Mermaid
+```mermaid
 flowchart TD
 A["Huione utilises USDT TRC-20 for all marketplace transactions"] --> B
 
@@ -494,6 +494,7 @@ E["New ecosystem less reliant on Tether; more difficult to freeze in the future"
 
 style B, fill: #1A4A3C, colour: #fff
 style D, fill: #8b0000, colour: #fff
+
 ```
 
 ### AML Coverage Gap: Ethereum vs. Tron
