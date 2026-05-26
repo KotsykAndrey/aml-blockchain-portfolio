@@ -844,10 +844,11 @@ highlights the need for proactive outgoing withdrawal screening against known pi
 - TRM Labs — Pig Butchering Intelligence Reports 2024–2025
 - UNODC — Transnational Organised Crime in Southeast Asia Report 2024 https://www.unodc.org/roseap/uploads/documents/Publications/2024/TOC_Convergence_Report_2024.pdf
 - Tronscan.org — On-chain data: TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 and TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf
+  
 ---
  
 *Prepared by Andrey Kotsyk — AML/Blockchain Forensics Portfolio*
  
 *All on-chain data is publicly available on Tronscan.org. SAR is fictional and created for educational purposes only. Huione addresses are documented in public reports cited above.*
  
-*linkedin.com/in/andrey-kotsyk · github.com/KotsykAndrey/aml-blockchain-portfolio*
+*linkedin.com/in/andrey-kotsyk 
