@@ -1,47 +1,49 @@
-# Case 2: Full AML Analysis of Pig Butchering and Huione Guarantee
-
-**Type:** Financial Crime Typology, On-chain Analysis, AML Gap Assessment
-
-**Analysis Date:** May 2026
-
-**Tools Employed:** TronScan.org (free, public)
-
+# Case 2 — Pig Butchering & Huione Guarantee: Full AML Analysis
+ 
+**Type:** Financial Crime Typology · On-chain Analysis · AML Gap Assessment
+ 
+**Date of Analysis:** May 2026
+ 
+**Tools Used:** Tronscan.org (free, public data)
+ 
 **Addresses Analyzed:**
-- `TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8` — Huione Guarantee aggregation address ($29.62M frozen by Tether in July 2024)
-- `TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf` — HuionePay's core business address ($1.66B+ deposits, created in October 2022, still active in May 2026, identified via SlowMist Dune dashboard + verified on Tronscan)
-**Sources:** Chainalysis Crypto Crime Report 2025, Elliptic Huione Report 2024, FinCEN Proposed Rule 2024, Bitrace On-chain Analysis, TRM Labs Reports, UNODC Southeast Asia Reports
-
+- `TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8` - Huione aggregation address (frozen by Tether July 2024, $29.62M blocked)
+- `TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf` - HuionePay core business address ($1.66B+ deposits, created Oct 2022, still active May 2026)
+**Sources:** Chainalysis Crypto Crime Report 2025, Elliptic Huione Report 2024, FinCEN NPRM May 2025, Bitrace On-chain Analysis, TRM Labs Reports, UNODC Southeast Asia Reports, SlowMist Dune Dashboard
+ 
 ---
-
-## Introduction
-
-This case study covers three topics:
-
-1. **Pig Butchering** and how the scheme works from first contact to financial drain.
-2. **Huione Guarantee** - the criminal marketplace that enebles to exist pig butchering ecosystem.
-3. **TRC-20 USDT and AML Gaps** and the reasons why Tron became the preferred infrastructure for organised financial crime.
-All on-chain data in this case comes from publicly available blockchain records. No paid tools.
-
+ 
+## Overview
+ 
+This case covers three connected topics:
+ 
+1. **Pig Butchering** - how the scheme works from first contact to financial drain
+2. **Huione Guarantee** - the criminal marketplace that runs the infrastructure behind pig butchering
+3. **TRC-20 USDT and AML Gaps** - why Tron became the preferred network for organised financial crime
+All on-chain data comes from public blockchain records. No paid tools were used.
+ 
 ---
-
-## Part 1: The Process of Pig Butchering. How the Scheme Works
-
+ 
+## Part 1 — Pig Butchering: How the Scheme Works
+ 
 ### What Is Pig Butchering
-
-Pig butchering is a long-term investment fraud that combines false cryptocurrency trading platforms with romance scam tactics. The term is derived from the concept of fattening a pig prior to slaughter,
-and the fraudster constructs a relationship with the victim for a period of weeks or months prior to drain their savings.
-It is not a straightforward fraud. An industrialised operation is being conducted by organised crime organisations from Southeast Asia. Numerous "scammers" are themselves victims, as they are trafficked
-individuals who are forced to work in scam compounds under threat of violence in Cambodia, Myanmar, and Laos).
-
-### Statistics:
-
-- **Global victim losses of over $75 billion** (Chainalysis 2025 estimate)
-- FinCEN reported that Huione Group alone processed $64 billion between 2021 and 2025.
-- Tens of thousands of victims worldwide each year
-- Operates from fraudulent compounds that house hundreds to thousands of forced workers
-
-### The Psychological Cycle, 6 Stages:
-
+ 
+Pig butchering is a long-term investment fraud. The scammer builds a fake relationship with the victim over weeks or months, 
+then drains their savings through a fake crypto trading platform.
+ 
+The name comes from the idea of fattening a pig before slaughter. The victim is the pig.
+ 
+It is not a straightforward fraud. An industrialised operation is being conducted by organised crime organisations from Southeast Asia. 
+Numerous "scammers" are themselves victims, as they are trafficked individuals who are forced to work in scam compounds under threat of violence in Cambodia, Myanmar, and Laos).
+ 
+### Scale
+ 
+- **$75+ billion** in victim losses globally — Chainalysis 2025 estimate
+- FinCEN identified at least **$4 billion** in verified illicit proceeds processed through Huione Group between 2021 and 2025
+- Tens of thousands of victims globally per year
+- Operates from scam compounds with hundreds to thousands of forced workers
+### The Psychological Cycle — 6 Stages
+ 
 ```mermaid
 flowchart TD
 A["Stage 1 — First Contact Random Message on WhatsApp/Telegram/Dating App with No Mention of Money or Attractive Profile"] --> B
@@ -64,31 +66,31 @@ style E fill: #cc4444, color: #fff
 style F fill: #8b0000, color: #fff
 
 ```
-
+ 
 ### How the Fake Platform Works
-
+ 
 The victim never trades on a real exchange. They use a fake platform that looks exactly like Binance or another legitimate exchange — professional design, real-time charts, support chat. But:
-- The platform displays whatever the scammers' programs(all "trades" are fake).
-- "Profits" are fake, they exist only to motivate larger deposits.
-- Withdrawals are always blocked, and victims are told that they are required to pay taxes, fees, or "unlock" their account.
-- The platform disappears after the scammer has extracted the maximum of money.
-
+- All "trades" are fake, the platform shows whatever the scammer programs
+- "Profits" are fake, they exist only to encourage larger deposits
+- Withdrawals are always blocked and victims are told they owe taxes, fees, or need to "unlock" their account
+- The platform disappears once the scammer has extracted maximum funds
+  
 ### Who Are the Scammers
-
-This is important in the context of anti-money laundering. The people who are responsible for initiating the conversations and building the relationships are often:
-- Workers who have been trafficked from China, Taiwan, Malaysia, Vietnam, and Myanmar
-- Recruited with fake job advertisements that advertised (positions in IT or customer service)
+ 
+This is important for AML context. The people making the calls and building relationships with victims are often:
+- Trafficked workers from China, Taiwan, Malaysia, Vietnam, Myanmar
+- Recruited with fake job advertisements promising IT or customer service work
 - Held in compounds against their will
-- Compelled to fulfil daily targets for victim conversations
-
-This is the reason why the operation does not stop by the arrest of individual scammers. The compound administrators, technology providers, and money launderers are the true targets of the criminal infrastructure.
-
+- Forced to meet daily quotas of victim conversations
+  
+This is why arresting individual scammers does not stop the operation. The compound operators, technology providers, and money launderers - they are the real targets.
+ 
 ---
-
-## Part 2: On-Chain Flow, from Victim to Cash Out
-
-### The Complete Money Flow
-
+ 
+## Part 2 — On-Chain Flow: From Victim to Cash Out
+ 
+### The Full Money Flow
+ 
 ```mermaid
 flowchart TD
 A["Victim purchases USDT on a legitimate exchange (Binance, Bybit, Coinbase, Kraken)"] --> B
@@ -112,101 +114,96 @@ style D fill: #8b0000, color: #fff
 style F fill: #8b0000, color: #fff
 style H fill: #555555, color: #fff
 ```
-
+ 
 ### Real On-Chain Analysis. Aggregation Address
-
+ 
 **Address:** `TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8`
-
+ 
 ![Huione aggregation address on Tronscan](images/screenshot-1-address-overview.png)
-
+ 
 **Key data from Tronscan:**
 - Created: **July 9, 2024**
 - Frozen by Tether: **July 13, 2024**, only 4 days after creation
 - Total transactions: **48,700**
 - Total transfers: **82,429** (34,692 outgoing + 47,737 inbound)
-- Current balance: **$1.14**, funds already moved or frozen
-
-**What this means:** This address was created specifically for a large collection operation. Before Tether intervened, it processed more than $1 billion USDT from hundreds of distinct senders in just 4 days. 
-The pattern is clear (rapid creation, massive inflow from many sources, then freeze).
-
-### Aggregation Pattern, Transfers
-
-![Transfers tab showing multiple victim deposits](images/screenshot-2-transfers.png)
-
-Looking at the transfers tab you can see the typical aggregation pattern:
-
-- **Many different senders** — each from a different wallet (different victims)
-- **Varied amounts** $1,200 / $1,500 / $2,000 / $2927 / $5,000 / $9,057 / $10,000 / **$270,000** / 
-- **All within the same time frame** — coordinated collection from active fraud operations
-- **All USDT TRC-20**, no other tokens, just stablecoins for easy conversion
-The smaller sums ($1,200–$10,000) are likely to be individual victims at different stages of the scam. Large sums ($270K, $2.9M) are either high-value individual victims
-or sub-aggregation purses(combining funds from numerous victims)
-
-Dune Analytics (SlowMist Dashboard), HuionePay Scale
-
-> Note: The TRX balance is the sole item displayed in the built-in analysis tab of Tronscan, and USDT transfers are not displayed. For real USDT volume analysis
-> SlowMist developed a public Dune dashboard: https://dune.com/misttrack/huionepay-data
-
-#### Monthly USDT Volume
-
-![Monthly USDT deposits and withdrawals from HuionePay](images/screenshot-3-dune-volume.png)
-
-This graph shows the full scope of HuionePay USDT flows on Tron from January 2024 to January 2026:
-
-- **January 2024** — approximately ~$590 million USDT in monthly deposits and withdrawals
-- **Jun–Jul 2024** — first peak of approximately $1 billion USDT per month (maximum activity)
-- **Jul 2024** — little decline following Tether's freeze TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 and operations recovery within weeks
-- **Feb 2025** — second peak was approximately ~$1.1 billion USDT. This data indicates that the Tether freeze had minimal long-term impact.
-- **May–June 2025** — monthly volume between $800M and $1.1B
-- **July–August 2025** — sharp collapse, FinCEN Section 311 designation, and Telegram channel ban
-- **From October 2025 onwards** — near zero activity
+- Current balance: **$1.14**
   
-**Key AML observation:** The Tether freeze in July 2024 barely slowed operations. Huione recovered within weeks by switching addresses. Real operational disruption was only caused by the FinCEN 
-systemic designation in May 2025, which barred access to US correspondent banking. This demonstrates that address-level restrictions are insufficient in the absence of systemic regulatory action.
-
+This address was created specifically for a large collection operation. Before Tether intervened, it processed more than $1 billion USDT from hundreds of distinct senders in just 4 days.
+The current balance of $1.14 shows the money is already gone(moved or frozen).
+ 
+### Transfers. Aggregation Pattern
+ 
+![Transfers tab showing multiple victim deposits](images/screenshot-2-transfers.png)
+ 
+Looking at the transfers tab you can see the typical aggregation pattern:
+ 
+- **Many different senders** each from a different wallet (different victims)
+- **Varied amounts** $1,200 / $1,500 / $2,000 / $5,000 / $9,057 / $10,000 / **$270,000** / **$2,927,062**
+- **All in the same time period** coordinated collection from active scam operations
+- **All USDT TRC-20** no other tokens, just stablecoins for easy conversion
+  
+The smaller amounts ($1,200–$10,000) are likely individual victims at different stages of the scam.
+The large amounts ($270K, $2.9M) are either high-value individual victims or sub-aggregation wallets consolidating funds from multiple victims.
+ 
+### HuionePay Scale. Dune Analytics (SlowMist Dashboard)
+ 
+> Note: Tronscan's built-in analysis tab shows TRX balance only, not USDT transfers. For real USDT volume analysis, SlowMist built a public Dune dashboard: https://dune.com/misttrack/huionepay-data
+ 
+#### Monthly USDT Volume
+ 
+![HuionePay monthly USDT deposits and withdrawals](images/screenshot-3-dune-volume.png)
+ 
+- **Jan 2024** approximately $500-600M USDT per month
+- **Jun–Jul 2024** first peak, over $1B per month
+- **Jul 2024** small dip after Tether froze TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 recovered within weeks
+- **Feb 2025** second peak, $1.1B — the Tether freeze had no lasting effect
+- **May–Jun 2025** still $800M–$1.1B monthly
+- **Jul–Aug 2025** sharp collapse after FinCEN Section 311 designation
+- **Oct 2025 onwards** near zero activity
+  
+The Tether freeze in July 2024 barely changed anything. Huione switched addresses in a few days and kept going.
+The FinCEN designation in May 2025 was different - it cut off US correspondent banking access and that actually stopped the operation.
+Address-level freezes are not enough. Systemic action is what works.
+ 
 #### Monthly Active Users
-
-![Monthly active users of HuionePay](images/screenshot-4-dune-users.png)
-
-- **January 2024** — approximately 29,000 depositors and recipients per month
-- **Jun–Jul 2025** — peak 80,000+ unique users per month
-- **August 2025** — sharp decline following regulatory action
-- **December 2025** — near zero activity
-
-At peak, Huione was processing transactions with more active monthly users than many legitimate regional banks. This is not a small criminal enterprise.
-It is a financial infrastructure of industrial magnitude.
-
-#### Top Addresses and Total Volume Counters
-
-![HuionePay's total volume and top addresses](images/screenshot-6-dune-totals.png)
-![HuionePay's top addresses rank](images/screenshot-7-dune-rank.png)
-
-**Total flows from January 2024 to June 2025:**
+ 
+![HuionePay monthly active users](images/screenshot-4-dune-users.png)
+ 
+- **Jan 2024** approximately 29,000 active users per month
+- **Jun–Jul 2025** peak at 80,000+ unique users per month
+- **Aug 2025** sharp drop after regulatory action
+- **Dec 2025** near zero activity
+  
+At peak Huione had more active monthly users than many regional banks.
+This is not a small criminal operation. It is financial infrastructure at industrial scale.
+ 
+#### Total Volume and Top Addresses
+ 
+![HuionePay total volume counters](images/screenshot-6-dune-totals.png)
+![HuionePay top addresses rank](images/screenshot-7-dune-rank.png)
+ 
+**Total flows Jan 2024 – Jun 2025:**
 - Total withdrawals: **$61,540,947,381** (~$61.5B USDT)
 - Total deposits: **$68,964,360,769** (~$68.9B USDT)
-- Total deposits and withdrawals: **~$130B USDT** within 18 months
-The data from SlowMist/MistTrack covers only the 2024–2025 period. The scale evident here is consistent with the estimated total flows of $64B+ in FinCEN's assessment for 2021–2025.
-
-**Core business address identified:**
-
-The complete address of HuionePay's primary business address is disclosed in the deposits rank table:
-
-`TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf` is the highest address by volume, with **$1,665,718,013 in deposits**.
-
-This corresponds to the `TL8TBp...` address that is mentioned in Bitrace reports. Confirmed through TronScan:
-
+- Combined: **~$130B USDT** in 18 months
+The top deposits address in the rank table is the full HuionePay core business address:
+`TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf` - **$1,665,718,013 in deposits**
+ 
+Verified on Tronscan:
+ 
 ![HuionePay core business address on Tronscan](images/screenshot-8-core-address.png)
-
-**Key data from Tronscan:**
-
-- Created: **October 6, 2022** — operational for 3+ years
-- Latest activity: **May 10, 2026** — still active at time of analysis
+ 
+- Created: **October 6, 2022**, operational for 3+ years
+- Latest activity: **May 10, 2026** still active at time of analysis
 - Total transactions: **141,734**
-- Total transfers: **871,288** (860,825 outgoing + 10,463 inbound)
-- Current balance: **$144.12** — near zero, funds constantly moving out
-
+- Total transfers: **871,288** (860,825 outgoing + 10,463 incoming)
+- Current balance: **$144.12**
+  
+98.8% of transfers are outgoing. This is not where money arrives, this is where money is distributed.
+Funds collected from victims through aggregation addresses like TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 come here and get sent further to OTC brokers and cash-out points.
+ 
 **Comparison: aggregation address vs core business address**
-
+ 
 | | TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 (aggregation) | TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (core business) |
 |---|---|---|
 | Created | July 9, 2024 | October 6, 2022 |
@@ -215,16 +212,11 @@ This corresponds to the `TL8TBp...` address that is mentioned in Bitrace reports
 | Transfers | 82,429 | 871,288 |
 | Outgoing ratio | High inflow from victims | 98.8% outgoing |
 | Status | Frozen by Tether | Still active |
-
-This is a **distribution node**, as evidenced by the 98.8% outgoing ratio (860,825 out vs 10,463 in). Aggregation addresses, such as TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8, collect funds that are 
-redirected to this distribution node for redistribution to operators and vendors and points for OTC cash-out points. This is the layering stage of the laundering procedure in action.
-
-### Top Addresses by Volume, Deposits, and Withdrawals Rank
-
-![HuionePay's top addresses by volume](images/screenshot-7-dune-rank.png)
-
+ 
+### Top Addresses by Volume
+ 
 **Top deposit addresses (639,025 total unique depositors):**
-
+ 
 | Address | Total Deposited (USDT) |
 |---|---|
 | TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf | 1,665,718,013 |
@@ -232,7 +224,7 @@ redirected to this distribution node for redistribution to operators and vendors
 | TPepdLYtHr8cN1Jbwf6CGNB9Ppho7L2otr | 449,218,402 |
 | TM1zzNDZD2DPASbKcgdVoTYhfmYgtfwx9R | 436,485,292 |
 | TFTWNgDBkQ5wQoP8RXpRznnHvAVV8x5jLu | 402,144,129 |
-
+ 
 **Top withdrawal addresses (960,910 total unique recipients):**
  
 | Address | Total Withdrawn (USDT) |
@@ -242,46 +234,50 @@ redirected to this distribution node for redistribution to operators and vendors
 | TTSSC4TEYtQMAMURND6i1FPYaaBJMGY4ed | 512,389,323 |
 | TDRkHLDxnBu2XtkxwKZMm5qwSuguKHmWDB | 479,470,912 |
 | TVy8p6erwinkkfmvG3iPGpUkswMZU36uMV | 379,550,762 |
-
-**Key observation:** TVy8p6erwinkkfmvG3iPGpUkswMZU36uMV is present in **both** top deposits and top withdrawals. This is a typical pass-through address that receives and immediately re-sends funds. 
-The distribution network's scope is confirmed by the 960,910 unique withdrawal addresses.
-
-### Layering in Action: Outgoing Transfers
-
-![TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf outgoing transfers to a single destination](images/screenshot-9-outgoing-transfers.png)
-
-Filtering for outgoing transfers reveals a critical pattern, the core business address sends massive amounts repeatedly to a **single destination address**: `TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX`.
-
-A single page displays a sample of outgoing transactions, all of which are in USDT.
-
+ 
+`TVy8p6erwinkkfmvG3iPGpUkswMZU36uMV` appears in **both** lists — a typical pass-through address that receives and immediately re-sends funds.
+ 
+#### Transaction Count
+ 
+![HuionePay transaction count](images/screenshot-5-dune-txcount.png)
+ 
+- Withdrawals peaked at **150,000 transactions per month** (Jun–Jul 2025)
+- Deposits peaked at **100,000+ transactions per month**
+- Both collapsed after July 2025
+  
+150,000 monthly withdrawals means approximately **5,000 transactions per day** at peak.
+At any regulated exchange this pattern would trigger an immediate alert.
+Huione was running a fully automated money laundering platform.
+ 
+### Outgoing Transfers. Layering in Action
+ 
+![TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf outgoing transfers to single destination](images/screenshot-9-outgoing-transfers.png)
+ 
+Filtering for outgoing transfers reveals one clear pattern — almost every large outgoing transaction goes to the same address: `TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX `
+ 
+Sample from a single page of transfers — all amounts in USDT:
+ 
 | Amount (USDT) | Destination |
 |---|---|
-| 67,813 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 600,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 1,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 1,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 1,080,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 1,310,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 1,050,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 1,260,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-| 1,130,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
-
-This single page of transfers contains more than **$20,000,000 USDT** in outgoing transactions, and all going to the same destination address. These are not retail transfers. 
-This is the wholesale transfer of criminal proceeds between infrastructure layers.
-
-A transaction monitoring alert would be promptly triggered at any regulated exchange if every outgoing transaction were directed to the same destination address.
-
-**What this demonstrates:**
-
-This is textbook layering. The primary business address functions as a pass-through, receiving funds from hundreds of aggregation addresses and concentrates them into large transfers to a 
-single next-level address. It is probable that the destination `TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX` is either another Huione-controlled consolidation address or a direct OTC cash-out point.
-
+| -67,813 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -600,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -2,000,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,080,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,310,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,050,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,260,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+| -1,130,000 | TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX |
+ 
+This single page represents over **$20,000,000 USDT** and all going to one address.
+These are not retail transfers. This is wholesale movement of criminal money between infrastructure layers.
+ 
 **The full layering chain visible on-chain:**
-
+ 
 ```mermaid
 flowchart TD
     A["Victims
@@ -294,7 +290,7 @@ Each sends $1,000–$10,000 USDT"] --> B
  
     B["TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8
 Aggregation Address
-Frozen by Tether on July 13, 2024
+Frozen by Tether — July 13, 2024
 48,700 transactions · 82,429 transfers
 Incoming: small amounts $1,000–$10,000 USDT"] --> C
  
@@ -305,8 +301,8 @@ Created Oct 2022 · Still active May 2026
 $1.66B+ in deposits
 Incoming: medium amounts $10,000–$500,000 USDT"] --> D
  
-    D["TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX
-Consolidation at the Next Level
+    D["["TQUvJ5HEfazJtEzdjF9GbN8rKdCgzKeqWX
+Next-Level Consolidation
 Receives $600,000–$2,000,000 per transaction
 OTC cash-out / further layering"]
  
@@ -317,42 +313,26 @@ OTC cash-out / further layering"]
     style C fill:#8b0000,color:#fff
     style D fill:#555555,color:#fff
 ```
-
-This three-level structure is specially constructed to make the process of tracing harder. By the time funds reach level 3, the connection to individual victims is obscured by thousands of intermediate transactions.
-
-**The following are the top withdrawal addresses, with a total of 960,910 unique addresses:**
-- `TWS84SZ2GE2EgyZDCrfVuEJXpoXYuBxteS` — $816M
--- $580M - `T9yFi9yxwBUjMbHwBFKDdwFdBwvzUAqBfR`
-- $512M `TTSSC4TEYtQMAMURND6i1FPYaaBJMGY4ed`
-The HuionePay ecosystem contains **639,025 unique deposit addresses**, each of which corresponds to different users or sub-accounts.
-
-#### Transaction Count
-
-![HuionePay transaction count](images/screenshot-5-dune-tx-count.png)
-
-- **150,000 transactions per month** was the peak withdrawal rate from June to July 2025.
-- **100,000+ transactions per month** was the zenith of deposits.
-- Both metrics collapsed after July 2025
-
-150,000 monthly withdrawal transactions means approximately **5,000 transactions per day** at peak. Automated infrastructure is necessary for this level of throughput, not manual processing.
-Huione was operating a completely automated money laundering platform.
-
+ 
+This three-level structure is deliberately designed to make tracing difficult.
+By the time funds reach level 3, the connection to individual victims is buried under thousands of intermediate transactions.
+ 
 ---
-
-## Part 3: Huione Guarantee. The criminal marketplace
-
+ 
+## Part 3 — Huione Guarantee: The Criminal Marketplace
+ 
 ### What Is Huione Group
-
-Huione Group is a financial conglomerate in Cambodia that has connections to the Hun family, which is the dominant political dynasty of the country. It is involved in a variety of commercial sectors, such as:
-- **HuionePay** is a cryptocurrency payment platform.
+ 
+Huione Group is a Cambodian financial conglomerate with links to the Hun family (Cambodia's ruling political dynasty). It operates multiple businesses including:
+ - **HuionePay** — cryptocurrency payment platform
 - **Huione Guarantee** — escrow and marketplace service (became criminal marketplace)
 - Insurance, travel, and other businesses
-
-Huione Guarantee was initially a legitimate escrow service for high-value transactions in Southeast Asia. 
-It has become into the largest criminal marketplace for fraud infrastructure on the internet over time.
-
-### Huione Scale
-
+  
+Originally Huione Guarantee was a legitimate escrow service for high-value transactions in Southeast Asia.
+Over time it evolved into the largest criminal marketplace for fraud infrastructure on the internet.
+ 
+### Scale of Huione
+ 
 | Metric | Data | Source |
 |---|---|---|
 | Verified illicit funds laundered (Aug 2021–Jan 2025) | **$4 billion** | FinCEN NPRM May 2025 (official) |
@@ -363,233 +343,476 @@ It has become into the largest criminal marketplace for fraud infrastructure on 
 | Active deposit addresses | **80,000+** | SlowMist 2025 |
 | Frozen by Tether (Jul 2024) | **$29.62 million** | Bitrace / Tronscan |
 | DPRK-linked funds laundered | **$37.6 million** | FinCEN |
-
-> Note: The difference between $4B (FinCEN illicit) and $55B+ (SlowMist total) is important. Huione operates legitimate enterprises in Cambodia, including bill payments, as confirmed by FinCEN.
-QR codes are used in hotels and restaurants. The $4 billion figure is only from criminal proceeds that have been verified. The total platform volume exceeds $55 billion.
-
-### What is sold on the Huione Guarantee
-
-Elliptic researchers identified thousands of vendors on the platform that sell:
-
-| Category | What Is Sold | Approx. Price |
+ 
+> Note: The difference between $4B (FinCEN illicit) and $55B+ (SlowMist total) is important. FinCEN explicitly acknowledged that Huione also runs legitimate businesses in Cambodia — bill payments,
+> QR codes used in restaurants and hotels. The $4B figure represents only verified criminal proceeds. The $55B+ is total platform volume.
+ 
+### What Is Sold on Huione Guarantee
+ 
+Elliptic researchers documented thousands of active vendor listings:
+ 
+| Category | What Is Sold | Price |
 |---|---|---|
-| AI Tools | Deepfake software, voice cloning, and fake profile generators | $50–500 |
-| Identity Documents | Synthetic identities, fake passports, and KYC bypass kits | $100–2,000 |
-| Scam Infrastructure | Fake trading platform templates and romance scam scripts | $500–10,000 |
-| Money Laundering | Crypto-to-cash conversion, mixing, layering services | 3–5% commission |
-| Victim Data | Contact lists, victim databases, and lead generation | $10–100 per 1,000 |
+| AI Tools | Deepfake software, voice cloning, fake profile generators | $50–500 |
+| Identity Documents | Fake passports, KYC bypass kits, synthetic identities | $100–2,000 |
+| Scam Infrastructure | Fake trading platform templates, scam scripts | $500–10,000 |
+| Money Laundering | Crypto-to-cash conversion, mixing, layering | 3–5% commission |
+| Victim Data | Contact lists, victim databases | $10–100 per 1,000 |
 | Physical Items | Electrified shackles for use on compound workers | Varied |
-
-The direct correlation between Huione and human trafficking operations in scam compounds is demonstrated by the presence of electrified shackles in the marketplace catalogue.
-
-### Fund Flow Risk breakdown
-
-Based on the Bitrace analysis of core address TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (July 2023 – June 2024):
-
+ 
+The last item is not a mistake. Electrified shackles for controlling trafficking victims in scam compounds were listed as a product.
+This is the direct connection between Huione and human trafficking.
+ 
+### Fund Flow Risk Breakdown
+ 
+Based on Bitrace analysis of core address TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf (July 2023 – June 2024):
+ 
 ```mermaid
-pie title Fund Flow Risk Breakdown 
+pie title Fund Flow Risk Breakdown — Huione Core Address (Jul 2023 – Jun 2024)
     "Clean / Unclassified" : 80.18
     "Black market transactions" : 15.71
     "Money laundering" : 2.50
     "Online gambling" : 1.62
     "Direct fraud" : 0.09
 ```
-
-Note: The low "direct fraud" percentage does not mean that fraud is uncommon. It implies that the funds have already been layered by the time they reach the core address, 
-where direct pig butchering deposits are sent. Aggregation addresses are addressed first (like TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8), rather than the primary address.
-
+ 
+Note: The low "direct fraud" percentage does not mean fraud is rare. It means the funds are already layered by the time they reach the core address — direct pig butchering deposits 
+go to aggregation addresses first (like TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8), not directly to the core address.
+ 
+> Note: Percentages is not equal exactly 100% due to rounding in the original Bitrace source data.
+ 
 ### Regulatory Response to Huione
-
-**July 2024:** The aggregation address TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 was frozen by Tether, resulting in a block of $29.62 million USDT. Within days, Huione relocated to new addresses. Operations persisted.
-
-**Huione launched **USDH** in late 2024, a stablecoin that was specifically engineered to be unfreezable. They also acquired a 30% stake in Tudou Guarantee, which is in the process of expanding its infrastructure.
-
-**May 1, 2025:** FinCEN issued a Notice of Proposed Rulemaking (NPRM) under Section 311 of the USA PATRIOT Act, proposing to designate Huione Group as a "primary money laundering concern." 
-This would prohibit all financial institutions in the United States from maintaining correspondent accounts with Huione. Opened a 30-day public comment period.
-
-**October 15, 2025:** FinCEN issued the final rule under Section 311, which entirely prohibits US financial institutions from conducting business with Huione Group. OFAC and FinCEN, in collaboration with the 
-The UK FCDO implemented the most extensive action against a Southeast Asian cyber fraud operation to date, which included the complete disconnection of Huione from the US financial system and the 
-introduction of sanctions against Chen Zhi of Prince Group.
-
-This explains the sharp activity collapse visible on the Dune dashboard between July and August 2025.
-
-**Critical lesson for anti-money laundering:** Address-level freezes (Tether July 2024) resulted in days. Real operational disruption was the result of systemic regulatory action (FinCEN Section 311, October 2025). 
-The difference is clearly visible on the Dune activity charts. The Tether freeze had almoust zero impact, while the FinCEN designation resulted in a collapse from over $800M per month to nearly zero.
-
+ 
+**July 2024** Tether froze TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 — $29.62M blocked.
+Huione switched to new addresses within days. Operations continued without interruption.
+ 
+**Late 2024** Huione launched **USDH**, their own stablecoin that cannot be frozen by Tether.
+Also acquired 30% stake in Tudou Guarantee to expand infrastructure.
+ 
+**May 1, 2025** FinCEN issued NPRM under Section 311 of the USA PATRIOT Act - proposing to designate Huione Group as a primary money laundering concern.
+This would cut off all US correspondent banking access. 30-day comment period opened.
+ 
+**October 15, 2025** FinCEN issued the final rule. US financial institutions are now fully prohibited from doing business with Huione Group.
+OFAC, FinCEN, and UK FCDO jointly sanctioned Chen Zhi of Prince Group (the largest coordinated action against a Southeast Asian cyber fraud network)
+ 
+This is why the Dune charts show a collapse after July–August 2025.
+The Tether freeze did almost nothing. The FinCEN designation destroyed the operation.
+ 
 ---
-
-## Part 4: Why USDT on Tron (TRC-20)? Technical and AML Analysis
+ 
+## Part 4 — Why USDT on Tron (TRC-20): Technical and AML Analysis
  
 ### Tron vs Ethereum: Why Criminals Chose Tron
-
+ 
 ```mermaid
 flowchart LR
-subgraph ETH["Ethereum ERC-20 USDT"]
-E1["Transaction fee: $5–50"]
-E2["Speed: ~15 seconds"]
-E3["Extensive Monitoring"]
-E4["Chainalysis coverage: High"]
-E5["Regulatory attention: High"]
-end
-
-subgraph TRX["Tron TRC-20 USDT"]
-T1["Transaction fee: $0.001–1"]
-T2["Speed: ~3 seconds"]
-T3["Monitoring: Lower"]
-T4["Chainalysis coverage: Expanding"]
-T5["Regulatory attention: Reduced"]
-end
-
-ETH -->|"Criminal preference"| TRX
+    E1["Ethereum ERC-20 USDT
+──────────────────
+Fee: $5–50 normal
+$100–500 congestion
+──────────────────
+Speed: ~15 seconds
+──────────────────
+Monitoring: Extensive
+──────────────────
+Regulation: High attention"]
+ 
+    T1["Tron TRC-20 USDT
+──────────────────
+Fee: $0.001–1 always
+ 
+──────────────────
+Speed: ~3 seconds
+──────────────────
+Monitoring: Lower
+──────────────────
+Regulation: Lower attention"]
+ 
+    E1 -->|"Criminal preference"| T1
+ 
+    style E1 fill:#1A4A3C,color:#fff
+    style T1 fill:#8b0000,color:#fff
 ```
-
-**The economics are unambiguous:**
-
-- A single USDT transmission on Ethereum costs $5–50 at standard gas prices and can increase to $100–500 during network overloads.
-- The cost of a single USDT transmission on Tron is $0.001–1, irrespective of the circumstances.
-- Pig butchering collects from hundreds of victims daily, resulting in approximately 1,000 transactions per day. The fee difference between Ethereum and Tron is $5,000–50,000 per day, while Tron's charge is less than $1,000.
-- Transactions that are processed at a quicker pace result in faster layering, which is necessary before any freeze can be implemented.
-
-### USDT — The Reason for a Stablecoin
-
-Scammers require stability. In the event that they accumulated ETH or BTC:
-- Their holdings lose value while they wait to consolidate, and the price fluctuates.
-- Additional procedures are necessary for the conversion to fiat.
-USDT is already dollars in crypto form, as it is pegged 1:1 to USD. This simplifies the cash-out process and mitigates value leakage during compounding.
+ 
+**The economics:**
+- A single USDT transfer on Ethereum costs $5–50 at normal gas prices, and can spike to $100–500 during network overloads
+- A single USDT transfer on Tron costs $0.001–1 regardless of conditions
+- Pig butchering collects from hundreds of victims daily. At 1,000 transactions per day the fee difference is $5,000–50,000 per day on Ethereum vs under $1,000 on Tron
+- Speed matters, faster transactions means faster layering before any freeze can be applied
+  
+### USDT — Why a Stablecoin
+ 
+Scammers need stability. If they collected ETH or BTC:
+- Price fluctuates and their holdings lose value while waiting to layer
+- Conversion to fiat requires extra steps
+- USDT is pegged 1:1 to USD (it is already dollars in crypto form)
+This makes the cash-out step simpler and reduces value leakage during layering.
+ 
 ### USDH — Huione's Own Unfreezable Stablecoin
-
-After Tether frozen $29.62M in July 2024, Huione's greatest vulnerability was revealed: its dependence on a centralised stablecoin that could be frozen by a third party. 
-Their response was to eliminate that dependence entirely.
-Huione introduced **USDH** in late 2024, a stablecoin that is 1:1 pegged to USD and is currently deployed on Ethereum, BNB Chain, and Tron.
-**Principal distinction from USDT:**
-
+ 
+After Tether froze $29.62M in July 2024, Huione's biggest vulnerability became clear — dependence on a centralised stablecoin that a third party could freeze. 
+Their response was to eliminate that dependency entirely.
+ 
+In late 2024 Huione launched **USDH** — their own stablecoin pegged 1:1 to USD, deployed on Ethereum, BNB Chain, and Tron.
+ 
+**Key difference from USDT:**
+ 
 | | USDT (Tether) | USDH (Huione) |
 |---|---|---|
 | Issuer | Tether Ltd — regulated | Huione Group — unregulated |
-| Can be frozen? | ✅ Yes, Tether has a freeze function. | ❌ No, there is no central freeze authority.
-| Lack of regulatory oversight | Expanding | None |
-| Purpose | General expenditures | Criminal marketplace transactions |
-| Supporting | Unknown | US Treasury bonds (claimed)
-
-**The significance of this for anti-money laundering (AML):**
-
-USDH is expressly engineered to be impervious to the primary tool (asset freezing) that temporarily halted Huione. In the event that exchanges and compliance systems do not specifically screen for USDH, 
-Transactions in this token will be undetected.
-This is an explicit illustration of **regulatory arbitrage in action**, in which criminals construct infrastructure with the intention of exploiting deficiencies in current anti-money laundering regulations. Each time a control is implemented, 
-The illicit ecosystem adjusts to circumvent it.
-**Present status:** USDH continues to operate. This token represents an emergent AML gap that has not yet been addressed by the majority of compliance systems. Blockchain analytics providers are currently in the process of expanding their coverage of this token.
-USDT is issued by Tether, a centralised corporation that has the ability to freeze any wallet. Tether is a law enforcement instrument that has frozen hundreds of millions of dollars in criminal wallets.
-But Huione's response demonstrates how criminals adjust:
-
+| Can be frozen | Yes — Tether has freeze function | No — no central freeze authority |
+| Regulatory oversight | Growing | None |
+| Purpose | General payments | Criminal marketplace transactions |
+| Backing | US Treasury bonds (claimed) | Unknown |
+ 
+USDH is specifically designed to be immune to the main tool that stopped Huione temporarily — asset freezing. If exchanges and compliance systems do not screen for USDH 
+specifically, transactions in this token will pass through undetected.
+ 
+This is a direct example of **regulatory arbitrage in action** — criminals building infrastructure specifically to exploit gaps in existing AML controls.
+Every time a control is applied, the criminal ecosystem adapts to work around it.
+ 
+**Current status:** USDH remains active. It represents an emerging AML gap that most compliance systems have not yet addressed.
+ 
+### The Tether Paradox
+ 
+USDT is issued by Tether — a centralised company that can freeze any wallet.
+This is actually useful for law enforcement. Tether has frozen hundreds of millions in criminal wallets.
+ 
+But Huione showed exactly how criminals adapt:
+ 
 ```mermaid
 flowchart TD
-A["Huione utilises USDT TRC-20 for all marketplace transactions"] --> B
-
-B["Tether freezes TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 $29.62M on July 13, 2024"] --> C
-
-C["Huione activates new addresses TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf immediately; operations continue within days"] --> D
-
-D["Huione launches USDH's own stablecoin, which cannot be frozen by Tether, and is issued on Ethereum, BSC, and Tron"] --> E
-
-E["New ecosystem less reliant on Tether; more difficult to freeze in the future"]
-
-style B fill: #1A4A3C, color: #fff
-style D fill: #8b0000, color: #fff
-
+    A["Huione uses USDT TRC-20
+for all marketplace transactions"] --> B
+ 
+    B["Tether freezes TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8
+$29.62M frozen — July 13, 2024"] --> C
+ 
+    C["Huione activates new addresses immediately
+operations continue within days"] --> D
+ 
+    D["Huione launches USDH
+own stablecoin — cannot be frozen by Tether
+deployed on Ethereum, BSC, and Tron"] --> E
+ 
+    E["Less dependent on Tether
+Harder to freeze going forward"]
+ 
+    style B fill:#1A4A3C,color:#fff
+    style D fill:#8b0000,color:#fff
 ```
-
-### AML Coverage Gap: Ethereum vs. Tron
-
-Most compliance systems were developed with Bitcoin and Ethereum as their primary objectives. Tron was incorporated at a later date, and the coverage is less comprehensive.
-
-| Ethereum | Tron | AML Capability
+ 
+### AML Coverage Gap: Tron vs Ethereum
+ 
+Most compliance systems were built for Bitcoin and Ethereum first.
+Tron was added later and coverage is still less complete.
+ 
+| AML Capability | Ethereum | Tron |
 |---|---|---|
-attribution of chainalysis address | Extensive | Increasing |
+| Chainalysis address attribution | Extensive | Growing |
 | TRM Labs risk scoring | Full | Partial |
-| Implementation of the Travel Rule | Improved | Less consistent |
-| Exchange vetting | The majority of exchanges | A smaller number of exchanges |
+| Travel Rule implementation | Better | Less consistent |
+| Exchange screening | Most exchanges | Fewer exchanges |
 | Regulatory guidance | Specific | General only |
-
-Although this disparity is diminishing, it continues to exist. Between 2021 and 2024, criminals extensively exploited it.
-
+ 
+This gap is narrowing. But between 2021 and 2024 criminals used it heavily.
+ 
 ---
+ 
+## Part 5 — AML Gaps: Why Pig Butchering Is Hard to Stop
+ 
+### Gap 1 - The Legitimate Exchange Problem
+ 
+The victim buys USDT on a licensed exchange like Binance or Coinbase.
+From the exchange's perspective this is a normal purchase. No red flags.
+ 
+What the exchange sees:
+- Customer passed KYC
+- Bought USDT (normal behavior)
+- Withdrew USDT to external wallet (normal behavior)
 
-## Part 5: AML Gaps. The Reasons for the Difficulty of Stopping Pig Butchering
-
-### Gap 1 - The Issue of Legitimate Exchange
-
-**The issue:** The victim purchases USDT on a completely licensed, regulated exchange (coinbase, bybit, or binance). This is a typical purchase from the exchange's perspective. There were no indications of an issue at the time of purchase.
-**The exchange's perspective:**
-- The customer successfully completes the Know Your Customer (
-- Purchases USDT in a standard transaction
-- A standard transaction, the withdrawal of USDT to an external wallet.
-**What the exchange does not observe:**
-- The destination of the USDT
-- The destination wallet is an aggregation address for swine butchering
-**Method for bridging the gap:** Prior to permitting withdrawals, verify the risk score of the destination wallet during the outgoing transaction screening process. This is the function of Chainalysis KYT. It is not implemented by all exchanges.
+What the exchange does not see:
+- Where the USDT is going
+- That the destination is a pig butchering aggregation address
   
+How to close this gap: screen destination wallets before allowing withdrawals.
+This is what Chainalysis KYT does. Not all exchanges use it.
+ 
 ---
-
-### Gap 2 - Screening of Withdrawal Destinations
-
-The issue is that numerous exchanges screen incoming deposits but not outgoing withdrawals. The victim transfers money to a scam address, and the exchange fails to verify whether the destination is high-risk.
-**The significance of this:** Exchanges could either alert the victim or prevent the transfer if they screened all withdrawal destinations against known pig butchering clusters.
-**AML Red Flags during the withdrawal process:**
-
-| Risk Level | Red Flag |
+ 
+### Gap 2 — Withdrawal Destination Screening
+ 
+Many exchanges screen incoming deposits but not outgoing withdrawals.
+The victim sends money to a scam address — the exchange never checks if that destination is risky.
+ 
+If exchanges screened all withdrawals against known pig butchering clusters — they could warn the victim before the money leaves.
+ 
+Red flags at the withdrawal stage:
+ 
+| Red Flag | Risk Level |
 |---|---|
-| 🟡 MEDIUM | Destination wallet created within the past seven days
-| The destination wallet lacks a prior transaction history | 🟡 MEDIUM |
-| Destination wallet linked to a known scam complex | 🔴 IMPORTANT |
-| The customer made multiple withdrawals to the same new wallet within a brief period of time | 🔴 HIGH |
-| Customer is a new account making their first substantial withdrawal | 🟡 MEDIUM |
-| Customer mentions "investment platform" in support conversation | 🔴 HIGH |
-
+| Destination wallet created less than 7 days ago | 🟡 MEDIUM |
+| Destination wallet has no prior transaction history | 🟡 MEDIUM |
+| Destination wallet linked to known scam cluster | 🔴 CRITICAL |
+| Multiple withdrawals to same new wallet in short period | 🔴 HIGH |
+| New account making first large withdrawal | 🟡 MEDIUM |
+| Customer mentions "investment platform" in support chat | 🔴 HIGH |
+ 
 ---
-
-### Gap 3 - Monitoring Gap for TRC-20
-
-**The issue:** Ethereum is more comprehensively covered by most compliance systems than Tron. Tron transfers are inconsistently subject to the Travel Rule. TRC-20 transaction surveillance is restricted on numerous smaller exchanges.
-**Result:** Due to the fact that Tron's AML coverage was less robust, pig butchering operations were substantially relocated there.
-**A Method to Address the Gap:** Achieve comprehensive compliance coverage across all chains. The Travel Rule should be applicable to Tron transfers in the same way as it is to Ethereum transfers, and FATF guidance must be independent in every chain.
-
+ 
+### Gap 3 — TRC-20 Monitoring Gap
+ 
+Most compliance systems cover Ethereum better than Tron. Travel Rule applies inconsistently to Tron transfers.
+Many smaller exchanges have limited TRC-20 monitoring.
+ 
+Result: pig butchering moved heavily to Tron because AML coverage was weaker there.
+ 
+How to close this gap: FATF guidance needs to be chain-agnostic.
+The Travel Rule should apply to Tron transfers just like Ethereum.
+ 
 ---
-
-### Gap 4 - Jurisdictional Gap in Huione
-
-**The issue:** Huione is situated in Cambodia. FinCEN is capable of issuing a proposed rule; however, they are unable to directly regulate a Cambodian company. FATF has the ability to exert pressure on Cambodia; however, Cambodia has political considerations. 
-to safeguard Huione (Hun family connections).
-**The outcome:** Huione continues to operate despite the FinCEN action and Tether pauses. They merely generated new addresses and a new stablecoin.
-**Method for narrowing the gap:**
-
-- Correspondent banking restrictions (US and EU banks refuse to establish any relationship with Cambodian banks that have Huione exposure)
-- This completely isolates Huione from the USD financial system.
-- International law enforcement cooperation is more difficult, but it is more effective in the long term.
-
+ 
+### Gap 4 — Huione Jurisdictional Gap
+ 
+Huione is based in Cambodia. FinCEN can issue rules — but cannot directly regulate a Cambodian company.
+FATF can pressure Cambodia — but Cambodia has political reasons to protect Huione (Hun family).
+ 
+Even after the FinCEN designation Huione created new infrastructure and launched USDH.
+The only real solution is correspondent banking restrictions that cut off Cambodia from the US dollar system entirely.
+ 
 ---
-
-### Gap 5 - Victim Reporting Gap
-
-**The issue:** The majority of victims of pig butchering do not disclose the incident to the police. Motives:
-
-- Shame - they experience feelings of guilt for being deceived
-- A lack of confidence in law enforcement, particularly in countries where it is challenging to report misconduct
-- The conviction that there is no action that can be taken
-- Language barriers for victims from abroad
-
-**The significance of this for AML:** SAR filings are not possible in the absence of victim reports. FIU data is not available in the absence of SARs. There are no patterns in the absence of FIU data. Investigations are impossible without patterns.
-**Strategies for bridging the gap:** Victim support programs, simplified reporting processes, public awareness campaigns, and the protection of victims from prosecution when they were unknowingly used as money couriers.
-
+ 
+### Gap 5 — Victim Reporting Gap
+ 
+Most pig butchering victims do not report to police. They feel ashamed. 
+They think nothing will help. Some face language barriers.
+ 
+Without reports there are no SARs. Without SARs there is no FIU data.
+Without FIU data there are no patterns. Without patterns there are no investigations.
+ 
+How to close this gap: public awareness campaigns, simplified reporting, victim support programs, 
+and protecting victims from prosecution when they were unknowingly used as money mules.
+ 
 ---
-
-### Gap 6 - The Human Trafficking Complication
-
-**The issue:** The individuals who are making the contacts and establishing relationships with victims are frequently themselves victims, as they are trafficked and confined to scam compounds against their will. It generates a moral and legal complication:
-
-Arresting "scammers" may lead to the prosecution of trafficking victims.
-- The human trafficking aspect may be overlooked by law enforcement due to their emphasis on financial crime.
-- Rescue is the primary concern for victims in compounds, not prosecution.
-
-**AML implication:** This is the reason why pig mutilation is regarded as a national security and human rights issue, rather than merely an AML matter. There is a need for a multi-agency response that exceeds the typical compliance procedures.
-
+ 
+### Gap 6 — The Human Trafficking Complication
+ 
+The people making the calls and building relationships with victims are often
+victims themselves — trafficked and held in compounds against their will.
+ 
+This creates a real problem:
+- Arresting "scammers" may prosecute trafficking victims
+- Law enforcement focused on financial crime can miss the human trafficking angle
+- People in compounds need help, not criminal charges
+  
+This is why pig butchering is treated as a national security and human rights issue — not just an AML matter. 
+It requires cooperation between financial intelligence, law enforcement, and anti-trafficking agencies.
+ 
 ---
+ 
+## Part 6 — Red Flags and AML Response
+ 
+### Red Flags at the Exchange Where Victim Buys Crypto
+ 
+| Indicator | AML Significance | Recommended Action |
+|---|---|---|
+| New account, first transaction is large purchase | Velocity anomaly | EDD, source of funds request |
+| Customer immediately withdraws full purchase to unhosted wallet | No delay time | Destination wallet screening |
+| Customer mentions "trading platform" with high guaranteed returns | Investment fraud indicator | Customer education, hold |
+| Multiple withdrawals to same new wallet in short period | Aggregation pattern | Alert, SAR consideration |
+| Destination wallet flagged as pig butchering cluster | Confirmed risk | Freeze, SAR, alert customer |
+| Customer is elderly with no prior crypto activity | Vulnerability indicator | Enhanced review |
+ 
+### Red Flags at the Bank Where Victim Withdraws Funds
+ 
+| Indicator | AML Significance |
+|---|---|
+| Large cash withdrawal followed by crypto purchase | Cash-to-crypto pattern |
+| Customer explains "investment opportunity" with high returns | Investment fraud indicator |
+| Multiple large transfers to MSB or crypto exchange | High-risk counterparty |
+| Elderly or vulnerable customer, first large international transfer | Vulnerability + velocity |
+| Customer is being coached on phone during transaction | Third party influence |
+ 
+### Analyst Decision Tree
+ 
+```mermaid
+flowchart TD
+    A["Transaction monitoring alert:
+Customer withdrawal to
+unknown TRC-20 address"] --> B
+ 
+    B["Step 1: Check destination address
+in blockchain analytics tool"] --> C
+ 
+    C{Address risk score?}
+ 
+    C -->|"Unknown / No history"| D["Step 2: Check address age
+and transaction count"]
+    C -->|"HIGH — linked to known
+pig butchering cluster"| H
+ 
+    D --> E{Address created
+less than 30 days ago?}
+ 
+    E -->|"Yes + no transaction history"| F["Step 3: Review customer profile
+New account? First withdrawal?
+Recent large purchases?"]
+    E -->|"No — established address"| G["Low risk indicator
+Monitor and document"]
+ 
+    F --> I{Multiple red flags?}
+ 
+    I -->|"Yes — 2 or more indicators"| J["Escalate to senior analyst
+Consider customer outreach
+Document findings"]
+    I -->|"No — single indicator"| K["Close with monitoring note
+Increase monitoring frequency"]
+ 
+    H["CRITICAL ACTION
+1. Hold transaction
+2. Escalate immediately
+3. Customer outreach — education
+4. Prepare SAR
+5. Consider account restriction"]
+ 
+    style H fill:#8b0000,color:#fff
+    style J fill:#B8914A,color:#fff
+    style G fill:#1A4A3C,color:#fff
+```
+ 
+---
+ 
+## Part 7 — Mock SAR: Pig Butchering Victim on Exchange
+ 
+> **Disclaimer:** This is a fictional SAR written for educational and portfolio purposes. All institution details are fictional. Wallet addresses referenced are real public blockchain data.
+ 
+> **Note on format:** In a real FinCEN BSA E-Filing System this would be submitted as plain text. Table format and headers are used here for portfolio readability only.
+ 
+---
+ 
+**Filing Institution:** Clear Exchange Ltd. · VASP · FinCEN Registration No. XXXXXXX · Wilmington, DE 19801
+ 
+**Date of Report:** March 28, 2026
+ 
+**SAR Type:** Suspected proceeds of fraud — pig butchering investment scam
+ 
+**Prior SARs on Subject:** None on file
+ 
+---
+ 
+**Subject of Report:**
+ 
+| Field | Detail |
+|---|---|
+| Name | Sarah M. (account holder) |
+| Account ID | XXX-XXXXXX |
+| Account opened | 45 days prior to flagged transaction |
+| Occupation (stated) | Teacher |
+| Annual income (stated) | $52,000 |
+ 
+---
+ 
+**Description of Suspicious Activity:**
+ 
+On March 10, 2026, customer Sarah M. made her fourth consecutive withdrawal of USDT TRC-20 to address `TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8` totalling $38,500 over a 14-day period. 
+Our blockchain analytics system (Chainalysis KYT) flagged this address as associated with a pig butchering scam cluster linked to Huione Guarantee infrastructure.
+ 
+Prior transaction history shows the customer purchased USDT on four separate occasions totalling $41,200 — consistent with a single source of funds (bank account transfers) — and 
+withdrew the funds immediately to the same destination address on each occasion. No funds remained in the account between purchases and withdrawals.
+ 
+When contacted by our compliance team on March 11, the customer stated she was "investing in a trading platform recommended by a friend" and that she expected "returns of 15–20% per month."
+She was unable to provide the name of a licensed trading platform or verify that the destination platform held any regulatory licence.
+ 
+The customer's stated occupation as a teacher with an annual income of $52,000 is inconsistent with the transaction volume of $41,200 over 14 days — representing approximately 79% of her stated annual income.
+ 
+---
+ 
+**Red Flags Identified:**
+ 
+> Note: In a real FinCEN filing these would be submitted as numbered plain text paragraphs.
+ 
+| Indicator | Risk Level |
+|---|---|
+| Destination address linked to Huione Guarantee pig butchering cluster per Chainalysis KYT | 🔴 CRITICAL |
+| Four consecutive withdrawals to same high-risk address - no delay time | 🔴 HIGH |
+| Transaction volume (79% of annual income in 14 days) inconsistent with customer profile | 🔴 HIGH |
+| Customer described guaranteed returns of 15–20% monthly — consistent with investment fraud | 🔴 HIGH |
+| Customer unable to identify or verify the destination platform | 🟡 MEDIUM |
+| Account opened 45 days prior — limited transaction history | 🟡 MEDIUM |
+ 
+---
+ 
+**Actions Taken:**
+ 
+| Date | Action |
+|---|---|
+| Mar 10 — 14:22 UTC | Chainalysis KYT alert generated on outgoing TRC-20 transfer |
+| Mar 10 — 14:35 UTC | Transaction held pending compliance review |
+| Mar 10 — 14:45 UTC | Account restricted pending investigation |
+| Mar 10 — 15:00 UTC | Compliance officer notified — case escalated |
+| Mar 11 — 10:00 UTC | Customer contacted — provided explanation consistent with investment fraud |
+| Mar 11 — 10:30 UTC | Customer informed of general investment fraud risk — educational outreach conducted (no mention of SAR or specific investigation) |
+| Mar 12 – Mar 18 | Additional blockchain analytics review — Chainalysis Reactor cluster expansion, identification of related addresses |
+| Mar 19 | Senior AML officer reviewed case — SAR filing recommended |
+| Mar 20 – Mar 25 | SAR narrative drafted, internal compliance review, legal team review |
+| Mar 26 | Final SAR approval by MLRO |
+| Mar 28 | SAR filed with FinCEN |
+ 
+> Note: Customer was NOT informed that a SAR was filed — tipping off prohibition per 31 U.S.C. § 5318(g)(2).
+ 
+> Note: Customer WAS informed of general investment fraud risk — not of the SAR filing or any specific investigation. This is a customer protection / consumer education measure consistent with
+> our duty of care obligations. It does not constitute tipping off under 31 U.S.C. § 5318(g)(2) because no information about the SAR, the investigation, or law enforcement involvement was disclosed.
+ 
+---
+ 
+**Analyst Note:**
+ 
+This activity is consistent with pig butchering investment fraud. The destination address is publicly linked to Huione Guarantee — a criminal marketplace designated as a money laundering concern by FinCEN. 
+The customer appears to be a victim rather than a knowing participant. Educational outreach was conducted.
+ 
+Frozen transaction: $8,500 USDT TRC-20 remains held pending law enforcement instruction. Previous three transactions totalling $32,700 were processed before the alert was triggered — this 
+highlights the need for proactive outgoing withdrawal screening against known pig butchering clusters.
+ 
+---
+ 
+**END OF MOCK SAR**
+ 
+---
+ 
+## Key Takeaways
+ 
+**1. Pig butchering is not a simple scam** — it is organised transnational crime with industrial infrastructure. Individual scammers are often victims themselves — trafficked and held against their will.
+ 
+**2. Huione Guarantee was the central enabler** $4B+ in verified illicit funds, $55B+ total platform volume, providing every tool needed to run pig butchering operations at scale.
+ 
+**3. TRC-20 USDT was chosen intentionally** near-zero fees, fast settlement, and weaker AML coverage made Tron the preferred infrastructure. USDH was created specifically to remove the last remaining freeze risk.
+ 
+**4. Address-level freezes are insufficient** Tether froze $29.62M in July 2024 and Huione recovered within days. Only FinCEN's systemic Section 311 designation in October 2025 caused real operational collapse.
+ 
+**5. The biggest gap is withdrawal screening** — exchanges that screen incoming deposits but not outgoing withdrawals miss the most important moment to protect victims.
+ 
+**6. Victims need protection too** — AML response should include customer education and outreach alongside SAR filing when pig butchering is suspected.
+ 
+---
+ 
+## Sources
+ 
+- Chainalysis Crypto Crime Report 2025 
+- Chainalysis — Huione Group Shutdown and the Future of Crypto Scam Infrastructure (May 2025) — https://www.chainalysis.com/blog/huione-group-shutdown-future-of-crypto-scam-infrastructure/
+- Elliptic — Huione: The Largest Ever Illicit Online Marketplace (July 2024) — https://www.elliptic.co/blog/huione-largest-ever-illicit-online-marketplace-stablecoin
+- FinCEN NPRM — Huione Group Section 311 Proposed Rule (May 2025) — https://www.federalregister.gov/documents/2025/05/05/2025-07837/special-measure-regarding-huione-group-as-a-foreign-financial-institution-of-primary-money
+- FinCEN Final Rule — Huione Group Section 311 (October 2025) — https://www.federalregister.gov/documents/2025/10/16/2025-19571/imposition-of-special-measure-regarding-huione-group-as-a-foreign-financial-institution-of-primary
+- FATF Sixth Targeted Update on Virtual Assets/VASPs (June 2025) — https://www.fatf-gafi.org/en/publications/Fatfrecommendations/targeted-update-virtual-assets-vasps-2025.html
+- Bitrace — Analysis of the Cambodian Huione Group's $29.62M USDT Freezing Incident — https://blog.bitrace.io/analysis-of-the-cambodian-huione-groups-29-62-million-usdt-freezing-incident-by-tether/
+- SlowMist — On-Chain Analysis of HuionePay: $55 Billion USDT in Fund Flows (June 2025) — https://slowmist.medium.com/on-chain-analysis-of-huionepay-unveiling-the-over-55-billion-usdt-in-fund-flows-692e4a72d320
+- SlowMist Dune Dashboard — HuionePay Data — https://dune.com/misttrack/huionepay-data
+- TRM Labs — Pig Butchering Intelligence Reports 2024–2025
+- UNODC — Transnational Organised Crime in Southeast Asia Report 2024 https://www.unodc.org/roseap/uploads/documents/Publications/2024/TOC_Convergence_Report_2024.pdf
+- Tronscan.org — On-chain data: TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 and TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf
+---
+ 
+*Prepared by Andrey Kotsyk — AML/Blockchain Forensics Portfolio*
+ 
+*All on-chain data is publicly available on Tronscan.org. SAR is fictional and created for educational purposes only. Huione addresses are documented in public reports cited above.*
+ 
+*linkedin.com/in/andrey-kotsyk · github.com/KotsykAndrey/aml-blockchain-portfolio*
