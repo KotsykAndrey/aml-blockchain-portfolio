@@ -521,7 +521,7 @@ This gap is narrowing. But between 2021 and 2024 criminals used it heavily.
  
 ## Part 5 — AML Gaps: Why Pig Butchering Is Hard to Stop
  
-### Gap 1 - The Legitimate Exchange Problem
+### Gap 1 — The Legitimate Exchange Problem
  
 The victim buys USDT on a licensed exchange like Binance or Coinbase.
 From the exchange's perspective this is a normal purchase. No red flags.
