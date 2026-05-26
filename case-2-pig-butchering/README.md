@@ -35,6 +35,8 @@ The name comes from the idea of fattening a pig before slaughter. The victim is 
  
 It is not a straightforward fraud. An industrialised operation is being conducted by organised crime organisations from Southeast Asia. 
 Numerous "scammers" are themselves victims, as they are trafficked individuals who are forced to work in scam compounds under threat of violence in Cambodia, Myanmar, and Laos).
+
+---
  
 ### Scale
  
