@@ -5,18 +5,15 @@ I am preparing for a career in crypto AML Compliance. This portfolio shows my pr
 
 ---
 
-### Case 1 - Bybit Hack 2025, Lazarus Group
-Blockchain forensics, DPRK attribution, $1.5 billion stolen, real on-chain analysis
-
-**Part 1** How the attack worked, how money was laundered, AML implications
-
-**Part 2** Real on-chain investigation using Etherscan. Manual timeline reconstruction, red flag identification, layering pattern analysis
-
-**Part 3** This mock SAR follows the structure and reporting logic used by compliance teams at regulated crypto exchanges.
-
-to view case ./case-1-bybit-hack/README.md
-
+## Cases:
+ 
+| # | Case | Type | Status |
+|---|---|---|---|
+| 01 | [Bybit Hack 2025 — Lazarus Group](./case-1-bybit-hack/README.md) | Blockchain Forensics · DPRK Attribution · Mock SAR | ✅ Complete |
+| 02 | [Pig Butchering & Huione Guarantee](./case-2-pig-butchering/README.md) | On-chain Analysis · Financial Crime Typology · Mock SAR | ✅ Complete |
+| 03 | [KYC Document Forensics & Sanctions Screening](./case-3-kyc-fraud-deepfake/README.md) | KYC Fraud Detection · Document Forensics · Sanctions | 🔄 In Progress |
+| 04 | [SQL Transaction Monitoring]() | Technical · SQL · Alert Detection | Planned |
+ 
 ---
-
-### Case 2 — Pig Butchering & Huione Guarantee
-Full scheme analysis, real on-chain investigation via Tronscan, Huione criminal marketplace deep dive, TRC-20 AML gaps, Mock SAR.
+ 
+*linkedin.com/in/andrey-kotsyk*
