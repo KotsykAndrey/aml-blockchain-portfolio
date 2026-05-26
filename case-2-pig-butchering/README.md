@@ -44,6 +44,9 @@ Numerous "scammers" are themselves victims, as they are trafficked individuals w
 - FinCEN identified at least **$4 billion** in verified illicit proceeds processed through Huione Group between 2021 and 2025
 - Tens of thousands of victims globally per year
 - Operates from scam compounds with hundreds to thousands of forced workers
+
+---
+
 ### The Psychological Cycle — 6 Stages
  
 ```mermaid
@@ -68,6 +71,8 @@ style E fill: #cc4444, color: #fff
 style F fill: #8b0000, color: #fff
 
 ```
+
+---
  
 ### How the Fake Platform Works
  
@@ -76,7 +81,9 @@ The victim never trades on a real exchange. They use a fake platform that looks 
 - "Profits" are fake, they exist only to encourage larger deposits
 - Withdrawals are always blocked and victims are told they owe taxes, fees, or need to "unlock" their account
 - The platform disappears once the scammer has extracted maximum funds
-  
+
+---
+
 ### Who Are the Scammers
  
 This is important for AML context. The people making the calls and building relationships with victims are often:
@@ -116,6 +123,7 @@ style D fill: #8b0000, color: #fff
 style F fill: #8b0000, color: #fff
 style H fill: #555555, color: #fff
 ```
+
 ---
 
 ### Real On-Chain Analysis. Aggregation Address
