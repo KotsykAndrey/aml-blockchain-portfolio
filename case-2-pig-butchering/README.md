@@ -38,7 +38,7 @@ Numerous "scammers" are themselves victims, as they are trafficked individuals w
  
 ### Scale
  
-- **$75+ billion** in victim losses globally — Chainalysis 2025 estimate
+- **$75+ billion** in victim losses globally - Chainalysis 2025 estimate
 - FinCEN identified at least **$4 billion** in verified illicit proceeds processed through Huione Group between 2021 and 2025
 - Tens of thousands of victims globally per year
 - Operates from scam compounds with hundreds to thousands of forced workers
@@ -114,7 +114,8 @@ style D fill: #8b0000, color: #fff
 style F fill: #8b0000, color: #fff
 style H fill: #555555, color: #fff
 ```
- 
+---
+
 ### Real On-Chain Analysis. Aggregation Address
  
 **Address:** `TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8`
@@ -130,7 +131,9 @@ style H fill: #555555, color: #fff
   
 This address was created specifically for a large collection operation. Before Tether intervened, it processed more than $1 billion USDT from hundreds of distinct senders in just 4 days.
 The current balance of $1.14 shows the money is already gone(moved or frozen).
- 
+
+---
+
 ### Transfers. Aggregation Pattern
  
 ![Transfers tab showing multiple victim deposits](images/screenshot-2-transfers.png)
@@ -148,7 +151,9 @@ The large amounts ($270K, $2.9M) are either high-value individual victims or sub
 ### HuionePay Scale. Dune Analytics (SlowMist Dashboard)
  
 > Note: Tronscan's built-in analysis tab shows TRX balance only, not USDT transfers. For real USDT volume analysis, SlowMist built a public Dune dashboard: https://dune.com/misttrack/huionepay-data
- 
+
+---
+
 #### Monthly USDT Volume
  
 ![HuionePay monthly USDT deposits and withdrawals](images/screenshot-3-dune-volume.png)
@@ -164,7 +169,9 @@ The large amounts ($270K, $2.9M) are either high-value individual victims or sub
 The Tether freeze in July 2024 barely changed anything. Huione switched addresses in a few days and kept going.
 The FinCEN designation in May 2025 was different - it cut off US correspondent banking access and that actually stopped the operation.
 Address-level freezes are not enough. Systemic action is what works.
- 
+
+---
+
 #### Monthly Active Users
  
 ![HuionePay monthly active users](images/screenshot-4-dune-users.png)
@@ -176,7 +183,9 @@ Address-level freezes are not enough. Systemic action is what works.
   
 At peak Huione had more active monthly users than many regional banks.
 This is not a small criminal operation. It is financial infrastructure at industrial scale.
- 
+
+---
+
 #### Total Volume and Top Addresses
  
 ![HuionePay total volume counters](images/screenshot-6-dune-totals.png)
@@ -201,6 +210,8 @@ Verified on Tronscan:
   
 98.8% of transfers are outgoing. This is not where money arrives, this is where money is distributed.
 Funds collected from victims through aggregation addresses like TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8 come here and get sent further to OTC brokers and cash-out points.
+
+---
  
 **Comparison: aggregation address vs core business address**
  
@@ -212,6 +223,8 @@ Funds collected from victims through aggregation addresses like TNVaKWQzau7xL9bc
 | Transfers | 82,429 | 871,288 |
 | Outgoing ratio | High inflow from victims | 98.8% outgoing |
 | Status | Frozen by Tether | Still active |
+
+---
  
 ### Top Addresses by Volume
  
@@ -236,6 +249,8 @@ Funds collected from victims through aggregation addresses like TNVaKWQzau7xL9bc
 | TVy8p6erwinkkfmvG3iPGpUkswMZU36uMV | 379,550,762 |
  
 `TVy8p6erwinkkfmvG3iPGpUkswMZU36uMV` appears in **both** lists — a typical pass-through address that receives and immediately re-sends funds.
+
+---
  
 #### Transaction Count
  
@@ -248,7 +263,9 @@ Funds collected from victims through aggregation addresses like TNVaKWQzau7xL9bc
 150,000 monthly withdrawals means approximately **5,000 transactions per day** at peak.
 At any regulated exchange this pattern would trigger an immediate alert.
 Huione was running a fully automated money laundering platform.
- 
+
+---
+
 ### Outgoing Transfers. Layering in Action
  
 ![TL8TBpubVzBr1UWPXBXU8Pci5ZAip9SwEf outgoing transfers to single destination](images/screenshot-9-outgoing-transfers.png)
@@ -275,7 +292,7 @@ Sample from a single page of transfers — all amounts in USDT:
  
 This single page represents over **$20,000,000 USDT** and all going to one address.
 These are not retail transfers. This is wholesale movement of criminal money between infrastructure layers.
- 
+
 **The full layering chain visible on-chain:**
  
 ```mermaid
@@ -330,6 +347,8 @@ Huione Group is a Cambodian financial conglomerate with links to the Hun family 
   
 Originally Huione Guarantee was a legitimate escrow service for high-value transactions in Southeast Asia.
 Over time it evolved into the largest criminal marketplace for fraud infrastructure on the internet.
+
+---
  
 ### Scale of Huione
  
@@ -346,6 +365,8 @@ Over time it evolved into the largest criminal marketplace for fraud infrastruct
  
 > Note: The difference between $4B (FinCEN illicit) and $55B+ (SlowMist total) is important. FinCEN explicitly acknowledged that Huione also runs legitimate businesses in Cambodia — bill payments,
 > QR codes used in restaurants and hotels. The $4B figure represents only verified criminal proceeds. The $55B+ is total platform volume.
+
+---
  
 ### What Is Sold on Huione Guarantee
  
@@ -362,6 +383,8 @@ Elliptic researchers documented thousands of active vendor listings:
  
 The last item is not a mistake. Electrified shackles for controlling trafficking victims in scam compounds were listed as a product.
 This is the direct connection between Huione and human trafficking.
+
+---
  
 ### Fund Flow Risk Breakdown
  
@@ -380,6 +403,8 @@ Note: The low "direct fraud" percentage does not mean fraud is rare. It means th
 go to aggregation addresses first (like TNVaKWQzau7xL9bcnvLmF9KSEQkWEs4Ug8), not directly to the core address.
  
 > Note: Percentages is not equal exactly 100% due to rounding in the original Bitrace source data.
+
+---
  
 ### Regulatory Response to Huione
  
@@ -439,7 +464,9 @@ Regulation: Lower attention"]
 - A single USDT transfer on Tron costs $0.001–1 regardless of conditions
 - Pig butchering collects from hundreds of victims daily. At 1,000 transactions per day the fee difference is $5,000–50,000 per day on Ethereum vs under $1,000 on Tron
 - Speed matters, faster transactions means faster layering before any freeze can be applied
-  
+
+---
+
 ### USDT — Why a Stablecoin
  
 Scammers need stability. If they collected ETH or BTC:
@@ -447,14 +474,18 @@ Scammers need stability. If they collected ETH or BTC:
 - Conversion to fiat requires extra steps
 - USDT is pegged 1:1 to USD (it is already dollars in crypto form)
 This makes the cash-out step simpler and reduces value leakage during layering.
- 
+
+---
+
 ### USDH — Huione's Own Unfreezable Stablecoin
  
 After Tether froze $29.62M in July 2024, Huione's biggest vulnerability became clear — dependence on a centralised stablecoin that a third party could freeze. 
 Their response was to eliminate that dependency entirely.
  
 In late 2024 Huione launched **USDH** — their own stablecoin pegged 1:1 to USD, deployed on Ethereum, BNB Chain, and Tron.
- 
+
+---
+
 **Key difference from USDT:**
  
 | | USDT (Tether) | USDH (Huione) |
@@ -472,7 +503,9 @@ This is a direct example of **regulatory arbitrage in action** — criminals bui
 Every time a control is applied, the criminal ecosystem adapts to work around it.
  
 **Current status:** USDH remains active. It represents an emerging AML gap that most compliance systems have not yet addressed.
- 
+
+---
+
 ### The Tether Paradox
  
 USDT is issued by Tether — a centralised company that can freeze any wallet.
@@ -632,6 +665,8 @@ It requires cooperation between financial intelligence, law enforcement, and ant
 | Multiple large transfers to MSB or crypto exchange | High-risk counterparty |
 | Elderly or vulnerable customer, first large international transfer | Vulnerability + velocity |
 | Customer is being coached on phone during transaction | Third party influence |
+
+---
  
 ### Analyst Decision Tree
  
