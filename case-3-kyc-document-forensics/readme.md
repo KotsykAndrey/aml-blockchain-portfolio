@@ -43,7 +43,7 @@ This case contains ten fictional fraud scenarious accross different document typ
 
 ## KYC Fraud Methods
  
-The nine documents map onto the main families of KYC fraud an analyst sees in crypto onboarding:
+The ten documents map onto the main families of KYC fraud an analyst sees in crypto onboarding:
  
 ```mermaid
 flowchart TD
