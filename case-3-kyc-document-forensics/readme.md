@@ -78,7 +78,7 @@ flowchart TD
  
 The first question in any onboarding is whether the person is who they claim to be. There are three ways this can fail (the document is edited, the face is fake, or the document is genuine but belongs to someone else).
  
-> **Note on SAR thresholds at onboarding.** Several decisions below say "reject, and file a SAR if funds were already deposited." This reflects a real threshold question. For US MSBs the mandatory SAR trigger
+> **Note on SAR thresholds at onboarding.** Several ns below say "reject, and file a SAR if funds were already deposited." This reflects a real threshold question. For US MSBs the mandatory SAR trigger
 > is a transaction conducted or attempted at or through the institution at or above the reporting threshold (31 CFR 1022.320). A fake document submitted at sign-up with no transaction and no funds does not
 > automatically meet that bar - but many firms still file a *voluntary* SAR on attempted identity fraud, and firm policy may require it. So the pattern is: always reject and record internally; file a SAR when
 > funds/transactions are present, when it fits a known fraud pattern, or where firm policy directs filing on attempted fraud.
@@ -121,9 +121,9 @@ naturally within the frame. A clean, evenly printed photograph that matches the 
 
 ---
 
-**Optically variable device (hologram / OVD)**
+**Personal data and optically variable device (hologram / OVD)**
  
-![Italian passport facial image, OVD area (PRADO specimen)](images/doc-1-italy-passport-hologram.png)
+![Italian passport biodata page with data, MRZ and OVD (PRADO specimen)](images/doc-1-italy-passport-hologram.png)
  
 This screenshot shows the full biodata page: the surname (ROSSI), the given name (MARIA), the passport number (KK6000533), the dates, the two MRZ lines at the bottom, and the OVD (hologram) that overlaps the
 photo. On a genuine Italian passport the personal data is laser-engraved, which gives it a specific texture and tone. Data that has been typed over or reprinted appears flat and often shows a slightly different
@@ -131,7 +131,7 @@ colour, so I confirm that the fonts, spacing, and field positions match the spec
 photo and that its edges look natural rather than digitally pasted. Forgers often damage or misalign this feature when they replace a photo.
 
 ---
- 
+
 **Laser-perforated numbering**
  
 ![Italian passport laser-perforated number KK6000533 (PRADO specimen)](images/doc-1-italy-passport-numbering.png)
@@ -193,8 +193,11 @@ MRZ prints          = 3     ← MISMATCH
  
 The printed check digit is `3`, but for `KK6000538` it must be `8`. This does not happen by accident, because a valid passport always has matching check digits. A mismatch means that the document number
 was altered after the passport was made, or that the MRZ was fabricated. This is strong evidence of tampering.
- 
+
+---
+
 **Date of birth check, second example to show the method holds.**
+
 The genuine specimen DOB is `901101` (1 November 1990). I first confirm the genuine check digit, then show a tampered version.
  
 ```
@@ -255,7 +258,7 @@ that is a different name from the one on the passport rather than a spelling var
  
 ---
  
-#### Decision & action
+#### Decision & Action
  
 ❌ **REJECT.** Do not onboard. The action path is as follows.
  
@@ -318,9 +321,8 @@ The human-readable side was edited, but the machine-readable side was not update
 
 #### Step 1 - Visual inspection (front)
  
-I compare the front against the official NY DMV sample.
- 
-- Photo placement, fonts, and the NY State background and security print match the template
+I compare the front against the official NY DMV sample:
+ - Photo placement, fonts, and the NY State background and security print match the template
 - "Class D" and the date format are correct for NY
 - I check for editing signs around the name, DOB, and photo, such as mismatched fonts, uneven spacing, or a photo that sits incorrectly
 
@@ -356,11 +358,11 @@ NY Document Numbers are an 8 to 10 character mix of letters and numbers. I check
 
 #### Step 4 - Cross-reference
  
-| Field | Front (visual) | Back barcode | Application form | result |
+| Field | Front (visual) | Back barcode | Application form | Result |
 |---|---|---|---|---|
-| Name | Michelle, Marie | Michelle, Marie | Michelle, Marie | match |
-| DOB | 10/31/1990 | 03/14/1988 | 10/31/1990 | mismatch |
-| CID | 123 456 789 | 123 456 789 | 123 456 789 | match |
+| Name | Michelle, Marie | Michelle, Marie | Michelle, Marie | Match |
+| DOB | 10/31/1990 | 03/14/1988 | 10/31/1990 | Mismatch |
+| CID | 123 456 789 | 123 456 789 | 123 456 789 | Match |
  
 The DOB on the front does not match the barcode. The customer also moved the year forward on the front (1988 to 1990), which is a common edit to defeat an age check or to match a stolen profile.
  
@@ -379,7 +381,7 @@ Separately, the card is a Standard licence, marked "Not for Federal Purposes". T
 
 ---
 
-#### Decision & action
+#### Decision & Action
  
 ❌ **REJECT.** Do not onboard. The action path is as follows:
 - **Reject and issue an RFI.** Request the original document and a second independent ID (a passport).
@@ -404,14 +406,15 @@ Knowing the difference between the CID and the Document Number is what allows me
 #### The scenario
  
 The customer passes the document stage and submits a selfie for face matching and liveness. The selfie matches the document photo at a high score on commercial KYC platforms (Jumio, Onfido, Sumsub).
-That high match is expected here: the attack is not a random fabricated face, but a deepfake built from the document holder's own photo, used to pass liveness without the real person being present.
-In practice the applicant holds a genuine document, usually stolen or purchased, and animates its photo with AI to defeat the camera check. Several signals show that the selfie is AI-generated rather than a real photograph of a real person in front of the camera.
+That high match is expected here, because the image was AI-generated from the document holder's own photo, not captured live from the real person. The attacker takes the photo on the genuine document, usually
+stolen or purchased, and uses an AI model to produce a new image of that same face, which then passes the face-match check against the document. Several signals show that the selfie was AI-generated rather than
+taken by a real person in front of the camera.
 
 ---
 
 #### Step 1 - Visual indicators of AI generation
  
-Modern GAN and diffusion faces are convincing, but they still leave indicators. I check for the following.
+Modern GAN and diffusion faces are convincing, but they still leave indicators. I check for the following:
  
 - **Hair edges.** Strands that blur or dissolve unnaturally into the background.
 - **Ear and jaw symmetry.** AI faces are often too symmetrical, whereas real faces are not.
@@ -422,21 +425,64 @@ Modern GAN and diffusion faces are convincing, but they still leave indicators. 
 
 ---
 
-#### Step 2 - Metadata (EXIF)
+#### Step 2 - Metadata analysis (EXIF and C2PA provenance)
  
-A real selfie from a phone camera carries camera metadata. What matters is not when the image was created, but whether the camera left any trace at all. A photo taken on demand minutes before upload
-is completely normal, because that is how onboarding works. The signal is the absence of any camera data, because every phone and camera records make, model, and lens data.
+A photograph taken on a real camera carries device metadata (EXIF): the make, the model, the lens, and the capture settings. An AI-generated image does not carry any of this, because no camera was involved.
+What matters is not when the image was created, but whether the file shows a real capture device at all. One signal is the absence of any camera data, because every phone and camera records make, model, and lens data.
+ 
+To demonstrate the difference, I compared a real photo taken on an iPhone with an image I generated in ChatGPT:
+ 
+**Metadata of a genuine photo (taken on an iPhone)**
+ 
+![Genuine iPhone photo metadata screenshot 1](images/doc-3-metadata-genuine-1.png)
+![Genuine iPhone photo metadata screenshot 2](images/doc-3-metadata-genuine-2.png)
+ 
+The file carries a full set of capture metadata: "Make: Apple", "Model: iPhone 14 Pro", the Lensmodel ("iPhone 14 Pro back triple camera 6.86mm f/1.78"), and the 
+exposure settings ("FNumber: 1.8", "ExposureTime: 1/35", "ISO: 320", "FocalLength: 6.9 mm"). 
+These fields are written by the camera at the moment of capture, and they are exactly what I expect on a genuine photo from a real device.
+
+---
+
+**Metadata of an AI-generated image (created in ChatGPT)**
+ 
+![AI-generated image metadata screenshot 1](images/doc-3-metadata-ai-1.png)
+![AI-generated image metadata screenshot 2](images/doc-3-metadata-ai-2.png)
+![AI-generated image metadata screenshot 3](images/doc-3-metadata-ai-3.png)
+ 
+The AI image carries no camera fields at all. There is no make, model, lens, or exposure data, because no camera produced it. Moreover, it carries a C2PA provenance manifest that openly identifies the file
+as AI-generated. The `Actionssoftwareagentname` is `gpt-image`, the `Claim Generator Infoname` is `OpenAI Media Service API`, and the `Actionsdigitalsourcetype` value is a full IPTC link ending in `trainedAlgorithmicMedia`, which is the standard code for content produced by a generative model. The file is also C2PA-watermarked.
+
+---
+
+**The comparison**
  
 ```
-EXIF analysis - what matters is not WHEN, but HOW
-Camera make/model : none              ← RED FLAG (genuine cameras always record this)
-Software          : none / AI tool    ← RED FLAG
-Create date       : minutes before upload  ← normal for an on-demand selfie, not a flag
-GPS               : none              ← weak signal alone (normal if location off)
-Color profile     : sRGB              ← weak signal (most devices use sRGB)
+Field                 Genuine photo (iPhone)              AI image (ChatGPT)
+Make / Model      :   Apple / iPhone 14 Pro               none                       ← RED FLAG
+Lensmodel         :   iPhone 14 Pro back triple camera    none                       ← RED FLAG
+Exposure / ISO    :   f/1.8, 1/35, ISO 320                none                       ← RED FLAG
+C2PA provenance   :   none                                gpt-image / OpenAI API     ← RED FLAG (declares AI)
+digitalSourceType :   none                                trainedAlgorithmicMedia    ← RED FLAG (declares AI)
+--- weaker signals, not red flags on their own ---
+GPS / location    :   none                                none                       weak (geolocation can be off in settings)
+Timestamp         :   capture time present                generation time present    not a flag (on-demand selfie is normal)
+Color profile     :   Apple embedded profile              sRGB                       weak (most devices use sRGB)
+File type         :   DNG (Apple ProRAW)                  PNG                        weak (PNG is also used for screenshots and on Android. DNG is just Apple's RAW format)
 ```
  
-A genuine selfie carries the make and model (Apple, Samsung), the lens focal length, and the f-stop. An image with no capture-device data at all was not produced by a camera.
+Two things expose the AI image. First, the absence of any camera capture data, because every phone and camera records make, model, and lens. Second, the presence of C2PA provenance that names the 
+generator and marks the file as AI-generated. The first is a negative signal and the second is a positive one, and together they are decisive.
+
+Metadata is not equally reliable in every case, and different AI tools behave differently. Mainstream generators such as ChatGPT now embed C2PA provenance that declares the image as AI-generated, but 
+specialised fraud tools do the opposite: they strip all metadata, or spoof the camera fields to imitate a real device, and they never add C2PA. So in practice I read the metadata together with the visual 
+indicators and the liveness result, rather than relying on a single layer. The presence of C2PA AI provenance is strong evidence that the image is generated. The absence of camera data is only suspicious, 
+not proof, because a genuine photo can also lose its metadata after passing through a messaging app such as Telegram or WhatsApp.
+ 
+If the metadata is missing or looks edited, I do not clear the image on that basis, and I do not reject it on that basis alone. I fall back to the layers an attacker cannot remove from the file: the visual AI
+indicators, the liveness result, and the behavioural signals. Clean-looking metadata never clears a face by itself, and missing metadata never confirms fraud by itself. The decision comes from the combination.
+
+> **Note:** The full metadata extractions for both files are attached in this repository: [genuine iPhone photo](attachments/doc-3-metadata-genuine.pdf) and [AI image](attachments/doc-3-metadata-ai.pdf).
+> I produced both files myself to demonstrate the method. Neither file contains GPS or geolocation data.
 
 ---
 
@@ -446,15 +492,14 @@ How the attacker tries to bypass liveness check:
 - **Virtual camera injection.** Software such as OBS or ManyCam feeds a pre-recorded or generated video into the KYC flow instead of a real webcam.
 - **Replay attack.** A pre-recorded video of the AI face nodding and blinking.
 - **Real-time deepfake.** AI generates the face live during the check.
-
 How liveness detection catches it:
  - **Motion blur analysis.** Genuine head movement produces physically correct blur that matches the direction and speed of the movement. Deepfakes often show incorrect blur at the face edges,
    or "ghosting", where the face briefly doubles during a fast turn.
-- **Depth and occlusion analysis.** Active liveness systems track how the face responds to small head movements. A flat photo or a replayed video does not produce correct parallax, so the depth relationship
--  between facial features collapses. Some advanced systems also project random light patterns onto the face and verify that the skin responds correctly. A flat screen cannot reproduce this response.
+- **Depth and occlusion analysis.** Active liveness systems track how the face responds to small head movements. A flat photo or a replayed video does not produce correct parallax, so the depth
+   relationship between facial features collapses. Some advanced systems also project random light patterns onto the face and verify that the skin responds correctly. A flat screen cannot reproduce this response.
 - **Object occlusion test.** Passing a hand or an object in front of the face is one of the most reliable checks. A real face has a correct depth relationship with objects in front of it.
-   A deepfake often loses face tracking at the moment of occlusion, so the real face briefly reappears, or artifacts appear at the boundary. A pre-recorded video simply shows the hand on top of the
-   recording with no correct depth interaction.
+   A deepfake often loses face tracking at the moment of occlusion, so the real face briefly reappears, or artifacts appear at the boundary. A pre-recorded video simply shows the hand on top of the recording
+   with no correct depth interaction.
 - **3D depth liveness.** Unlike 2D (passive) liveness, infrared depth mapping cannot be faked with a flat screen or a replayed video, so it defeats most virtual-camera attacks.
 
 ---
@@ -464,9 +509,10 @@ How liveness detection catches it:
 | Red flag | Type | Severity |
 |---|---|---|
 | Multiple AI-generation artifacts in the selfie | AI-generated image | 🔴 HIGH |
-| No camera metadata, or editing software present | Metadata tampering | 🔴 HIGH |
-| Liveness passed but background and lighting inconsistent | Possible injection attack | 🟡 MEDIUM |
+| No camera capture metadata (no make, model, or lens) | Not produced by a camera | 🔴 HIGH |
+| C2PA provenance marks the file as AI-generated (gpt-image, trainedAlgorithmicMedia) | AI provenance | 🔴 HIGH |
 | Face match high but image provenance suspect | Synthetic identity | 🔴 HIGH |
+| Liveness passed but background and lighting inconsistent | Possible injection attack | 🟡 MEDIUM |
 
 ---
 
@@ -479,7 +525,7 @@ See the mock SAR below.
  
 ---
  
-#### Mock SAR #1 — Deepfake / Synthetic Identity at Onboarding
+#### Mock SAR #1 - Deepfake / Synthetic Identity at Onboarding
  
 > **Disclaimer:** Fictional SAR for educational purposes. Institution and subject details are fictional.
  
@@ -492,7 +538,7 @@ See the mock SAR below.
 **Prior SARs on subject:** none on file
  
 **Narrative**
-
+ 
 Clear Exchange Ltd. files this report to document an attempt to open an account using a genuine identity document together with an artificially generated (deepfake) selfie to pass identity verification.
 No account was opened and no funds were received. The institution reports the attempt because the conduct shows a deliberate effort to defeat identity verification, which is
 consistent with the early stage of account-takeover or money-laundering activity.
@@ -505,7 +551,7 @@ did not match a real environment. The file also carried no camera metadata of an
 The liveness check was recorded as passed, but the captured video showed lighting and background characteristics that did not match a live capture. These characteristics are consistent
 with a virtual-camera injection attack, in which pre-recorded or generated video is fed into the verification flow in place of a live webcam.
  
-Based on these findings, the artificially generated facial image, the complete absence of camera metadata, and the signs of a virtual-camera injection indicate that the applicant attempted to create
+Taken together, the artificially generated facial image, the complete absence of camera metadata, and the signs of a virtual-camera injection indicate that the applicant attempted to create
 a verified account under a fabricated or stolen identity. The institution considers this conduct consistent with the methods used to open accounts for the laundering of illicit funds or for fraud.
  
 The institution declined the application on the same day and added the applicant's device fingerprint and the submitted image hash to its internal fraud watchlist. The submitted document, the selfie,
