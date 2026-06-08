@@ -106,23 +106,31 @@ the MRZ check digits, the calculation on the passport number fails. This indicat
  
 I compare the submitted passport against the genuine PRADO specimen, which is the reference standard for a real Italian passport. In a remote KYC review I work from a scan or a photo, so
 I can only rely on features that are visible in an image. UV and physical magnification checks are possible only during an in-person review.
- 
+
+---
+
 I check three features that are visible on a good scan:
  
-**Personal data (biodata page)**
+**Facial photograph (biodata page)**
  
-![Italian passport biodata page (PRADO specimen)](images/doc-1-italy-passport-personaldata.png)
+![Italian passport facial photograph (PRADO specimen)](images/doc-1-italy-passport-personaldata.png)
  
-The biodata page shows the photo, surname (ROSSI), given name (MARIA), passport number (KK6000533), the dates, and the two MRZ lines at the bottom. On a genuine Italian passport the personal data
-is laser-engraved, which gives it a specific texture and tone. Data that has been typed over or reprinted appears flat and often shows a slightly different colour. I confirm that the fonts, spacing,
-and field positions match the specimen exactly.
- 
+This screenshot shows the holder's photograph on the biodata page. On a genuine Italian passport the photograph is printed directly into the page surface during production, not attached on top, so it cannot be
+replaced without damaging the page. I check the photograph for signs of substitution. I look for edges that appear added, a print texture that differs from the rest of the page, or a face that does not sit
+naturally within the frame. A clean, evenly printed photograph that matches the surrounding page is what I expect on a genuine document.
+
+---
+
 **Optically variable device (hologram / OVD)**
  
 ![Italian passport facial image, OVD area (PRADO specimen)](images/doc-1-italy-passport-hologram.png)
  
-A genuine biodata page carries an OVD (hologram) that overlaps the photo and changes appearance when tilted. On a scan I cannot tilt it, but I can check whether the overlay sits correctly
-over the photo and whether its edges appear natural rather than digitally pasted. Forgers often damage or misalign this feature when they replace a photo.
+This screenshot shows the full biodata page: the surname (ROSSI), the given name (MARIA), the passport number (KK6000533), the dates, the two MRZ lines at the bottom, and the OVD (hologram) that overlaps the
+photo. On a genuine Italian passport the personal data is laser-engraved, which gives it a specific texture and tone. Data that has been typed over or reprinted appears flat and often shows a slightly different
+colour, so I confirm that the fonts, spacing, and field positions match the specimen. The OVD changes appearance when tilted. On a scan I cannot tilt it, but I can check that the overlay sits correctly over the
+photo and that its edges look natural rather than digitally pasted. Forgers often damage or misalign this feature when they replace a photo.
+
+---
  
 **Laser-perforated numbering**
  
@@ -438,14 +446,15 @@ How the attacker tries to bypass liveness check:
 - **Virtual camera injection.** Software such as OBS or ManyCam feeds a pre-recorded or generated video into the KYC flow instead of a real webcam.
 - **Replay attack.** A pre-recorded video of the AI face nodding and blinking.
 - **Real-time deepfake.** AI generates the face live during the check.
+
 How liveness detection catches it:
  - **Motion blur analysis.** Genuine head movement produces physically correct blur that matches the direction and speed of the movement. Deepfakes often show incorrect blur at the face edges,
    or "ghosting", where the face briefly doubles during a fast turn.
-- **Depth and occlusion analysis.** Active liveness systems track how the face responds to small head movements. A flat photo or a replayed video does not produce correct parallax, so the depth
-   relationship between facial features collapses. Some advanced systems also project random light patterns onto the face and verify that the skin responds correctly. A flat screen cannot reproduce this response.
+- **Depth and occlusion analysis.** Active liveness systems track how the face responds to small head movements. A flat photo or a replayed video does not produce correct parallax, so the depth relationship
+-  between facial features collapses. Some advanced systems also project random light patterns onto the face and verify that the skin responds correctly. A flat screen cannot reproduce this response.
 - **Object occlusion test.** Passing a hand or an object in front of the face is one of the most reliable checks. A real face has a correct depth relationship with objects in front of it.
-   A deepfake often loses face tracking at the moment of occlusion, so the real face briefly reappears, or artifacts appear at the boundary. A pre-recorded video simply shows the hand on top of the recording
-   with no correct depth interaction.
+   A deepfake often loses face tracking at the moment of occlusion, so the real face briefly reappears, or artifacts appear at the boundary. A pre-recorded video simply shows the hand on top of the
+   recording with no correct depth interaction.
 - **3D depth liveness.** Unlike 2D (passive) liveness, infrared depth mapping cannot be faked with a flat screen or a replayed video, so it defeats most virtual-camera attacks.
 
 ---
@@ -475,8 +484,36 @@ See the mock SAR below.
 > **Disclaimer:** Fictional SAR for educational purposes. Institution and subject details are fictional.
  
 **Filing institution:** Clear Exchange Ltd. (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
+
 **Date of report:** June 18, 2026
+
 **Subject:** name as submitted, not verified; Application ID XXX-XXXXXX; no account opened, onboarding declined
+
 **Prior SARs on subject:** none on file
  
 **Narrative**
+
+Clear Exchange Ltd. files this report to document an attempt to open an account using a genuine identity document together with an artificially generated (deepfake) selfie to pass identity verification.
+No account was opened and no funds were received. The institution reports the attempt because the conduct shows a deliberate effort to defeat identity verification, which is
+consistent with the early stage of account-takeover or money-laundering activity.
+ 
+On June 17, 2026, the applicant submitted a passport and a liveness selfie through the institution's remote onboarding flow. The selfie passed the automated face-matching check
+against the passport photograph, with a similarity score of 92 percent. During manual review, however, the analyst identified several indicators that the selfie was an artificially
+generated image rather than a genuine photograph. The image showed unnatural rendering at the hair edges, facial features that were unusually symmetrical, and reflections in the eyes that
+did not match a real environment. The file also carried no camera metadata of any kind. It contained no make, model, or lens information, which a photograph taken on a genuine device always records.
+ 
+The liveness check was recorded as passed, but the captured video showed lighting and background characteristics that did not match a live capture. These characteristics are consistent
+with a virtual-camera injection attack, in which pre-recorded or generated video is fed into the verification flow in place of a live webcam.
+ 
+Based on these findings, the artificially generated facial image, the complete absence of camera metadata, and the signs of a virtual-camera injection indicate that the applicant attempted to create
+a verified account under a fabricated or stolen identity. The institution considers this conduct consistent with the methods used to open accounts for the laundering of illicit funds or for fraud.
+ 
+The institution declined the application on the same day and added the applicant's device fingerprint and the submitted image hash to its internal fraud watchlist. The submitted document, the selfie,
+the associated metadata, and the device fingerprint have been retained and are available to law enforcement upon request. Any future application matching the retained device fingerprint or image hash
+will be escalated immediately. The institution did not notify the applicant that this report was filed.
+ 
+Point of contact: AML Compliance Officer, Clear Exchange Ltd.
+ 
+**END OF MOCK SAR**
+ 
+---
