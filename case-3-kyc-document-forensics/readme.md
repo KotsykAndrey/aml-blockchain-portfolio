@@ -563,3 +563,122 @@ Point of contact: AML Compliance Officer, Clear Exchange Ltd.
 **END OF MOCK SAR**
  
 ---
+
+### Document 4 - Stolen Identity (Nigerian Passport)
+
+**Document type:** Passport, Federal Republic of Nigeria
+
+**Specimen reference:** PRADO NGA-AO-03001 - https://www.consilium.europa.eu/prado/en/NGA-AO-03001/index.html
+ 
+![Nigerian passport (PRADO specimen)](images/doc-4-nigeria-passport.png)
+ 
+*Specimen source: PRADO (Council of the EU), document NGA-AO-03001. Public reference document.*
+
+#### The scenario
+ 
+This is the hardest identity fraud to catch. The passport is completely genuine, with a real document, a real person, a valid MRZ, and correct check digits. The problem is that the person
+submitting it is not the person it belongs to. It is a stolen, borrowed, or purchased identity.
+Because the document itself is real, every document-level check passes. The fraud is only visible at the biometric and behavioural layer.
+
+---
+
+#### Step 1 - Document checks all pass
+
+- MRZ valid, check digits correct
+- Security features present
+- Document not expired
+- Name and DOB internally consistent
+  
+Nothing here fails. If I only checked the document, I would onboard a criminal.
+
+---
+ 
+#### Step 2 - Biometric mismatch (the main detection point)
+ 
+The selfie does not match the passport photo. This is the primary detection layer for stolen identity. The detection has two forms: either the face-match score falls below threshold, or the same 
+face matches a different applicant already on file, which means one face is being used with several documents.
+
+---
+
+#### Step 3 - Velocity and cross-platform signals
+ 
+Registering on two platforms in one day is not suspicious on its own, because people compare exchanges and sign up on several at once. The signal is the combination:
+- The same passport number is linked to a different face on another platform. One document cannot belong to two different people.
+- The same passport appears across many platforms in a very short period of time (industrial identity farming).
+- The same passport is used where the account was recently closed for fraud elsewhere.
+- The device or IP is linked to previous fraud attempts.
+
+---
+
+#### Step 4 - Behavioural biometrics (backend signal)
+ 
+This layer is not visible to the analyst directly. It runs on the backend (tools such as BioCatch or NeuroID) and produces a behavioural risk score that feeds into the onboarding decision.
+It tracks how the form is filled, not only what is entered.
+- **Typing speed.** A person who knows their own DOB and address types without hesitation. Slow, paused entry on personal fields suggests reading from someone else's document.
+- **Copy-paste patterns.** Genuine users type their name and address manually. Fields pasted in seconds suggest an automated or pre-prepared submission.
+- **Completion time.** The average KYC form takes 8 to 12 minutes. Completion in under 2 minutes with no corrections suggests a script.
+- **Mouse and touchscreen movement.** Natural movement has acceleration and micro-jitter, whereas programmatic input is perfectly straight.
+- **Hesitation patterns.** Someone filling another person's profile pauses on fields that require genuine personal knowledge.
+  
+No single behavioural signal confirms fraud. The system combines them into one score, and a high-risk score triggers a manual-review flag for the analyst.
+
+---
+
+#### Red flags
+ 
+| Red flag | Type | Severity |
+|---|---|---|
+| Selfie does not match passport photo | Biometric mismatch | 🔴 CRITICAL |
+| Same passport linked to a different face on another platform | Identity abuse / document sharing | 🔴 HIGH |
+| Same passport used across many platforms in a short period of time | Industrial identity farming | 🔴 HIGH |
+| Same passport used after an account was recently closed for fraud elsewhere | Cross-platform fraud signal | 🔴 HIGH |
+| Same face linked to other names/applications | Identity farming | 🔴 HIGH |
+| High-risk behavioural-biometrics score (backend) | Behavioural mismatch | 🟡 MEDIUM |
+
+---
+
+#### Decision & Action
+ 
+❌ **REJECT + SAR.**
+ 
+A genuine document with a non-matching person points to a stolen identity. The real document-holder may be a victim of identity theft, or may be complicit and have sold their identity.
+Either way the activity is suspicious. Unlike the no-funds document cases above, the deliberate use of someone else's genuine identity is a clear fraud, so I file a SAR.
+
+---
+
+#### Alert disposition note
+ 
+> **Disclaimer:** Fictional internal note for educational purposes.
+ 
+```
+Case ID:        KYC-2026-00xxx
+Applicant:      (passport holder name), onboarding
+Review type:    Onboarding, identity verification
+Risk rating:    High
+Status:         REJECTED (fraud)
+ 
+Trigger:        Genuine passport, but selfie does not match the document photo.
+                Biometric mismatch on an authentic document.
+ 
+Review conducted:
+  - Document checks: MRZ valid, security features present, not expired
+  - Biometric: face match below threshold vs document photo
+  - Cross-platform: same passport linked to a different face elsewhere
+  - No innocent explanation for an authentic document with a wrong face
+ 
+Decision:       REJECT onboarding and FILE a SAR.
+ 
+Rationale:      Use of a genuine third party's identity document by a different person is deliberate identity fraud.
+                The true holder may be a victim, and the activity is reportable.
+ 
+Analyst:        A. Kotsyk
+Escalated to:   Senior AML Officer / MLRO
+Next action:    Reject. Preserve device fingerprint and submitted image hash. File the SAR. Watch for re-attempts on the same identifiers.
+Tipping off:    Applicant not told a SAR was filed (31 U.S.C. § 5318(g)(2)).
+```
+ 
+#### Key learning
+ 
+When the document is real, document checks are not enough. The whole defence rests on biometric comparison and velocity checks. A perfect document is not a clean customer.
+ 
+---
