@@ -245,6 +245,8 @@ I compare every data point across the passport, the MRZ, and the application for
 Here the names and the date of birth all agree. The problem is only the MRZ check digit on the altered passport number. In another common pattern the names would also disagree, for example a form name
 that is a different name from the one on the passport rather than a spelling variant, which would be a second independent red flag.
 
+The laser-perforated number is a further data point on the passport itself. In this scenario it still reads KK6000533, while the printed number and the MRZ read KK6000538. This internal disagreement confirms that the printed number and the MRZ were altered after issue.
+
 ---
 
 #### Red flags
@@ -252,7 +254,7 @@ that is a different name from the one on the passport rather than a spelling var
 | Red flag | Type | Severity |
 |---|---|---|
 | MRZ passport-number check digit does not validate | Document tampering | 🔴 CRITICAL |
-| Passport number on scan looks printed, not laser-perforated | Document integrity | 🔴 HIGH |
+| Laser-perforated number (KK6000533) does not match the printed number and MRZ (KK6000538) | Document integrity | 🔴 HIGH |
 | (If found) given name on form ≠ name on passport | Identity mismatch | 🔴 HIGH |
 | (If found) visual DOB ≠ MRZ DOB | Document integrity | 🔴 HIGH |
  
@@ -273,8 +275,9 @@ that is a different name from the one on the passport rather than a spelling var
 
 #### Key learning
  
-Check digits are the fastest way to detect a tampered passport. I first confirmed that the genuine number validates (`KK6000533` produces check digit 3), then showed how an altered number breaks the check.
-On a scan UV is not available, so the laser-perforated number and the OVD over the photo are the visual features I rely on, together with the MRZ calculation.
+Check digits are the fastest way to detect a tampered passport. I first confirmed that the genuine number validates (`KK6000533` produces check digit 3), then showed how an altered number breaks the check. 
+The laser-perforated number adds a second, independent check, because it cannot be altered on an existing passport: when the printed number and the MRZ read `KK6000538` but the perforation still reads `KK6000533`, 
+the document contradicts itself. On a scan UV is not available, so the perforated number and the OVD over the photo are the visual features I rely on, together with the MRZ calculation.
  
 ---
  
@@ -422,6 +425,10 @@ Modern GAN and diffusion faces are convincing, but they still leave indicators. 
 - **Skin texture.** Too smooth, with no pores and no small imperfections.
 - **Background.** The lighting on the face does not match the background lighting.
 - **Accessories.** Glasses frames or earrings that are asymmetric or blend into the skin.
+
+These visual indicators are useful, but they are weakening over time. Older models left clear artifacts, while current ai models can produce faces with none of the indicators listed above. 
+For that reason I treat the visual layer as corroborating, not decisive. The weight of the decision rests on the layers that remain more reliable against a strong generator: the provenance metadata in Step 2, 
+and the active or 3D liveness in Step 3.
 
 ---
 
@@ -682,3 +689,111 @@ Tipping off:    Applicant not told a SAR was filed (31 U.S.C. § 5318(g)(2)).
 When the document is real, document checks are not enough. The whole defence rests on biometric comparison and velocity checks. A perfect document is not a clean customer.
  
 ---
+
+## Part 2 - Supporting Documents
+ 
+Once identity is established, the next question is where the money comes from and whether the person actually lives where they say. These documents, utility bills and bank statements, are
+the most commonly forged, because they are easy to edit in basic software.
+ 
+### Document 5 - Forged UK Utility Bill
+ 
+**Document type:** Utility bill (proof of address)
+ 
+#### The scenario
+ 
+The customer submits a UK electricity bill as proof of address. The address on the bill is 14 Kingsway, London WC2B 6LH. The document is forged. Someone used a template and typed in the customer's details,
+or edited a real bill. The purpose of a proof of address is to confirm that the customer genuinely lives where they claim, which matters for jurisdiction, tax, and risk rating. A forged document breaks
+that foundation, so I cannot accept it.
+
+---
+
+Schematic of the submitted bill (this is a layout, not a real document):
+ 
+```
++--------------------------------------------------+
+|  [LOGO]   BRITGRID ENERGY            Bill         |
+|                                                   |
+|  Daniel R. Whitfield          Account: 8839201    |
+|  14 Kingsway, London                              |
+|  WC2B 6LH                   Bill date: 15 Jan 2026|
+|---------------------------------------------------|
+|  Previous balance          £0.00                  |
+|  Electricity (Jan)         £84.00                 |
+|  --------------------------------                 |
+|  Total due                 £84.00                 |
++--------------------------------------------------+
+```
+ 
+#### Step 1 - Font and layout consistency
+ 
+A genuine utility bill is generated automatically by the utility's billing system, so every field uses the same fonts and alignment. On a forged bill I look for the following.
+- The customer name in a slightly different font or weight from the rest, which suggests it was typed in later
+- Numbers that are not aligned the way an automated system aligns them
+- Uneven spacing where fields were edited
+
+---
+
+#### Step 2 - Logo quality
+ 
+The logo is often taken from a web image at low resolution. A real bill uses a clean vector logo (SVG). JPEG artifacts or a blurred logo on an otherwise clean, sharp document is a red flag.
+
+---
+
+#### Step 3 - Metadata
+ 
+If the file is a PDF, I check the metadata (see Document 6 for the full method). A utility bill "PDF" created in an image editor or a word processor is suspect.
+
+---
+
+#### Step 4 - Address verification
+ 
+I check the address (14 Kingsway, London WC2B 6LH) in Google Maps and against postal data.
+- Does the address exist?
+- Does the postcode match the street?
+- Is it residential or commercial?
+  
+On the residential versus commercial point, a commercial address is not automatically a red flag. There are legitimate situations, for example:
+- **Mixed-use buildings.** Many city-centre buildings have shops on the ground floor and flats above, and people genuinely live there.
+- **Live-work units.** These are common for self-employed people and freelancers.
+- **Registered business address.** A sole trader may receive post at their business.
+  
+It becomes a red flag only in specific cases, such as:
+- The address is a mailbox or virtual-office service, where post is forwarded and no one actually lives there.
+- The address is a purely industrial or commercial building where residence is implausible, such as a warehouse or a shopping-centre unit.
+- The address does not exist, or the postcode does not match the street.
+  
+I therefore treat a commercial address as a prompt to look closer, not as proof of fraud.
+
+---
+
+#### Step 5 - Date
+ 
+Proof of address is normally accepted only if it was issued within the last 3 months (this depends on internal policies and procedures). An older bill is rejected on age alone.
+
+---
+
+#### Red flags
+ 
+| Red flag | Type | Severity |
+|---|---|---|
+| Customer name in different font from document body | Document integrity | 🔴 HIGH |
+| Low-resolution / JPEG-artifact logo | Forgery signal | 🟡 MEDIUM |
+| Address is a mailbox service or implausible for residence | Address concern | 🟡 MEDIUM |
+| Bill older than 3 months | Stale document | 🟡 MEDIUM |
+
+---
+
+#### Decision & Action
+ 
+⚠️ **REQUEST ADDITIONAL INFORMATION.** Do not onboard on this document.
+ 
+Why request more rather than reject outright? A proof of address is a supporting document, and the correct first step when one appears forged is to give the customer a clear opportunity to provide a genuine,
+independent one, which a legitimate customer can do easily. I do not accept the suspect bill, but I also do not yet assume crime. Further actions:
+- Issue a Request for Information (RFI) asking for a second, independent proof of address.
+- Do not verify the address until it is confirmed from an independent source.
+- If the customer provides a clean document, proceed. The original is noted but set aside.
+- If the customer refuses, delays, or sends another forged document, escalate and file a SAR, especially if funds are already on the platform.
+- If the forgery is combined with other red flags, such as a suspect identity or suspicious funds, escalate immediately rather than only requesting more.
+
+---
+
