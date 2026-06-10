@@ -983,3 +983,163 @@ Bank-statement metadata is the fastest and most reliable forensic check. A real 
 because the file is never edited. A modify date later than the create date confirms a file that was changed after creation. The balance arithmetic is the second check, because forgers edit a number and forget to recompute the running balance across the page.
  
 ---
+ 
+## Part 3 - Complex Cases
+ 
+This one is harder because nothing is obviously forged. The document can be genuine, and the fraud is in the profile: a fabricated person whose details do not fit together.
+I catch it by reasoning about the whole identity, not by inspecting a single document.
+ 
+---
+ 
+### Document 7 - Synthetic Identity (Ukrainian Passport)
+ 
+**Document type:** Passport, Ukraine
+
+**Specimen reference:** PRADO UKR-AO-03003 - https://www.consilium.europa.eu/prado/en/UKR-AO-03003/index.html
+ 
+![Ukrainian passport specimen - PRADO UKR-AO-03003](images/doc-7-ukraine-passport.png)
+ 
+*Specimen source: PRADO (Council of the EU), document UKR-AO-03003. Public reference document.*
+
+#### The scenario
+ 
+A synthetic identity is a person who does not exist, built from a mixture of real-format and fabricated data. The passport may even pass document checks. The fraud appears when
+I test whether the whole profile is internally consistent and whether the person leaves any real-world footprint.
+
+---
+
+Submitted profile:
+ 
+```
+Name             : Marko Tkachenko
+DOB              : 15 March 1992  (age 34)
+Nationality      : Ukrainian
+Occupation       : Import/Export Manager (claims 15 years' experience)
+Stated income    : EUR 78,000 / year
+Stated net worth : EUR 850,000
+Source of wealth : "savings and trading"
+```
+
+---
+
+#### Step 1 - Internal consistency
+ 
+I test the profile against itself:
+- **Age versus experience.** 15 years of experience at age 34 means starting at 19. This is possible, but worth questioning for a manager role.
+- **Income versus net worth.** This is the strongest indicator. On EUR 78,000 per year, accumulating EUR 850,000 in savings is very difficult, because after tax and living costs the numbers do not support it.
+     A large gap between income and claimed net worth, combined with a vague source ("savings and trading"), is a classic signal of a synthetic identity or an undisclosed source.
+
+---
+
+#### Step 2 - Footprint check
+ 
+A real 34-year-old import and export manager with this income usually leaves traces on the Internet; however, the customer has:
+- No LinkedIn, no professional presence, and no company association
+- No digital footprint at all for the name
+- An email address created recently, just before the application
+A person who is supposedly established but has no history is suspicious.
+
+---
+ 
+#### Step 3 - Document format
+ 
+I still verify the passport (MRZ, check digits, and the PRADO template). Ukrainian transliteration from Cyrillic to Latin can create legitimate spelling variants (Marko or Marco), so I am careful
+not to flag a normal transliteration as fraud. The red flag here is the profile, not the spelling.
+
+---
+
+#### Step 4 - Address and supporting data
+ 
+- The address exists but is commercial
+- Supporting documents, if any, are thin or recently created
+
+---
+
+#### Red flags
+ 
+| Red flag | Type | Severity |
+|---|---|---|
+| Net worth far exceeds what the stated income could produce | Profile inconsistency | 🔴 HIGH |
+| No digital or professional footprint for an "established" person | Synthetic-identity signal | 🟡 MEDIUM |
+| Vague source of wealth ("savings and trading") | Undisclosed source | 🟡 MEDIUM |
+| Recently created email and thin supporting data | Fabricated profile | 🟡 MEDIUM |
+
+---
+
+#### Decision & Action
+ 
+⚠️ **EDD + SAR.**
+The income-versus-net-worth gap and the absent footprint are enough to require Enhanced Due Diligence (full source-of-wealth evidence, independent verification, and senior sign-off).
+Because the pattern is consistent with a fabricated identity used to move undisclosed funds, I also file a SAR. If EDD cannot resolve the inconsistencies, I decline and offboard.
+
+---
+
+#### Mock RFI - source of wealth (EDD)
+ 
+> **Disclaimer:** Fictional RFI for educational purposes. Neutral, document-focused wording. It asks the customer to evidence the wealth they claimed, with no mention of suspicion or any report.
+ 
+```
+From:    Clear Exchange, Compliance Team
+To:      (customer)
+Subject: Verification of source of wealth
+ 
+Hello,
+ 
+As part of our enhanced verification, we need supporting evidence for the source of wealth declared on your application.
+Please provide documents covering the wealth you described ("savings and trading"), for example:
+ 
+  - Recent tax returns or official income statements (last 2 years)
+  - Bank statements showing accumulation of the funds (last 6-12 months)
+  - For trading income: account or broker statements, or realised-gains reports
+  - If any part is from a one-off event (sale, inheritance, gift), the relevant contract, deed, or signed letter
+ 
+Each document should be a full original (PDF or clear photo), with your name visible and consistent with your account details.
+ 
+You can upload securely under Settings, then Enhanced Verification. If you have questions about which documents apply, reply to this message.
+ 
+Thank you,
+Clear Exchange, Compliance Team
+```
+
+---
+
+#### Alert disposition note
+ 
+> **Disclaimer:** Fictional internal note for educational purposes. This is the record an analyst writes so the decision is auditable.
+ 
+```
+Case ID:        KYC-2026-00xxx
+Customer:       Marko Tkachenko (onboarding)
+Review type:    Onboarding, profile / SOW review
+Risk rating:    HIGH (pending EDD outcome)
+ 
+Trigger:        Profile coherence check failed at onboarding.
+                Stated income EUR 78,000/year versus claimed net worth
+                EUR 850,000, with vague SOW ("savings and trading").
+ 
+Review conducted:
+  - Income vs net worth gap assessed, not supportable on stated income
+  - Open-source footprint search, no professional/social presence found
+  - Email created days before application
+  - Passport verified (MRZ valid); transliteration variant noted, not a flag
+  - Address exists, commercial
+ 
+Decision:       ESCALATE. Apply EDD AND file a SAR.
+                EDD: SOW RFI issued (see above) requesting full documentary evidence, each component independently verified; senior sign-off required before any onboarding.
+                SAR: profile is consistent with a synthetic identity used to move undisclosed funds, reasonable grounds to suspect.
+ 
+Rationale:      Multiple inconsistencies that the customer's documents do not resolve. EDD addresses the onboarding question;
+                the SAR addresses the suspicion, which exists independently of whether the customer is ultimately onboarded.
+ 
+Analyst:        A. Kotsyk
+Escalated to:   Senior AML Officer / MLRO
+Next action:    SOW RFI issued; prepare SAR. If the RFI response does not resolve the inconsistencies, decline and offboard.
+Tipping off:    Customer not informed of the SAR or any suspicion (31 U.S.C. § 5318(g)(2)). The RFI is worded neutrally.
+```
+ 
+#### Key learning
+ 
+Synthetic identities pass document checks but fail the coherence test. The most reliable single signal is the gap between stated income and claimed wealth, supported by the absence of any real-world footprint.
+I catch these by reasoning about the whole person, not by inspecting one document.
+ 
+---
