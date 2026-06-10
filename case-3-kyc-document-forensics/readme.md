@@ -797,3 +797,189 @@ independent one, which a legitimate customer can do easily. I do not accept the 
 
 ---
 
+#### Mock RFI to the customer
+ 
+> **Disclaimer:** Fictional RFI for educational purposes. Institution and customer details fictional.
+> **Note:** Neutral, document-focused wording. There is no accusation and no mention of fraud, an investigation, or any report. This protects the process and avoids tipping off.
+ 
+```
+From:    Clear Exchange, Compliance / Onboarding
+To:      Daniel R. Whitfield
+Subject: Additional document required to verify your account
+ 
+Hello,
+ 
+Thank you for your recent submission. To complete the verification of your account, we need one additional proof of address.
+The document you provided could not be accepted in its current form.
+ 
+Please upload ONE of the following, issued within the last 3 months and clearly showing your full name and residential address:
+  - Bank or credit-card statement
+  - Utility bill (gas, electricity, or water)
+  - Government or tax authority letter (e.g. council tax)
+ 
+Requirements:
+  - The document must be a full, original PDF or photo (no edits or cropping)
+  - Name and address must match the details on your account
+ 
+You can upload the document securely in your account under Settings, then Verification. If you have any questions, reply to this message.
+ 
+Thank you,
+Clear Exchange, Compliance Team
+```
+ 
+#### Key learning
+ 
+Font consistency is the first and fastest check on a utility bill. Automated billing systems produce uniform documents, so any variation in the customer-specific fields is a strong sign of manual editing.
+A commercial address is a reason to look closer, not an automatic red flag, because the context decides.
+ 
+---
+
+### Document 6 - Fake Bank Statement (UAE Bank)
+ 
+**Document type:** Bank statement (source of funds)
+ 
+#### The scenario
+ 
+The customer is asked for a bank statement to support the source of funds for a large deposit. They submit a PDF that claims to be from a UAE bank. It is fabricated. This document has the largest set of red flags 
+in the case, because a fake statement usually fails on several independent layers at once: the metadata, the running balance, the transaction patterns, and the visible consistency of the document itself.
+ 
+---
+ 
+The submitted statement is shown below, captured from the actual PDF file (which is also attached). It uses a single amount column, where income is + and spending is −:
+ 
+![Fake Emirates First Bank statement screenshot](images/doc-6-bank-statement.png)
+ 
+On the submitted PDF, the final row (28 March) is set in a different font and weight from the rest of the statement. The same row misspells "Incoming" as "Incomming" and drops the thousands separator that 
+every other row uses, showing 25000 and 43000 rather than 25,000 and 43,000. An automated banking system renders every figure in one consistent font and one consistent number format, so a row that differs in font, spelling, and formatting was typed in by hand. This is the same font-consistency check used on the utility bill in Document 5, applied here to the exact row the forger edited: the large incoming transfer added 
+to support the deposit.
+
+---
+ 
+#### Step 1 - PDF metadata (the fastest check)
+ 
+A genuine bank statement is produced by the bank's core-banking system, and its PDF metadata reflects that. A fake one, edited in Word, reveals itself immediately.
+ 
+The screenshot below shows a real metadata analysis from metadata2go.com. To demonstrate the technique, I created a test PDF in Microsoft Word, edited it once, and analysed it with the same tool 
+I would use on a submitted document. The result shows two separate red flags in a single file.
+ 
+![PDF metadata from metadata2go.com, the fake statement file](images/doc-6-metadata-word-creator.png)
+ 
+> **Note:** The "author" field shows "Andrey" because this is a test file I created specifically to demonstrate the forensic method. In a real case the author field would show the name of the person who fabricated
+> the document, which is itself a red flag. The key indicators are `creator_tool` and `producer`, both showing Microsoft® Word for Microsoft 365, not a banking system.
+ 
+```
+Metadata          Expected (genuine statement)               Found in this file
+creator_tool  :   Core-banking PDF engine                    Microsoft Word for Microsoft 365       ← RED FLAG
+producer      :   Adobe PDF Library / banking system         Microsoft Word for Microsoft 365       ← RED FLAG
+creator       :   none (system-generated)                    Andrey (a personal windows username)   ← RED FLAG
+create_date   :   matches the printed statement date         2026:06:09 17:30:02 (matches it)       ✓ consistent here
+modify_date   :   identical to create_date                   2026:06:09 17:37:15 (7 minutes later)  ← RED FLAG (edited)
+language      :   English or Arabic (UAE bank)               ru (Russian)                           ← minor indicator
+```
+ 
+A "bank statement" whose creator and producer are Microsoft Word was written in Word, not by a banking system. This is a 30-second check that catches the majority of fake financial documents. 
+In this file the `create_date`, 2026:06:09 17:30:02, matches the generation date printed on the statement, 09.06.2026 at 17:30, so that particular check is consistent. A careful forger sets the printed date 
+to match the file. The document is exposed by two other signals. First, the `creator` and `producer` are Microsoft Word for Microsoft 365, which a banking system would never produce. 
+Second, the `modify_date`, 17:37:15, is seven minutes later than the `create_date`, which proves the file was opened and edited after it was created. A genuine statement is generated once and is never edited, so 
+its create and modify dates are identical. Either signal on its own is enough to reject the document. The metadata carries smaller tells in the same direction: the author is a personal name rather than 
+a banking system, the document language is set to Russian, and the `create_date` offset is +02:00 (Central European) rather than the +04:00 offset a UAE bank would use.
+ 
+> **Note:** I created and edited the fake statement myself in Microsoft Word to demonstrate the method. The metadata report was generated automatically by metadata2go.com from that file, not written by me.
+> Both are attached in this repository: the statement, [fake bank statement](attachments/doc-6-bank-statement.pdf), and its [metadata extraction](attachments/doc-6-bank-statement-metadata.pdf).
+ 
+---
+ 
+#### Step 2 - Balance arithmetic
+ 
+This is the second most common mistake forgers make. They edit a number and forget to recompute the running balance. I verify the statement above.
+ 
+```
+17 Mar  Card payment  -300
+Balance before: 16,000
+16,000 - 300 = 15,700
+Statement shows: 16,000     ← the 300 debit is not reflected
+```
+ 
+The running balance does not add up. The 17 March debit of AED 300 is not reflected, so the balance stays at 16,000 instead of falling to 15,700, and every later line is then 300 too high.
+A real banking system never makes an arithmetic error, so this discrepancy is proof of manual manipulation.
+ 
+---
+ 
+#### Step 3 - Transaction patterns
+ 
+Real accounts show varied, human spending. Fake statements appear too clean.
+- Only round numbers, whereas real life includes amounts such as 47.32, not only 200
+- No small everyday transactions, such as coffee, groceries, transport, and subscriptions
+- A salary amount inconsistent with the stated annual income (here AED 10,000 per month, about AED 120,000 per year, does not match the AED 300,000 annual income stated on the application)
+- A large unexplained "transfer in" just before the period ends, sized to support the deposit
+  
+---
+ 
+#### Step 4 - IBAN and bank format
+ 
+I check that the IBAN format is valid for the UAE (country code AE, correct length) and that the bank code maps to the bank named on the statement. 
+A mismatch between the claimed bank and the IBAN's bank code is a red flag.
+ 
+---
+ 
+#### Red flags
+ 
+| Red flag | Type | Severity |
+|---|---|---|
+| PDF creator = Microsoft Word | Document integrity | 🔴 CRITICAL |
+| Modify date later than create date (file edited after creation) | Tampering evidence | 🔴 CRITICAL |
+| Running balance does not add up (300 error) | Mathematical inconsistency | 🔴 CRITICAL |
+| Edited row in a different font, with a misspelling and no thousands separator | Manual editing | 🔴 HIGH |
+| Salary inconsistent with stated income | Profile mismatch | 🔴 HIGH |
+| Only round-number transactions, no small spending | Unrealistic pattern | 🟡 MEDIUM |
+| Large unexplained transfer-in sized to the deposit | Fabricated support | 🟡 MEDIUM |
+ 
+---
+ 
+#### Decision & Action
+ 
+❌ **REJECT** the document, because it is forged. The action path is as follows:
+- **Reject.** Inform the customer that the document cannot be accepted, using neutral language.
+- **Request a verifiable replacement.** Ask for the original statement directly from the bank (certified), or through open-banking verification, which uses a direct API and cannot be faked.
+- **Do not reveal** the specific forensic indicators found.
+- **SAR.** File a SAR if the account is already active and the fake statement was provided to explain suspicious funds. If it is a first-time onboarding document with no funds yet, reject and request
+     a genuine statement, but escalate for fraud review. If the account is active, freeze and file a SAR.
+  
+---
+ 
+#### Mock letter to the customer
+ 
+> **Disclaimer:** Fictional letter for educational purposes. Institution and customer details fictional.
+> **Note:** Neutral wording. The customer is asked for a verifiable document through an independent channel. There is no mention of fraud, the specific forensic findings, an investigation, or a SAR, which
+> avoids tipping off.
+ 
+```
+From:    Clear Exchange, Compliance
+To:      Omar K. Haddad
+Subject: Source of funds, additional verification needed
+ 
+Hello,
+ 
+As part of our standard checks, we need to verify the source of funds for recent activity on your account.
+The statement you provided could not be accepted in its current form.
+ 
+To continue, please provide ONE of the following:
+ 
+  - A bank statement obtained directly through our open-banking verification link (fastest, connects securely to your bank)
+  - An official statement issued directly by your bank, covering the last 3 months, showing your name, account number, and transactions
+ 
+Please note that we cannot accept edited, cropped, or self-exported PDF files for this step.
+Until this is completed, some account functions may remain limited.
+ 
+You can start the open-banking verification in your account under Settings, then Source of Funds. If you have questions, reply to this message.
+ 
+Thank you,
+Clear Exchange, Compliance Team
+```
+ 
+#### Key learning
+ 
+Bank-statement metadata is the fastest and most reliable forensic check. A real statement generated by a banking system will never show Microsoft Word as the creator, and its create and modify dates are identical 
+because the file is never edited. A modify date later than the create date confirms a file that was changed after creation. The balance arithmetic is the second check, because forgers edit a number and forget to recompute the running balance across the page.
+ 
+---
