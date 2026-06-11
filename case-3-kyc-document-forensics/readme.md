@@ -325,7 +325,7 @@ The human-readable side was edited, but the machine-readable side was not update
 #### Step 1 - Visual inspection (front)
  
 I compare the front against the official NY DMV sample:
- - Photo placement, fonts, and the NY State background and security print match the template
+- Photo placement, fonts, and the NY State background and security print match the template
 - "Class D" and the date format are correct for NY
 - I check for editing signs around the name, DOB, and photo, such as mismatched fonts, uneven spacing, or a photo that sits incorrectly
 
@@ -499,6 +499,7 @@ How the attacker tries to bypass liveness check:
 - **Virtual camera injection.** Software such as OBS or ManyCam feeds a pre-recorded or generated video into the KYC flow instead of a real webcam.
 - **Replay attack.** A pre-recorded video of the AI face nodding and blinking.
 - **Real-time deepfake.** AI generates the face live during the check.
+  
 How liveness detection catches it:
  - **Motion blur analysis.** Genuine head movement produces physically correct blur that matches the direction and speed of the movement. Deepfakes often show incorrect blur at the face edges,
    or "ghosting", where the face briefly doubles during a fast turn.
@@ -1132,7 +1133,7 @@ Rationale:      Multiple inconsistencies that the customer's documents do not re
                 the SAR addresses the suspicion, which exists independently of whether the customer is ultimately onboarded.
  
 Analyst:        A. Kotsyk
-Escalated to:   Senior AML Officer / MLRO
+Escalated to:   Senior AML Officer
 Next action:    SOW RFI issued; prepare SAR. If the RFI response does not resolve the inconsistencies, decline and offboard.
 Tipping off:    Customer not informed of the SAR or any suspicion (31 U.S.C. § 5318(g)(2)). The RFI is worded neutrally.
 ```
@@ -1141,5 +1142,142 @@ Tipping off:    Customer not informed of the SAR or any suspicion (31 U.S.C. § 
  
 Synthetic identities pass document checks but fail the coherence test. The most reliable single signal is the gap between stated income and claimed wealth, supported by the absence of any real-world footprint.
 I catch these by reasoning about the whole person, not by inspecting one document.
+ 
+---
+
+## Part 4 - Sanctions Screening
+ 
+This is the final gate before onboarding. Every customer is screened against sanctions lists. Two outcomes matter most and are the two hardest to handle correctly: the false positive, a name collision that
+I must clear and document, and the true positive, a real designated party that I must freeze and report. Getting these two right, and knowing the difference, is a core compliance skill.
+
+Sanctions screening does not run alone. At onboarding it runs alongside PEP screening and adverse-media screening, which together form the standard screening set. This part covers sanctions. 
+PEP screening and the OSINT workflow that supports it are covered in the last document #10.
+ 
+### Document 8 - Sanctions False Positive (Saudi Arabia)
+ 
+**Document type:** Passport, Kingdom of Saudi Arabia
+
+**Specimen reference:** PRADO SAU-AO-02001 - https://www.consilium.europa.eu/prado/en/SAU-AO-02001/index.html
+ 
+![Saudi Arabian passport (PRADO specimen)](images/doc-8-saudi-passport.png)
+ 
+*Specimen source: PRADO (Council of the EU), document SAU-AO-02001. Public reference document.*
+ 
+#### The scenario
+ 
+A Saudi customer, **Mohammed Al-Rashid**, submits a clean passport and passes document checks. However, the name triggers a sanctions screening alert: an 87% fuzzy match against an OFAC SDN entry, "Muhammad Al-Rasheed". I now have to decide whether this is the same person (a true positive) or a name collision (a false positive).
+ 
+Common Arabic names produce many false positives because of transliteration. Mohammed, Muhammad, Mohamad, and Mohammad are all the same name in Latin script, and screening systems flag them against each other.
+
+---
+
+#### Step 1 - Understand why the alert fired (fuzzy matching)
+ 
+Screening does not use exact matching. It uses fuzzy matching to catch transliterations and typos. There are three algorithms, usually combined with different weights (this depends on internal policies and procedures).
+ 
+| Algorithm | Measures | Example |
+|---|---|---|
+| **Levenshtein** | Minimum single-character edits | RASHID → RASHEED = 2 edits |
+| **Jaro-Winkler** | Similarity, weighted to the prefix | MOHAMMED vs MUHAMMAD ≈ high |
+| **Soundex** | Phonetic (sounds-like) code | RASHID / RASHEED → similar code |
+ 
+```
+Levenshtein similarity = 1 - (editDistance / maxLen)
+RASHID vs RASHEED:
+  RASHID  (6) -> RASHEED (7):  insert E, change D position -> ~2 edits
+  similarity = 1 - (2/7) = 0.71
+ 
+Combined score (illustrative weights):
+  0.5 × JaroWinkler + 0.3 × Levenshtein + 0.2 × Soundex
+  -> 0.87  (87%)  -> lands in the 80-94% "alert" band -> analyst review
+```
+ 
+The three algorithms and the exact weights above are illustrative. In a real institution the screening engine's algorithms, weights, and thresholds are defined in internal procedures and tuned by the
+compliance team to its risk appetite, so I am not free to invent them for each case. I use these values here only to show how a combined fuzzy score is built and why an 87% result lands in the review band.
+ 
+87% is high enough to raise an alert, but it is not an automatic confirmed match. It must be reviewed by a human, which is my role.
+
+---
+
+#### Step 2 - Disambiguate using identifiers
+ 
+A name match is not a person match. I compare the identifiers, which is where true and false positives separate.
+ 
+| Identifier | My customer | OFAC SDN entry | Match? |
+|---|---|---|---|
+| Name | Mohammed Al-Rashid | Muhammad Al-Rasheed | ~ fuzzy |
+| Date of birth | 12 Aug 1990 | 03 Feb 1972 | ❌ No |
+| Nationality | Saudi Arabia | Iran | ❌ No |
+| Passport number | (Saudi, valid) | (different) | ❌ No |
+| Listed program | - | IRGC-related | - |
+ 
+The dates of birth are 18 years apart. The nationality is different. The passport numbers do not match. These are different people who happen to have similar names.
+
+---
+
+#### Step 3 - Document the decision
+ 
+This is the part that juniors get wrong. Clearing a sanctions alert is acceptable, but only if I document the disambiguation. I record exactly which identifiers differ and why I concluded that it is not a match.
+The full note follows.
+ 
+```
+Alert ID:        SCR-2026-00xxx
+Customer:        Mohammed Al-Rashid (onboarding)
+Screening list:  OFAC SDN
+Alert type:      Name fuzzy match, 87%
+ 
+Matched against:    SDN entry "Muhammad Al-Rasheed" (Iranian national, IRGC-related program)
+ 
+Review conducted, identifier comparison:
+  Field           Customer               SDN entry           Match
+  ----------------------------------------------------------------
+  Name            Mohammed Al-Rashid    Muhammad Al-Rasheed  fuzzy (87%)
+  Date of birth   12 Aug 1990           03 Feb 1972          NO (18 yrs)
+  Nationality     Saudi Arabia          Iran                 NO
+  Passport no.    (Saudi, valid)        (different)          NO
+  Place of birth  Riyadh, SA            (Iran)               NO
+ 
+Decision:       FALSE POSITIVE. Clear the alert.
+ 
+Rationale:      Name similarity is driven by common Arabic-name transliteration (Mohammed/Muhammad, Rashid/Rasheed).
+                All distinguishing identifiers differ: DOB by 18 years, nationality, passport number, and place of birth.
+                These are different individuals. No freeze, no SAR, no OFAC report.
+ 
+Outcome:        Customer cleared on the sanctions check. Onboarding continues subject to the rest of CDD.
+ 
+Analyst:        A. Kotsyk
+Reviewed by:    (sanctions lead, per 4-eyes policy on alert closures)
+Date:           2026-06-xx
+```
+ 
+A four-eyes check, where a second reviewer signs off on the closure, is common practice for sanctions alerts, because clearing one incorrectly is a serious error that entails significant legal consequences.
+
+---
+
+#### Red flags / resolution
+ 
+| Check | Result |
+|---|---|
+| Name similarity | 87% (alert) |
+| DOB match | ❌ 18 years apart |
+| Nationality match | ❌ Saudi vs Iran |
+| Passport match | ❌ different |
+| Conclusion | **False positive** |
+
+---
+
+#### Decision
+ 
+✅ **CLOSE AS FALSE POSITIVE AND DOCUMENT.**
+ 
+No freeze, no SAR, and no report. The customer can be onboarded, subject to the rest of CDD. However, I write a clear disposition note: the name matched at 87%, but the match is ruled out on DOB, nationality,
+and passport number. If a regulator ever asks why I cleared a sanctions alert, the answer is on file.
+
+---
+
+#### Key learning
+ 
+A name is not a person. Between 85 and 95% of sanctions alerts are false positives, and they are cleared on identifiers: DOB, nationality, document number, and place of birth.
+The skill is not only clearing them, but documenting the disambiguation so the decision is auditable. I never silently close a sanctions alert.
  
 ---
