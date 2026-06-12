@@ -1375,8 +1375,11 @@ Block the funds, restrict the account, escalate immediately, file the OFAC block
 > **Disclaimer:** Fictional SAR for educational purposes. Institution and subject details are fictional.
  
 **Filing institution:** Clear Exchange Ltd. (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
+
 **Date of report:** June 20, 2026
+
 **Subject:** name as submitted, confirmed match to an OFAC SDN designation; Account XXX-XXXXXX; nationality Russian Federation; SDN List, active designation under E.O. 14024; funds blocked and account restricted
+
 **Prior SARs on subject:** none on file
  
 **Narrative**
