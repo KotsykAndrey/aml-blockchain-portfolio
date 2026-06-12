@@ -1383,3 +1383,21 @@ Block the funds, restrict the account, escalate immediately, file the OFAC block
 **Prior SARs on subject:** none on file
  
 **Narrative**
+
+Clear Exchange Ltd. files this report to document an attempt by a designated party to open and fund an account, and to record the resulting blocking of property. The institution reports the conduct because 
+the customer is an individual on the OFAC Specially Designated Nationals (SDN) List, and any dealing with that individual's property is prohibited.
+ 
+On June 19, 2026, the customer attempted to onboard and to fund the account. During screening, the institution's sanctions system returned a high-confidence match against the SDN List. The compliance system 
+automatically held the inbound deposit, in the amount of [amount], at 11:02 UTC on the same day, and the account was restricted shortly afterwards. An analyst then reviewed the alert and confirmed the match against multiple identifiers. The full name, the date of birth, the nationality, and the passport number all aligned with the designated individual, which distinguished this case from a name-only false positive. 
+The individual is designated under Executive Order 14024, the authority that addresses harmful foreign activities of the Government of the Russian Federation.
+ 
+Because the match was confirmed, the held deposit constitutes blocked property under the relevant OFAC program. The funds were not returned to the customer and were not processed further. The institution understands that Russia is subject to sectoral and targeted measures rather than a comprehensive embargo, but this does not affect the outcome, because the individual is named on the SDN List and is therefore fully blocked regardless of the broader program.
+ 
+The institution blocked the funds, restricted the account, and escalated the case to the compliance officer on the same day. It will file the required blocking report with OFAC within ten business days of the blocking, which is a separate obligation under sanctions law and is distinct from this report. The funds remain blocked pending instruction from OFAC. The institution will cooperate fully with OFAC and with law enforcement, and any linked accounts or related parties will be screened and escalated. The institution did not inform the customer that this report was filed, and any communication with the customer was limited to a neutral statement that the account is under review.
+ 
+Point of contact: AML Compliance Officer, Clear Exchange Ltd.
+ 
+**END OF MOCK SAR**
+ 
+---
+ 
