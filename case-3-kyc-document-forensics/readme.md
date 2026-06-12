@@ -1281,3 +1281,102 @@ A name is not a person. Between 85 and 95% of sanctions alerts are false positiv
 The skill is not only clearing them, but documenting the disambiguation so the decision is auditable. I never silently close a sanctions alert.
  
 ---
+
+### Document 9 - Sanctions True Positive (Russian - SDN Match)
+ 
+**Document type:** Passport, Russian Federation
+
+**Specimen reference:** PRADO RUS-AO-03003 - https://www.consilium.europa.eu/prado/en/RUS-AO-03003/index.html
+ 
+![Russian passport (PRADO specimen)](images/doc-9-russia-passport.png)
+ 
+*Specimen source: PRADO (Council of the EU), document RUS-AO-03003. Public reference document.*
+ 
+#### The scenario
+ 
+A Russian customer submits a genuine passport. Sanctions screening returns a high-confidence match, and unlike Document 8, the identifiers confirm it. The applicant is an individual on the OFAC SDN List,
+designated under Executive Order 14024, the authority used for harmful foreign activities of the Government of the Russian Federation.
+This is a true positive, and it must be handled as a hard stop: freeze, escalate, and report.
+ 
+I also use this case to show the difference between sectoral and comprehensive sanctions, because it explains why an SDN designation overrides the fact that Russia is not under a full embargo.
+
+---
+
+#### Step 1 - Confirm the match on identifiers
+ 
+| Identifier | My customer | Sanctions list entry | Match? |
+|---|---|---|---|
+| Name | (as submitted) | (SDN-designated person) | ✅ |
+| Date of birth | 08.08.1956 | 08.08.1956 | ✅ |
+| Nationality | Russian | Russian | ✅ |
+| Passport / ID | 520036019 | 520036019 | ✅ |
+| List / authority | - | OFAC SDN, E.O. 14024 | - |
+ 
+The name, the date of birth, the nationality, and the document number all align. This is not a collision. It is the same person, on the SDN List. This is a confirmed true positive.
+ 
+*The date of birth and passport number shown here are fictional placeholders used only to demonstrate identifier matching. They do not correspond to a real individual.*
+
+---
+
+#### Step 2 - Sectoral vs comprehensive (why the SDN listing is decisive)
+ 
+| | Comprehensive | Sectoral / targeted | SDN designation |
+|---|---|---|---|
+| Scope | Almost all dealings with the jurisdiction prohibited | Only specified sectors or activities restricted | The named person is fully blocked |
+| Example (2026) | Cuba, Iran, North Korea, Crimea/Donetsk/Luhansk | Russia (energy, defence, finance sectors) | This individual, listed under E.O. 14024 |
+ 
+Russia as a country is not comprehensively embargoed. Its program is sectoral, plus thousands of targeted designations. However, an individual on the SDN List is fully blocked regardless of the sectoral framing.
+A junior must not reason that "Russia is only sectoral, so it is fine". The designation is on the person, and all of their property and dealings are blocked.
+
+---
+
+#### Step 3 - Act: freeze, do not return
+ 
+On a confirmed match I do the following:
+- **Block the funds or transaction immediately.** Do not process them and do not return them to the customer.
+- Restrict the account.
+- Escalate to the compliance officer or MLRO at once.
+- Do not tell the customer that it is a sanctions match in a way that tips off an investigation.
+
+---
+
+#### Step 4 - Report (two separate obligations)
+ 
+| Obligation | What | Deadline |
+|---|---|---|
+| **OFAC blocking report** | Report the blocked property to OFAC | Within 10 business days |
+| **SAR** | Suspicious activity report to FinCEN | Within 30 calendar days of detection |
+ 
+These are two different legal duties under two different laws. Filing one does not satisfy the other.
+
+---
+
+#### Red flags / resolution
+ 
+| Check | Result |
+|---|---|
+| Name match | ✅ |
+| DOB match | ✅ |
+| Nationality + document match | ✅ |
+| Conclusion | **True positive, confirmed designated party** |
+
+---
+
+#### Decision
+ 
+🔴 **FREEZE + SAR + OFAC REPORT.**
+ 
+Block the funds, restrict the account, escalate immediately, file the OFAC blocking report within 10 business days, and file a SAR. See the mock SAR below.
+ 
+---
+ 
+#### Mock SAR #2 - Sanctions True Positive
+ 
+> **Disclaimer:** Fictional SAR for educational purposes. Institution and subject details are fictional.
+ 
+**Filing institution:** Clear Exchange Ltd. (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
+**Date of report:** June 20, 2026
+**Subject:** name as submitted, confirmed match to an OFAC SDN designation; Account XXX-XXXXXX; nationality Russian Federation; SDN List, active designation under E.O. 14024; funds blocked and account restricted
+**Prior SARs on subject:** none on file
+ 
+**Narrative**
