@@ -267,9 +267,9 @@ The laser-perforated number is a further data point on the passport itself. In t
 - **Reject and issue an RFI.** Decline the document and request a clean re-submission of the original passport, together with a second independent identity document.
 - **Verify.** Re-run sanctions and adverse-media screening on the verified identity, and flag the profile as HIGH RISK pending verification.
 - **Escalate.** Route the case to a senior analyst with the findings if the re-submission also fails or if anything else is suspicious.
-- **SAR.** File a SAR if funds were already deposited before this review, or if the case matches a pattern of similar fraudulent applications. A tampered document with no funds is normally a rejection
-  and an internal fraud note. A tampered document attached to funds already on the platform is a SAR (see the note on attempted-onboarding SAR thresholds in Part 1).
-- If the customer cannot produce a valid document, offboard and file a SAR.
+- **SAR.** Recommend filing a SAR if funds were already deposited before this review, or if the case matches a pattern of similar fraudulent applications. A tampered document with no funds is normally a rejection
+  and an internal fraud note. A tampered document attached to funds already on the platform warrants a SAR (see the note on attempted-onboarding SAR thresholds in Part 1).
+- If the customer cannot produce a valid document, offboard and recommend filing a SAR.
 
 ---
 
@@ -390,8 +390,8 @@ Separately, the card is a Standard licence, marked "Not for Federal Purposes". T
 - **Reject and issue an RFI.** Request the original document and a second independent ID (a passport).
 - **Verify.** Re-scan the barcode at higher quality to confirm that the mismatch is real and not caused by a poor image, and flag the profile as HIGH RISK.
 - **Escalate.** Route the case to a senior analyst if the re-submission also fails or if other red flags appear.
-- **SAR.** File a SAR if funds were already deposited, or if the edited licence is part of a wider fraud pattern (the same threshold logic as Document 1).
-- If the customer cannot produce a consistent document, offboard and file a SAR.
+- **SAR.** Recommend filing a SAR if funds were already deposited, or if the edited licence is part of a wider fraud pattern (the same threshold logic as Document 1).
+- If the customer cannot produce a consistent document, offboard and recommend filing a SAR.
 
 ---
 
@@ -674,14 +674,14 @@ Review conducted:
   - Cross-platform: same passport linked to a different face elsewhere
   - No innocent explanation for an authentic document with a wrong face
  
-Decision:       REJECT onboarding and FILE a SAR.
+Decision:       REJECT onboarding. Recommend filing a SAR (MLRO approval required).
  
 Rationale:      Use of a genuine third party's identity document by a different person is deliberate identity fraud.
                 The true holder may be a victim, and the activity is reportable.
  
 Analyst:        A. Kotsyk
 Escalated to:   Senior AML Officer / MLRO
-Next action:    Reject. Preserve device fingerprint and submitted image hash. File the SAR. Watch for re-attempts on the same identifiers.
+Next action:    Reject. Preserve device fingerprint and submitted image hash. SAR recommended to the MLRO. Watch for re-attempts on the same identifiers.
 Tipping off:    Applicant not told a SAR was filed (31 U.S.C. § 5318(g)(2)).
 ```
  
@@ -793,7 +793,7 @@ independent one, which a legitimate customer can do easily. I do not accept the 
 - Issue a Request for Information (RFI) asking for a second, independent proof of address.
 - Do not verify the address until it is confirmed from an independent source.
 - If the customer provides a clean document, proceed. The original is noted but set aside.
-- If the customer refuses, delays, or sends another forged document, escalate and file a SAR, especially if funds are already on the platform.
+- If the customer refuses, delays, or sends another forged document, escalate and recommend filing a SAR, especially if funds are already on the platform.
 - If the forgery is combined with other red flags, such as a suspect identity or suspicious funds, escalate immediately rather than only requesting more.
 
 ---
@@ -943,8 +943,8 @@ A mismatch between the claimed bank and the IBAN's bank code is a red flag.
 - **Reject.** Inform the customer that the document cannot be accepted, using neutral language.
 - **Request a verifiable replacement.** Ask for the original statement directly from the bank (certified), or through open-banking verification, which uses a direct API and cannot be faked.
 - **Do not reveal** the specific forensic indicators found.
-- **SAR.** File a SAR if the account is already active and the fake statement was provided to explain suspicious funds. If it is a first-time onboarding document with no funds yet, reject and request
-     a genuine statement, but escalate for fraud review. If the account is active, freeze and file a SAR.
+- **SAR.** Recommend filing a SAR if the account is already active and the fake statement was provided to explain suspicious funds. If it is a first-time onboarding document with no funds yet, reject and
+     request a genuine statement, but escalate for fraud review. If the account is active, freeze and recommend filing a SAR.
   
 ---
  
@@ -1125,17 +1125,17 @@ Review conducted:
   - Passport verified (MRZ valid); transliteration variant noted, not a flag
   - Address exists, commercial
  
-Decision:       ESCALATE. Apply EDD AND file a SAR.
+Decision:       ESCALATE. Apply EDD and recommend filing a .
                 EDD: SOW RFI issued (see above) requesting full documentary evidence, each component independently verified; senior sign-off required before any onboarding.
-                SAR: profile is consistent with a synthetic identity used to move undisclosed funds, reasonable grounds to suspect.
+                : profile is consistent with a synthetic identity used to move undisclosed funds, reasonable grounds to suspect.
  
 Rationale:      Multiple inconsistencies that the customer's documents do not resolve. EDD addresses the onboarding question;
-                the SAR addresses the suspicion, which exists independently of whether the customer is ultimately onboarded.
+                the  addresses the suspicion, which exists independently of whether the customer is ultimately onboarded.
  
 Analyst:        A. Kotsyk
-Escalated to:   Senior AML Officer
-Next action:    SOW RFI issued; prepare SAR. If the RFI response does not resolve the inconsistencies, decline and offboard.
-Tipping off:    Customer not informed of the SAR or any suspicion (31 U.S.C. § 5318(g)(2)). The RFI is worded neutrally.
+Escalated to:   Senior AML Officer / MLRO
+Next action:    SOW RFI issued; compile case file and escalate for the  assessment. If the RFI response does not resolve the inconsistencies, decline and offboard.
+Tipping off:    Customer not informed of the  or any suspicion (31 U.S.C. § 5318(g)(2)). The RFI is worded neutrally.
 ```
  
 #### Key learning
@@ -1189,7 +1189,7 @@ RASHID vs RASHEED:
  
 Combined score (illustrative weights):
   0.5 × JaroWinkler + 0.3 × Levenshtein + 0.2 × Soundex
-  -> 0.87  (87%)  -> lands in the 80-94% "alert" band -> analyst review
+  -> 0.87  (87%)  -> lands in the 80%-94% "alert" band -> analyst review
 ```
  
 The three algorithms and the exact weights above are illustrative. In a real institution the screening engine's algorithms, weights, and thresholds are defined in internal procedures and tuned by the
@@ -1241,7 +1241,7 @@ Decision:       FALSE POSITIVE. Clear the alert.
  
 Rationale:      Name similarity is driven by common Arabic-name transliteration (Mohammed/Muhammad, Rashid/Rasheed).
                 All distinguishing identifiers differ: DOB by 18 years, nationality, passport number, and place of birth.
-                These are different individuals. No freeze, no SAR, no OFAC report.
+                These are different individuals. No freeze, no , no OFAC report.
  
 Outcome:        Customer cleared on the sanctions check. Onboarding continues subject to the rest of CDD.
  
@@ -1270,7 +1270,7 @@ A four-eyes check, where a second reviewer signs off on the closure, is common p
  
 ✅ **CLOSE AS FALSE POSITIVE AND DOCUMENT.**
  
-No freeze, no SAR, and no report. The customer can be onboarded, subject to the rest of CDD. However, I write a clear disposition note: the name matched at 87%, but the match is ruled out on DOB, nationality,
+No freeze, no , and no report. The customer can be onboarded, subject to the rest of CDD. However, I write a clear disposition note: the name matched at 87%, but the match is ruled out on DOB, nationality,
 and passport number. If a regulator ever asks why I cleared a sanctions alert, the answer is on file.
 
 ---
@@ -1345,7 +1345,7 @@ On a confirmed match I do the following:
 | Obligation | What | Deadline |
 |---|---|---|
 | **OFAC blocking report** | Report the blocked property to OFAC | Within 10 business days |
-| **SAR** | Suspicious activity report to FinCEN | Within 30 calendar days of detection |
+| **** | Suspicious activity report to FinCEN | Within 30 calendar days of detection |
  
 These are two different legal duties under two different laws. Filing one does not satisfy the other.
 
@@ -1364,15 +1364,15 @@ These are two different legal duties under two different laws. Filing one does n
 
 #### Decision
  
-🔴 **FREEZE + SAR + OFAC REPORT.**
+🔴 **FREEZE +  + OFAC REPORT.**
  
-Block the funds, restrict the account, escalate immediately, file the OFAC blocking report within 10 business days, and file a SAR. See the mock SAR below.
+Block the funds, restrict the account, escalate immediately, file the OFAC blocking report within 10 business days, and file a . See the mock  below.
  
 ---
  
-#### Mock SAR #2 - Sanctions True Positive
+#### Mock  #2 - Sanctions True Positive
  
-> **Disclaimer:** Fictional SAR for educational purposes. Institution and subject details are fictional.
+> **Disclaimer:** Fictional  for educational purposes. Institution and subject details are fictional.
  
 **Filing institution:** Clear Exchange Ltd. (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
 
@@ -1380,7 +1380,7 @@ Block the funds, restrict the account, escalate immediately, file the OFAC block
 
 **Subject:** name as submitted, confirmed match to an OFAC SDN designation; Account XXX-XXXXXX; nationality Russian Federation; SDN List, active designation under E.O. 14024; funds blocked and account restricted
 
-**Prior SARs on subject:** none on file
+**Prior s on subject:** none on file
  
 **Narrative**
 
@@ -1397,14 +1397,14 @@ The institution blocked the funds, restricted the account, and escalated the cas
  
 Point of contact: AML Compliance Officer, Clear Exchange Ltd.
  
-**END OF MOCK SAR**
+**END OF MOCK **
  
 ---
 
 #### Mock letter to the customer
  
 > **Disclaimer:** Fictional letter for educational purposes. Institution and customer details fictional.
-> **Note:** This is the hardest message to word correctly. The account is restricted because of a confirmed sanctions match, but the letter must be strictly neutral. It cannot mention sanctions, a SAR, OFAC, an
+> **Note:** This is the hardest message to word correctly. The account is restricted because of a confirmed sanctions match, but the letter must be strictly neutral. It cannot mention sanctions, a , OFAC, an
 > investigation, or law enforcement. Saying any of this risks unlawful tipping off and can prejudice enforcement. It only states, in general terms, that the account is under review.
  
 ```
@@ -1425,7 +1425,7 @@ Thank you for your understanding.
 Clear Exchange, Compliance Team
 ```
  
-> Note what the letter does not say. It says nothing about a sanctions hit, a SAR, OFAC, or any investigation. It commits only to a neutral "under review" status and a promise to follow up, which
+> Note what the letter does not say. It says nothing about a sanctions hit, a , OFAC, or any investigation. It commits only to a neutral "under review" status and a promise to follow up, which
 > is the maximum that can be said without tipping off.
  
 ---
@@ -1436,7 +1436,7 @@ Clear Exchange, Compliance Team
 flowchart TD
     A["Screening alert<br>(fuzzy match to sanctions list)"] --> B{"Name similarity<br>score?"}
     B -->|"< 80%"| C["Low / no match<br>Document &amp; close"]
-    B -->|"80-94%"| D["Analyst review<br>compare identifiers"]
+    B -->|"80%-94%"| D["Analyst review<br>compare identifiers"]
     B -->|"95%+"| D
     D --> E{"Do identifiers match?<br>DOB · nationality · ID"}
     E -->|"No, identifiers differ"| F["FALSE POSITIVE<br>Close + document disambiguation"]
