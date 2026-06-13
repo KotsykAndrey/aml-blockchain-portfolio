@@ -1277,7 +1277,7 @@ and passport number. If a regulator ever asks why I cleared a sanctions alert, t
 
 #### Key learning
  
-A name is not a person. Between 85 and 95% of sanctions alerts are false positives, and they are cleared on identifiers: DOB, nationality, document number, and place of birth.
+A name is not a person. Between 85% and 95% of sanctions alerts are false positives, and they are cleared on identifiers: DOB, nationality, document number, and place of birth.
 The skill is not only clearing them, but documenting the disambiguation so the decision is auditable. I never silently close a sanctions alert.
  
 ---
