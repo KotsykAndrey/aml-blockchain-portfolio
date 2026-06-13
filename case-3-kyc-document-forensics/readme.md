@@ -1400,4 +1400,58 @@ Point of contact: AML Compliance Officer, Clear Exchange Ltd.
 **END OF MOCK SAR**
  
 ---
+
+#### Mock letter to the customer
+ 
+> **Disclaimer:** Fictional letter for educational purposes. Institution and customer details fictional.
+> **Note:** This is the hardest message to word correctly. The account is restricted because of a confirmed sanctions match, but the letter must be strictly neutral. It cannot mention sanctions, a SAR, OFAC, an
+> investigation, or law enforcement. Saying any of this risks unlawful tipping off and can prejudice enforcement. It only states, in general terms, that the account is under review.
+ 
+```
+From:    Clear Exchange, Compliance
+To:      (customer)
+Subject: Your account is currently under review
+ 
+Hello,
+ 
+We are writing to let you know that your account is currently under review as part of our standard compliance procedures.
+While this review is ongoing, access to your account and related functions is temporarily restricted.
+ 
+We are not able to share details about the review at this stage. We understand that this may be inconvenient, and we are handling the matter
+as quickly as we can. We will contact you with any update, or with any further information we may require from you.
+ 
+Thank you for your understanding.
+ 
+Clear Exchange, Compliance Team
+```
+ 
+> Note what the letter does not say. It says nothing about a sanctions hit, a SAR, OFAC, or any investigation. It commits only to a neutral "under review" status and a promise to follow up, which
+> is the maximum that can be said without tipping off.
+ 
+---
+ 
+## Sanctions Screening Workflow
+ 
+```mermaid
+flowchart TD
+    A["Screening alert<br>(fuzzy match to sanctions list)"] --> B{"Name similarity<br>score?"}
+    B -->|"< 80%"| C["Low / no match<br>Document &amp; close"]
+    B -->|"80-94%"| D["Analyst review<br>compare identifiers"]
+    B -->|"95%+"| D
+    D --> E{"Do identifiers match?<br>DOB · nationality · ID"}
+    E -->|"No, identifiers differ"| F["FALSE POSITIVE<br>Close + document disambiguation"]
+    E -->|"Yes, identifiers align"| G["TRUE POSITIVE"]
+    G --> H["Freeze funds<br>(do not return)"]
+    H --> I["Escalate to senior<br>immediately"]
+    I --> J["File OFAC blocking report<br>(within 10 business days)"]
+    I --> K["File SAR<br>(within 30 calendar days)"]
+ 
+    style A fill:#1A4A3C,color:#fff
+    style F fill:#2A6E54,color:#fff
+    style G fill:#8b0000,color:#fff
+    style H fill:#8b0000,color:#fff
+    style J fill:#555555,color:#fff
+    style K fill:#555555,color:#fff
+```
+
  
