@@ -1478,24 +1478,28 @@ Second, the status is often hidden. A customer can simply tick "not a PEP" on th
  
 *Specimen source: PRADO (Council of the EU), document GEO-AO-04001, integrated biodata card. Public reference document.*
  
-> **Disclaimer:** This scenario is fictional and created only for educational and portfolio purposes. The customer, the company, and all identifiers are invented. The public portals named here are real, but every
-> record and number attributed to them is mock data. PEP status is a neutral public fact, not an accusation. The adverse-media part is a fictional allegation, not a proven fact. No real person is named or targeted.
+> **Disclaimer:** This scenario is fictional and created only for educational and portfolio purposes. The customer (Tornike B. Machaladze) and the company (Iberia Energy Logistics JSC) are invented, and the
+> findings attributed to them are the scenario. The portals named here are real, and the screenshots illustrate those real sources and their format. Where a screenshot shows an actual record, it belongs to
+> an unrelated public official or company and is labelled that way. PEP status is a neutral public fact, not an accusation. No real person is named or targeted.
  
 ---
  
 #### Why Georgia
  
 I set the scenario in Georgia on purpose. Georgia publishes asset declarations of public officials online at declaration.acb.gov.ge (Anti-Corruption Bureau of Georgia), open to anyone. 
-The declarations are in Georgian only. OpenSanctions loads this dataset and treats the declarants as PEPs. So the whole chain of this case runs on sources that anyone can open in a browser. 
-The customer and all records are fictional. The portals are real.
+Most of these government sources have English versions, but the declarations are in Georgian only. OpenSanctions loads this dataset and treats the declarants as PEPs.
+So the whole chain of this case runs on sources that anyone can open in a browser. The customer and the company are fictional. The portals are real, and the screenshots show real sources, using 
+unrelated officials and companies only to demonstrate each format.
 
 ---
 
 #### Note on fictional identity safety
  
-A portfolio case must not damage the reputation of a real person. I applied three safeguards. The customer's name is invented: the surname exists in Georgia, so the scenario stays realistic, but I 
-checked the full name in search engines and OpenSanctions and found no official or PEP with this name as of June 2026. The state-owned company is fictional. Every record "found" on the real portals 
-is mock data, and the document says so.
+A portfolio case must not damage the reputation of a real person. I applied three safeguards. The customer's name is invented: the surname exists in Georgia, so the scenario stays realistic, but I checked the full name in search engines and OpenSanctions and found no official or PEP with this name as of June 2026. The state-owned company is fictional. The screenshots show real sources for format only, and where a real record appears it belongs to an unrelated official or company, labelled as such in the evidence log.
+
+![Name check: no results for the fictional customer](images/doc-10-name-check.png)
+ 
+*Search of OpenSanctions for the invented name "Tornike B. Machaladze" returns no results, confirming the name does not collide with any real official or PEP.*
  
 ---
  
@@ -1527,9 +1531,10 @@ one step away from the official.
  
 A customer, **Tornike B. Machaladze**, a national of Georgia, submits a Georgian passport and onboards on Clear Exchange Ltd. The document checks pass (the template matches the PRADO specimen, and the MRZ is valid), sanctions screening returns no match, and the system opens the account automatically. On the application he writes his occupation as "private investor and consultant", estimates his net worth at about USD 2,000,000, and ticks "I am not a politically exposed person". The PEP alert from screening goes to the manual review queue, because a PEP match never blocks an account automatically. Before the review is complete, he attempts a first deposit of 350,000 USDT, and the transfer is placed on hold pending the review.
  
-PEP screening returns an alert from the OpenSanctions Georgian declarations dataset. The OSINT review below confirms that the customer is the Deputy Director General of a state-owned enterprise, Iberia Energy Logistics JSC (fictional). He is a foreign PEP, and he did not disclose it. An undisclosed status, a salary that cannot explain the claimed wealth, and a large crypto deposit move this case into EDD.
+PEP screening returns an alert from the OpenSanctions Georgian declarations dataset. The OSINT review below confirms that the customer is the Deputy Director General of a state-owned enterprise, Iberia Energy 
+Logistics JSC (fictional). He is a foreign PEP, and he did not disclose it. An undisclosed status, a salary that cannot explain the claimed wealth, and a large crypto deposit move this case into EDD.
  
-*The name, the company, and all records below are fictional. The portals are real.*
+*The customer and the company are fictional, and the findings about them are the scenario. The portals are real, and the screenshots show real sources for format only.*
  
 ---
  
@@ -1544,9 +1549,10 @@ Two facts come out of this step:
   
 As with a sanctions alert, a PEP match is reviewed by a human, not actioned automatically.
  
-![PEP screening, OpenSanctions search](images/doc-10-opensanctions-search.png)
+![OpenSanctions PEP entry](images/doc-10-opensanctions-search.png)
  
-*Screenshot of the OpenSanctions search interface, used to show the source and its format. Any real records visible are unrelated to this fictional scenario.*
+*Screenshot of a real OpenSanctions PEP entry, used to show the record format: name in multiple scripts, classification, positions held, family members (Close Associate tag), and assets. 
+The official shown is unrelated to this fictional scenario.*
  
 ---
  
@@ -1556,7 +1562,7 @@ This is the core of the case. I confirm the status from public sources and build
  
 **The asset declaration.** The portal shows the customer's filing for 2025. The declaration is the strongest document in this case: a primary government source where the official himself states his role, income, and assets.
  
-![Asset declaration page](images/doc-10-asset-declaration.png)
+![Asset declaration, 6 page](images/doc-10-asset-declaration.png)
  
 *Screenshot of declaration.acb.gov.ge, bank accounts section (page 6 of 13). The declaration is in Georgian only. The official shown is unrelated to this fictional scenario.*
  
@@ -1565,7 +1571,98 @@ The mock declaration states:
 - Annual income: GEL 96,000 in salary (about USD 35,000). No other income.
 - Assets: one apartment in Tbilisi, one vehicle, a bank deposit of GEL 40,000.
 - No business interests, no securities, no consulting activity.
-  
+
+The screenshot above is a real declaration shown only to illustrate the format, so its content differs from the scenario. For example, the real declarant holds a business interest, while the fictional Machaladze 
+declares none.
+
 One gap matters here: Georgian declarations do not cover cryptocurrency. Even an honest declaration would not show crypto wealth. This is why the on-chain check in Step 4 cannot be replaced by the declaration.
- 
+
+---
+
 **The evidence log.** Every check is recorded with the date, the source, the finding, its status as fact or allegation, and the saved file. This log is the audit trail.
+ 
+Because the subject and the company are fictional, no genuine record exists for them, so the findings below are the scenario result. The saved files show that the sources and the method are real. 
+Where a file shows an actual record, it belongs to an unrelated public official or company and is used only to demonstrate the source format, and it is labelled that way. One file is a mock artifact built 
+for this case: the wallet risk report.
+ 
+| # | Date | Source | Finding (scenario) | Status | Evidence file |
+|---|---|---|---|---|---|
+| 1 | 14 Jun 2026 | OpenSanctions (Georgian declarations dataset) | PEP alert raised by the internal screening engine, which draws on this dataset. The attached screenshot shows a real Georgian PEP entry on opensanctions.org, demonstrating the record format: name in multiple scripts, birth date, classification, positions held, family members (Close Associate tag), and assets | Fact (source and format verified) | `osint/01-opensanctions-entry.png` (real portal, unrelated official, format) |
+| 2 | 14 Jun 2026 | declaration.acb.gov.ge | Declaration for 2025 (scenario): Deputy Director General, salary GEL 96,000. Note: the real declaration used for format illustration shows a business interest (100% in a private company) and modest bank balances, demonstrating the source structure | Fact (primary source) | `osint/02-declaration.pdf` (real portal, unrelated official, format) |
+| 3 | 14 Jun 2026 | companyinfo.ge (Transparency International Georgia, data from enreg.reestri.gov.ge) | Company information, affiliations, and ownership history shown for an unrelated Georgian company, illustrating the source format | Fact (source format verified) | `osint/03-company-registry-extract.html` + `osint/03-company-registry-extract_files/` (real portal, unrelated company, format) |
+| 4 | 14 Jun 2026 | Ministry of Foreign Affairs of Georgia, Diplomatic Protocol Directorate (mfa.gov.ge) | Official Diplomatic List (May 2026) confirms that MFA publishes diplomatic appointments publicly. Format demonstrates how ambassador-level appointments are verified from a primary government source | Fact (primary source format) | `osint/04-mfa-diplomatic-list.pdf` (real document, format only, unrelated officials) |
+| 5 | 14 Jun 2026 | mfa.gov.ge/en/news + civil.ge | Two independent sources covering a real Georgian senior official (Maka Botchorishvili, Vice PM and FM), demonstrating the media verification workflow: one official press release and one independent outlet | Fact (source format verified) | `osint/05-media-1.png` (mfa.gov.ge, full-page screenshot), `osint/05-media-2.html` + `osint/05-media-2_files/` (civil.ge, unrelated official, format) |
+| 6 | 14 Jun 2026 | TinEye reverse image search | Reverse image search on the applicant's submitted photo returned 385 results across multiple sources (CNN, kobieta.wp.pl, pictame.com), first appeared in March 2015. The photo is a widely distributed stock image unconnected to any individual. In a real case this would be a critical red flag: the applicant submitted a photo that does not belong to them | 🔴 RED FLAG (photo not genuine) | `osint/06-photo-match.png` (real TinEye result) |
+| 7 | 14 Jun 2026 | State Procurement Agency of Georgia (tenders.procurement.gov.ge) | Real tender record (NAT260011912) from the Georgian state procurement portal, demonstrating the interface and data fields available for vendor and procuring entity searches: announcement number, procuring entity, procurement type, estimated value, CPV codes, supplier details | Fact (source format verified) | `osint/07-procurement-vendor.png` (real portal, unrelated state entity, format) |
+| 8 | 14 Jun 2026 | Automated wallet screening | Initial: 64% of inbound value received in direct transfers from a high-risk exchange cluster, full tracing pending | Initial (service-level attribution) | `osint/08-wallet-report.png` (mock report, ChainScope, fictional data) |
+ 
+At the end of this step the status is confirmed on several independent primary sources: the customer is a foreign PEP, and he did not disclose it.
+ 
+The reverse image search on the submitted photo returned 385 results across multiple sources, with the earliest appearance in March 2015. The photo is a widely distributed image with no connection to any individual. In a real case this is a critical red flag on its own: the applicant did not submit their own photo.
+ 
+![Reverse image search, TinEye result](images/doc-10-tineye-result.png)
+ 
+*TinEye reverse image search result. 385 results returned, first appeared in March 2015, sources include CNN and multiple stock image sites. The photo submitted by the applicant is not genuine.*
+
+---
+
+![Company registry search, companyinfo.ge](images/doc-10-company-info.png)
+ 
+*Screenshot of companyinfo.ge (Transparency International Georgia), showing company information and ownership affiliations sourced from the official Georgian Public Registry (enreg.reestri.gov.ge). 
+The company shown is unrelated to this fictional scenario.*
+
+---
+
+![Procurement portal search](images/doc-10-procurement-search.png)
+ 
+*Screenshot of the Georgian state procurement portal (tenders.procurement.gov.ge), showing a real tender record. An analyst uses this portal to check government contracts and suppliers linked to a PEP. 
+The entity shown is unrelated to this fictional scenario.*
+ 
+---
+ 
+#### Step 3 - Classification
+ 
+The customer is a senior executive of a state-owned enterprise. From the perspective of Clear Exchange Ltd., he is a foreign PEP, because Georgia is not the institution's home jurisdiction. EDD is mandatory. The classification does not depend on any suspicion. The status alone sets the requirement.
+ 
+If the OSINT had shown that the customer was the spouse, child, or close business partner of the official instead, the outcome would be the same. An RCA is treated as the PEP.
+ 
+---
+ 
+#### Step 4 - Enhanced Due Diligence
+ 
+EDD answers two questions, and both now have numbers in them.
+ 
+- **Source of wealth.** The customer claims about USD 2,000,000 from "investments and consulting". His own declaration shows a salary of about USD 35,000 per year and lists no investments and no consulting.
+The primary source does not support the wealth story. The gap must be evidenced by documents, or it remains unexplained wealth.
+- **Source of funds.** The attempted deposit of 350,000 USDT equals roughly ten years of the entire declared gross salary. The declaration does not cover crypto at all, so the on-chain check is the only way to see this   part. The transfer is on hold, so I can review the funding wallet before the funds are accepted. Automated wallet screening shows that 64% of the inbound value was received in direct transfers from a high-risk exchange cluster with weak KYC controls. This pattern is consistent with buying crypto for cash at services that do not identify their customers. This is an initial finding, and full tracing is pending. I attribute the cluster to a service, not to a named private individual, because on-chain attribution in this portfolio stops at the service level and does not target real private persons.
+  
+![Wallet risk screening, mock report](images/doc-10-wallet-risk-report.png)
+ 
+*Mock report (fictional tool "ChainScope", fictional data), modeled on the format of commercial wallet-screening tools such as Chainalysis, Elliptic, and TRM Labs. 
+It shows the format of an automated wallet screening result: risk score, exposure by counterparty category, and the flagged driver.*
+ 
+Two more measures are mandatory for a foreign PEP: senior management approval, and enhanced ongoing monitoring if the account is opened.
+ 
+---
+ 
+#### Step 5 - Adverse media
+ 
+I search reputable media and the investigative databases (for example ICIJ Offshore Leaks and OCCRP Aleph) for negative information. I weigh credibility (who reported it and on what evidence), 
+severity (a conviction is strong, an open investigation is only an allegation), and recency.
+ 
+In this scenario the search returns no credible adverse media on the customer. A clean result does not lower the risk on its own, because the undisclosed PEP status, the unexplained wealth, and the source-of-funds exposure already require EDD. The absence of findings is recorded in the audit trail the same way as a hit. A name in a leak database is always a lead to confirm on identifiers, not proof, because those databases 
+warn that inclusion does not imply wrongdoing and that names collide.
+ 
+---
+ 
+#### Red flags
+ 
+| Red flag | Type | Severity |
+|---|---|---|
+| Undisclosed PEP status (customer declared "not a PEP") | Non-disclosure | 🔴 HIGH |
+| Claimed net worth of USD 2,000,000 against a declared salary of USD 35,000 per year | Unexplained wealth | 🔴 HIGH |
+| First deposit of 350,000 USDT, roughly ten years of declared gross salary | Profile mismatch | 🔴 HIGH |
+| Funding wallet: 64% of inbound value received directly from a high-risk exchange cluster (initial) | Source-of-funds risk | 🔴 HIGH |
+| Procurement vendor sharing an address with a relative of the customer | Conflict-of-interest lead | 🟡 MEDIUM |
+ 
+---
