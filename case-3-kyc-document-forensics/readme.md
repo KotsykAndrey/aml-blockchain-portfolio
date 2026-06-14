@@ -1454,4 +1454,118 @@ flowchart TD
     style K fill:#555555,color:#fff
 ```
 
+---
+
+## Part 5 - PEP Screening and OSINT
  
+PEP screening sits next to sanctions screening at onboarding. Documents 8 and 9 covered the sanctions gate. This part covers the PEP gate and the OSINT work behind it.
+ 
+Two things make PEP screening different from sanctions screening.
+ 
+First, a PEP is not a criminal. A sanctions true positive is a hard stop. A PEP match is not. The status only means the customer holds, or recently held, a senior public role. This raises the risk of bribery and corruption money. The correct response is Enhanced Due Diligence (EDD), not refusal. FATF does not support refusing all PEPs, because this pushes honest customers out of the regulated system.
+ 
+Second, the status is often hidden. A customer can simply tick "not a PEP" on the form, and no database holds every official from every country. So the real skill is OSINT: confirm or uncover the status from public sources, then check where the wealth and the funds come from.
+
+---
+
+### Document 10 - Hidden Foreign PEP (Georgia)
+ 
+**Document type:** Passport, Georgia
+ 
+**Specimen reference:** PRADO GEO-AO-04001 - https://www.consilium.europa.eu/prado/en/GEO-AO-04001/image-385689.html
+ 
+![Georgian passport (PRADO specimen)](images/doc-10-georgia-passport.png)
+ 
+*Specimen source: PRADO (Council of the EU), document GEO-AO-04001, integrated biodata card. Public reference document.*
+ 
+> **Disclaimer:** This scenario is fictional and created only for educational and portfolio purposes. The customer, the company, and all identifiers are invented. The public portals named here are real, but every
+> record and number attributed to them is mock data. PEP status is a neutral public fact, not an accusation. The adverse-media part is a fictional allegation, not a proven fact. No real person is named or targeted.
+ 
+---
+ 
+#### Why Georgia
+ 
+I set the scenario in Georgia on purpose. Georgia publishes asset declarations of public officials online at declaration.acb.gov.ge (Anti-Corruption Bureau of Georgia), open to anyone. 
+The declarations are in Georgian only. OpenSanctions loads this dataset and treats the declarants as PEPs. So the whole chain of this case runs on sources that anyone can open in a browser. 
+The customer and all records are fictional. The portals are real.
+
+---
+
+#### Note on fictional identity safety
+ 
+A portfolio case must not damage the reputation of a real person. I applied three safeguards. The customer's name is invented: the surname exists in Georgia, so the scenario stays realistic, but I 
+checked the full name in search engines and OpenSanctions and found no official or PEP with this name as of June 2026. The state-owned company is fictional. Every record "found" on the real portals 
+is mock data, and the document says so.
+ 
+---
+ 
+#### The PEP framework
+ 
+FATF defines a PEP as "an individual who is or has been entrusted with a prominent public function" (FATF Glossary). In simple words: a person with a senior public role. The main categories are heads of state 
+and government, senior politicians, senior government, judicial, or military officials, senior executives of state-owned enterprises, and important political party officials.
+ 
+| Type | Who | Treatment under FATF Recommendation 12 |
+|---|---|---|
+| **Foreign PEP** | A PEP of another country | EDD is mandatory in every case |
+| **Domestic PEP** | A PEP of the customer's own country | Risk-based: EDD when the relationship is higher risk |
+| **International organisation PEP** | A senior official of an international body | Risk-based, as for domestic |
+| **RCA** | Relatives and close associates of any PEP | The same measures as the PEP |
+ 
+Recommendation 12 sets different requirements depending on the PEP type. For a foreign PEP, whether as customer or beneficial owner, a financial institution must apply normal CDD and four additional measures: 
+(a) risk-management systems to identify whether a customer or beneficial owner is a PEP
+(b) senior management approval to establish or continue the relationship
+(c) reasonable measures to establish the source of wealth and the source of funds
+(d) enhanced ongoing monitoring
+
+For a domestic PEP or a person entrusted with a prominent function by an international organisation, the institution must take reasonable measures to determine whether someone holds that status. 
+Where the relationship is higher risk, measures (b), (c), and (d) apply. For family members and close associates of any PEP, the same requirements apply as for the PEP themselves, because the money can sit 
+one step away from the official.
+ 
+---
+ 
+#### The scenario
+ 
+A customer, **Tornike B. Machaladze**, a national of Georgia, submits a Georgian passport and onboards on Clear Exchange Ltd. The document checks pass (the template matches the PRADO specimen, and the MRZ is valid), sanctions screening returns no match, and the system opens the account automatically. On the application he writes his occupation as "private investor and consultant", estimates his net worth at about USD 2,000,000, and ticks "I am not a politically exposed person". The PEP alert from screening goes to the manual review queue, because a PEP match never blocks an account automatically. Before the review is complete, he attempts a first deposit of 350,000 USDT, and the transfer is placed on hold pending the review.
+ 
+PEP screening returns an alert from the OpenSanctions Georgian declarations dataset. The OSINT review below confirms that the customer is the Deputy Director General of a state-owned enterprise, Iberia Energy Logistics JSC (fictional). He is a foreign PEP, and he did not disclose it. An undisclosed status, a salary that cannot explain the claimed wealth, and a large crypto deposit move this case into EDD.
+ 
+*The name, the company, and all records below are fictional. The portals are real.*
+ 
+---
+ 
+#### Step 1 - PEP screening
+ 
+The name is matched against PEP databases built from official gazettes, government websites, and public datasets. Matching is fuzzy, so transliteration from Georgian script produces name variants that the engine 
+has to catch.
+ 
+Two facts come out of this step:
+- The engine returns a possible match to a declarant in the OpenSanctions dataset: a senior executive of a state-owned company.
+- The customer ticked "not a PEP". If the match is confirmed, that answer is false, and the non-disclosure is itself a red flag.
+  
+As with a sanctions alert, a PEP match is reviewed by a human, not actioned automatically.
+ 
+![PEP screening, OpenSanctions search](images/doc-10-opensanctions-search.png)
+ 
+*Screenshot of the OpenSanctions search interface, used to show the source and its format. Any real records visible are unrelated to this fictional scenario.*
+ 
+---
+ 
+#### Step 2 - OSINT verification
+ 
+This is the core of the case. I confirm the status from public sources and build the source-of-wealth picture at the same time. The rules: at least two independent sources for any material point, primary sources over aggregators, fact separated from allegation, and every finding saved as a file, because web pages change or disappear.
+ 
+**The asset declaration.** The portal shows the customer's filing for 2025. The declaration is the strongest document in this case: a primary government source where the official himself states his role, income, and assets.
+ 
+![Asset declaration page](images/doc-10-asset-declaration.png)
+ 
+*Screenshot of declaration.acb.gov.ge, bank accounts section (page 6 of 13). The declaration is in Georgian only. The official shown is unrelated to this fictional scenario.*
+ 
+The mock declaration states:
+- Position: Deputy Director General, Iberia Energy Logistics JSC (state-owned), appointed 2019.
+- Annual income: GEL 96,000 in salary (about USD 35,000). No other income.
+- Assets: one apartment in Tbilisi, one vehicle, a bank deposit of GEL 40,000.
+- No business interests, no securities, no consulting activity.
+  
+One gap matters here: Georgian declarations do not cover cryptocurrency. Even an honest declaration would not show crypto wealth. This is why the on-chain check in Step 4 cannot be replaced by the declaration.
+ 
+**The evidence log.** Every check is recorded with the date, the source, the finding, its status as fact or allegation, and the saved file. This log is the audit trail.
