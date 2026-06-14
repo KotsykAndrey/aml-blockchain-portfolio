@@ -1,0 +1,4 @@
+jQuery(document).ready(function($){$('#pmprogroupacct_apply_group_code').click(function(){var group_code=$('#pmprogroupacct_group_code').val();if(group_code==''){return}
+var url=window.location.href;if(url.indexOf('pmprogroupacct_group_code=')>0){url=url.replace(/pmprogroupacct_group_code=[^&]+/,'pmprogroupacct_group_code='+group_code)}else if(url.indexOf('?')>0){url+='&pmprogroupacct_group_code='+group_code}else{url+='?pmprogroupacct_group_code='+group_code}
+window.location.replace(url)})})
+;
