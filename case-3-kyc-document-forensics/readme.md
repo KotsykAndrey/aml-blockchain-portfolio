@@ -1666,3 +1666,62 @@ warn that inclusion does not imply wrongdoing and that names collide.
 | Procurement vendor sharing an address with a relative of the customer | Conflict-of-interest lead | 🟡 MEDIUM |
  
 ---
+
+#### Decision & Action
+ 
+⚠️ **EDD, SENIOR MANAGEMENT APPROVAL, AND ENHANCED MONITORING.** A PEP match is not a refusal. The action path:
+- **Apply EDD.** Establish the source of wealth with documents, and the source of funds including the on-chain check.
+- **Senior management approval.** A Recommendation 12 requirement for a foreign PEP.
+- **Enhanced ongoing monitoring** if the account is opened.
+- **Record the non-disclosure.** The false "not a PEP" answer is documented as a red flag, whatever the final decision.
+- **Recommend declining and filing a SAR** if EDD cannot evidence the source of wealth, or if the full on-chain review confirms the high-risk exposure. The customer communication stays neutral, and the customer
+    is not told that a report was filed (31 U.S.C. § 5318(g)(2)).
+  
+---
+ 
+#### Alert disposition note
+ 
+> **Disclaimer:** Fictional internal note for educational purposes.
+ 
+```
+Case ID:        PEP-2026-00xxx
+Customer:       Tornike B. Machaladze (onboarding)
+Review type:    Onboarding, PEP screening and EDD
+Risk rating:    HIGH (foreign PEP)
+ 
+Trigger:        PEP screening alert from the OpenSanctions Georgian declarations dataset.
+                The customer declared "not a PEP" on the application. The screening match indicates
+                a senior executive of a state-owned enterprise, which the OSINT review below treats
+                as an undisclosed foreign PEP.
+ 
+Findings:
+  - Undisclosed PEP status: the "not a PEP" declaration conflicts with
+    the screening match. Non-disclosure is itself a red flag.
+  - Source of wealth not supported: the customer claims a net worth of about USD 2,000,000 from "investments and consulting", but
+    the declared income profile for this role (about GEL 96,000 / USD 35,000 per year salary, no other declared income) does not explain it.
+    The gap is unexplained.
+  - Source of funds risk: the customer attempted a first deposit of 350,000 USDT (about ten years of declared gross salary), which
+    was placed on hold. Automated wallet screening shows 64% of the inbound value received in direct transfers from a high-risk exchange cluster.
+    This is an initial result; full tracing is pending.
+  - Submitted photo not genuine: reverse image search returned 385 results from multiple sources (earliest March 2015).
+    The photo is a widely distributed image and does not belong to the applicant.
+  - Adverse media: no credible adverse media found at this stage.
+  - Method: status and wealth picture built from lawfully public sources (OpenSanctions, the asset declaration portal, the company registry,
+    official government records, and media), with every finding saved to the OSINT folder as the audit trail.
+ 
+Classification: Foreign PEP. EDD mandatory (FATF Recommendation 12).
+ 
+Decision:       Apply EDD. Require senior management approval and enhanced ongoing monitoring
+                before the relationship can proceed. Issue a source-of-wealth request to the customer.
+                Keep the deposit on hold pending the source-of-funds review.
+                Record the false "not a PEP" answer and the non-genuine photo as red flags.
+ 
+SAR trigger:    Recommend filing a SAR if EDD cannot evidence the source of wealth, or
+                if the full on-chain review confirms the high-risk exposure.
+ 
+Analyst:        A. Kotsyk
+Escalated to:   Senior AML Officer / MLRO (senior sign-off required)
+Tipping off:    Any communication stays neutral (31 U.S.C. § 5318(g)(2)).
+```
+ 
+---
