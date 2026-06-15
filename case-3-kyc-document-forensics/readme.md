@@ -15,13 +15,12 @@ This case is a practical demonstration of the following skills:
 4. Red flag identification
 5. Writing alert disposition notes (documenting false/true positives, escalation to senior management, and RFIs to clients)
 6. Mock SAR for suspicious activity, and a mock OFAC blocking report for a true-positive sanctions match
+7. PEP screening and OSINT verification (FATF Recommendation 12, a hidden foreign PEP, public registries, an evidence log, and source-of-wealth analysis)
    
-This case contains nine fictional fraud scenarios across different document types and jurisdictions. I split it into four parts that follow the real onboarding process.
-This matters specifically for a crypto platform. Onboarding KYC is the only point where a real-world identity is tied to an account, and from there to on-chain activity.
-A crypto withdrawal is irreversible and there is no chargeback, unlike a bank. If a fraudster opens an account with a fake or stolen identity and moves funds out, the money is unrecoverable.
-An account opened on a synthetic identity is exactly what laundering and account-takeover theft rely on. Detecting fraudulent documents at onboarding is what prevents a fake identity from ever being attached to a wallet.
+This case contains ten fictional scenarios across different document types and jurisdictions. I split it into five parts that follow the real onboarding process. This matters specifically for a crypto platform. Onboarding KYC is the only point where a real-world identity is tied to an account, and from there to on-chain activity. A crypto withdrawal is irreversible and there is no chargeback, unlike a bank. 
+If a fraudster opens an account with a fake or stolen identity and moves funds out, the money is unrecoverable. An account opened on a synthetic identity is exactly what laundering and account-takeover theft rely on. Detecting fraudulent documents at onboarding is what prevents a fake identity from ever being attached to a wallet.
  
-| # | Document | Country / Type | Fraud type | Decision |
+| # | Document | Country / Type | Fraud / risk type | Decision |
 |---|---|---|---|---|
 | 1 | Passport | Italy | Tampered (MRZ mismatch) | Reject (+ SAR if prior funds) |
 | 2 | Driver's licence | USA (New York) | Edited card / front–back mismatch | Reject (+ SAR if prior funds) |
@@ -32,19 +31,20 @@ An account opened on a synthetic identity is exactly what laundering and account
 | 7 | Passport | Ukraine | Synthetic identity | EDD + SAR |
 | 8 | Passport | Saudi Arabia | Sanctions false positive | Close + document |
 | 9 | Passport | Russia | Sanctions true positive | Freeze + SAR + OFAC report |
+| 10 | Passport | Georgia | Hidden foreign PEP | EDD + senior approval |
  
 ---
  
 > **Disclaimer:** All scenarios are fictional and created only for educational and portfolio purposes. All passport images are specimens from the EU public document register. No real identities were used.
-> (the source for each document is linked at the end). Mock SARs are fictional. All institution details are fictional.
-> For passports I use official PRADO specimens; the driver's licence is an official public sample from the New York State DMV. For utility bills and bank statements, which have no
-> safe specimens, I use schematic layouts that show the structure.
+> (the source for each document is linked at the end). Mock SARs are fictional. All institution details are fictional. The Georgian public portals named in Document 10 are real, but every record attributed to them
+> is mock data. For passports I use official PRADO specimens; the driver's licence is an official public sample from the New York State DMV. For the utility bill, which has no safe specimen, I use a schematic layout
+> that shows the structure. The bank statement is a test PDF I created myself to demonstrate the forensic method, not to reproduce a real document.
  
 ---
  
 ## KYC Fraud Methods
  
-The nine documents map onto the main families of KYC fraud an analyst sees in crypto onboarding:
+Documents 1 to 9 cover the main families of KYC fraud an analyst sees in crypto onboarding. Document 10 covers PEP screening, which is a risk category, not a fraud type:
  
 ```mermaid
 flowchart TD
@@ -151,7 +151,7 @@ This is the single most reliable technical check on a passport, because it requi
  
 ```
 Check-digit algorithm (ICAO 9303)
-1. Map characters:  0-9 = face value · A=10, B=11 ... Z=35 · '<' = 0
+1. Map characters:  0-9 = face value | A=10, B=11 ... Z=35 | '<' = 0
 2. Apply repeating weights:  7, 3, 1, 7, 3, 1 ...
 3. Sum all (value × weight)
 4. Check digit = sum mod 10
@@ -262,8 +262,7 @@ The laser-perforated number is a further data point on the passport itself. In t
  
 #### Decision & Action
  
-❌ **REJECT.** Do not onboard. The action path is as follows.
- 
+❌ **REJECT.** Do not onboard. The action path is as follows:
 - **Reject and issue an RFI.** Decline the document and request a clean re-submission of the original passport, together with a second independent identity document.
 - **Verify.** Re-run sanctions and adverse-media screening on the verified identity, and flag the profile as HIGH RISK pending verification.
 - **Escalate.** Route the case to a senior analyst with the findings if the re-submission also fails or if anything else is suspicious.
@@ -353,9 +352,12 @@ This is decisive evidence of tampering, following the same logic as a failed pas
 #### Step 3 - Document Number format check
  
 NY Document Numbers are an 8 to 10 character mix of letters and numbers. I check the format and the front-to-back relationship.
- - The Document Number is on the back ("Doc #"). If a submitted "Document Number" is presented as the 9-digit front number, the submitter has confused the CID with the Document Number,
-    which suggests they do not actually hold the card.
+- The Document Number is on the back ("Doc #"). If a submitted "Document Number" is presented as the 9-digit front number, the submitter has confused the CID with the Document Number, which suggests
+    they do not actually hold the card.
 - A Document Number that is the wrong length or character pattern for NY is a red flag.
+  
+In this submission the customer entered the 9-digit front CID in the "Document Number" field of the application. This fails the format check and suggests that the submitter does not hold 
+the physical card, because the real Document Number is printed only on the back.
   
 ---
 
@@ -528,7 +530,8 @@ How liveness detection catches it:
  
 ❌ **REJECT + SAR.**
  
-A deepfake selfie is not an innocent mistake. Someone deliberately generated a synthetic face to defeat identity verification. This is a clear fraud attempt, and the recommended practice is to file a SAR.
+A deepfake selfie is not an innocent mistake. Someone deliberately generated a synthetic face to defeat identity verification. 
+This is a clear fraud attempt, and the recommended practice is to file a SAR.
 See the mock SAR below.
  
 ---
@@ -943,8 +946,8 @@ A mismatch between the claimed bank and the IBAN's bank code is a red flag.
 - **Reject.** Inform the customer that the document cannot be accepted, using neutral language.
 - **Request a verifiable replacement.** Ask for the original statement directly from the bank (certified), or through open-banking verification, which uses a direct API and cannot be faked.
 - **Do not reveal** the specific forensic indicators found.
-- **SAR.** Recommend filing a SAR if the account is already active and the fake statement was provided to explain suspicious funds. If it is a first-time onboarding document with no funds yet, reject and
-     request a genuine statement, but escalate for fraud review. If the account is active, freeze and recommend filing a SAR.
+- **SAR.** If the account is already active and the fake statement was provided to explain suspicious funds, freeze and recommend filing a SAR. If it is a first-time onboarding document with
+   no funds yet, reject and request a genuine statement, but escalate for fraud review.
   
 ---
  
@@ -1004,7 +1007,8 @@ I catch it by reasoning about the whole identity, not by inspecting a single doc
 
 #### The scenario
  
-A synthetic identity is a person who does not exist, built from a mixture of real-format and fabricated data. The passport may even pass document checks. The fraud appears when I test whether the whole profile is internally consistent and whether the person leaves any real-world footprint.
+A synthetic identity is a person who does not exist, built from a mixture of real-format and fabricated data. The passport may even pass document checks. 
+The fraud appears when I test whether the whole profile is internally consistent and whether the person leaves any real-world footprint.
 
 ---
 
@@ -1027,7 +1031,7 @@ Source of wealth : "savings and trading"
 I test the profile against itself:
 - **Age versus experience.** 15 years of experience at age 34 means starting at 19. This is possible, but worth questioning for a manager role.
 - **Income versus net worth.** This is the strongest indicator. On EUR 78,000 per year, accumulating EUR 850,000 in savings is very difficult, because after tax and living costs the numbers do not support it.
-     A large gap between income and claimed net worth, combined with a vague source ("savings and trading"), is a classic signal of a synthetic identity or an undisclosed source.
+   A large gap between income and claimed net worth, combined with a vague source ("savings and trading"), is a classic signal of a synthetic identity or an undisclosed source.
 
 ---
 
@@ -1070,7 +1074,7 @@ not to flag a normal transliteration as fraud. The red flag here is the profile,
  
 ⚠️ **EDD + SAR.**
 The income-versus-net-worth gap and the absent footprint are enough to require Enhanced Due Diligence (full source-of-wealth evidence, independent verification, and senior sign-off).
-Because the pattern is consistent with a fabricated identity used to move undisclosed funds, I also file a SAR. If EDD cannot resolve the inconsistencies, I decline and offboard.
+Because the pattern is consistent with a fabricated identity used to move undisclosed funds, I also recommend filing a SAR. If EDD cannot resolve the inconsistencies, I decline and offboard.
 
 ---
 
@@ -1124,17 +1128,17 @@ Review conducted:
   - Passport verified (MRZ valid); transliteration variant noted, not a flag
   - Address exists, commercial
  
-Decision:       ESCALATE. Apply EDD and recommend filing a .
+Decision:       ESCALATE. Apply EDD and recommend filing a SAR.
                 EDD: SOW RFI issued (see above) requesting full documentary evidence, each component independently verified; senior sign-off required before any onboarding.
-                : profile is consistent with a synthetic identity used to move undisclosed funds, reasonable grounds to suspect.
+                SAR: profile is consistent with a synthetic identity used to move undisclosed funds, reasonable grounds to suspect.
  
 Rationale:      Multiple inconsistencies that the customer's documents do not resolve. EDD addresses the onboarding question;
-                the  addresses the suspicion, which exists independently of whether the customer is ultimately onboarded.
+                the SAR addresses the suspicion, which exists independently of whether the customer is ultimately onboarded.
  
 Analyst:        A. Kotsyk
 Escalated to:   Senior AML Officer / MLRO
-Next action:    SOW RFI issued; compile case file and escalate for the  assessment. If the RFI response does not resolve the inconsistencies, decline and offboard.
-Tipping off:    Customer not informed of the  or any suspicion (31 U.S.C. § 5318(g)(2)). The RFI is worded neutrally.
+Next action:    SOW RFI issued; compile case file and escalate for the SAR assessment. If the RFI response does not resolve the inconsistencies, decline and offboard.
+Tipping off:    Customer not informed of the SAR or any suspicion (31 U.S.C. § 5318(g)(2)). The RFI is worded neutrally.
 ```
  
 #### Key learning
@@ -1170,14 +1174,14 @@ Common Arabic names produce many false positives because of transliteration. Moh
 
 ---
 
-#### Step 1 - Understand why the alert fired (fuzzy matching)
+#### Step 1 - Understand why the alert raised (fuzzy matching)
  
 Screening does not use exact matching. It uses fuzzy matching to catch transliterations and typos. There are three algorithms, usually combined with different weights (this depends on internal policies and procedures).
  
 | Algorithm | Measures | Example |
 |---|---|---|
 | **Levenshtein** | Minimum single-character edits | RASHID → RASHEED = 2 edits |
-| **Jaro-Winkler** | Similarity, weighted to the prefix | MOHAMMED vs MUHAMMAD ≈ high |
+| **Jaro-Winkler** | Similarity, weighted to the prefix | MOHAMMED vs MUHAMMAD = high |
 | **Soundex** | Phonetic (sounds-like) code | RASHID / RASHEED → similar code |
  
 ```
@@ -1240,7 +1244,7 @@ Decision:       FALSE POSITIVE. Clear the alert.
  
 Rationale:      Name similarity is driven by common Arabic-name transliteration (Mohammed/Muhammad, Rashid/Rasheed).
                 All distinguishing identifiers differ: DOB by 18 years, nationality, passport number, and place of birth.
-                These are different individuals. No freeze, no , no OFAC report.
+                These are different individuals. No freeze, no SAR, no OFAC blocking report.
  
 Outcome:        Customer cleared on the sanctions check. Onboarding continues subject to the rest of CDD.
  
@@ -1269,8 +1273,8 @@ A four-eyes check, where a second reviewer signs off on the closure, is common p
  
 ✅ **CLOSE AS FALSE POSITIVE AND DOCUMENT.**
  
-No freeze, no , and no report. The customer can be onboarded, subject to the rest of CDD. However, I write a clear disposition note: the name matched at 87%, but the match is ruled out on DOB, nationality,
-and passport number. If a regulator ever asks why I cleared a sanctions alert, the answer is on file.
+No freeze, no SAR, and no OFAC blocking report. The customer can be onboarded, subject to the rest of CDD. However, I write a clear disposition note: the name matched at 87%, but the match is 
+ruled out on DOB, nationality, and passport number. If a regulator ever asks why I cleared a sanctions alert, the answer is on file.
 
 ---
 
@@ -1344,7 +1348,7 @@ On a confirmed match I do the following:
 | Obligation | What | Deadline |
 |---|---|---|
 | **OFAC blocking report** | Report the blocked property to OFAC | Within 10 business days |
-| **** | Suspicious activity report to FinCEN | Within 30 calendar days of detection |
+| **SAR** | Suspicious activity report to FinCEN | Within 30 calendar days of detection |
  
 These are two different legal duties under two different laws. Filing one does not satisfy the other.
 
@@ -1363,15 +1367,15 @@ These are two different legal duties under two different laws. Filing one does n
 
 #### Decision
  
-🔴 **FREEZE +  + OFAC REPORT.**
+🔴 **FREEZE + SAR + OFAC BLOCKING REPORT.**
  
-Block the funds, restrict the account, escalate immediately, file the OFAC blocking report within 10 business days, and file a . See the mock  below.
+Block the funds, restrict the account, escalate immediately, file the OFAC blocking report within 10 business days, and file a SAR. See the mock SAR below.
  
 ---
  
-#### Mock  #2 - Sanctions True Positive
+#### Mock SAR #2 - Sanctions True Positive
  
-> **Disclaimer:** Fictional  for educational purposes. Institution and subject details are fictional.
+> **Disclaimer:** Fictional SAR for educational purposes. Institution and subject details are fictional.
  
 **Filing institution:** Clear Exchange Ltd. (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
 
@@ -1379,24 +1383,31 @@ Block the funds, restrict the account, escalate immediately, file the OFAC block
 
 **Subject:** name as submitted, confirmed match to an OFAC SDN designation; Account XXX-XXXXXX; nationality Russian Federation; SDN List, active designation under E.O. 14024; funds blocked and account restricted
 
-**Prior s on subject:** none on file
+**Prior SARs on subject:** none on file
  
 **Narrative**
-
-Clear Exchange Ltd. files this report to document an attempt by a designated party to open and fund an account, and to record the resulting blocking of property. The institution reports the conduct because 
-the customer is an individual on the OFAC Specially Designated Nationals (SDN) List, and any dealing with that individual's property is prohibited.
  
-On June 19, 2026, the customer attempted to onboard and to fund the account. During screening, the institution's sanctions system returned a high-confidence match against the SDN List. The compliance system 
-automatically held the inbound deposit, in the amount of [amount], at 11:02 UTC on the same day, and the account was restricted shortly afterwards. An analyst then reviewed the alert and confirmed the match against multiple identifiers. The full name, the date of birth, the nationality, and the passport number all aligned with the designated individual, which distinguished this case from a name-only false positive. 
-The individual is designated under Executive Order 14024, the authority that addresses harmful foreign activities of the Government of the Russian Federation.
+Clear Exchange Ltd. files this report to document an attempt by a designated party to open and fund an account, and to record the resulting blocking of property.
+The institution reports the conduct because the customer is an individual on the OFAC Specially Designated Nationals (SDN) List, and any dealing with that individual's property is prohibited.
  
-Because the match was confirmed, the held deposit constitutes blocked property under the relevant OFAC program. The funds were not returned to the customer and were not processed further. The institution understands that Russia is subject to sectoral and targeted measures rather than a comprehensive embargo, but this does not affect the outcome, because the individual is named on the SDN List and is therefore fully blocked regardless of the broader program.
+On June 19, 2026, the customer attempted to onboard and to fund the account. During screening, the institution's sanctions system returned a high-confidence match against the SDN List.
+The compliance system automatically held the inbound deposit, in the amount of [amount], at 11:02 UTC on the same day, and the account was restricted shortly afterwards.
+An analyst then reviewed the alert and confirmed the match against multiple identifiers. The full name, the date of birth, the nationality, and the passport number all aligned with the designated
+individual, which distinguished this case from a name-only false positive. The individual is designated under Executive Order 14024, the authority that addresses harmful foreign activities
+of the Government of the Russian Federation.
  
-The institution blocked the funds, restricted the account, and escalated the case to the compliance officer on the same day. It will file the required blocking report with OFAC within ten business days of the blocking, which is a separate obligation under sanctions law and is distinct from this report. The funds remain blocked pending instruction from OFAC. The institution will cooperate fully with OFAC and with law enforcement, and any linked accounts or related parties will be screened and escalated. The institution did not inform the customer that this report was filed, and any communication with the customer was limited to a neutral statement that the account is under review.
+Because the match was confirmed, the held deposit constitutes blocked property under the relevant OFAC program. The funds were not returned to the customer and were not processed further.
+The institution understands that Russia is subject to sectoral and targeted measures rather than a comprehensive embargo, but this does not affect the outcome, because the individual is named on the SDN List
+and is therefore fully blocked regardless of the broader program.
+ 
+The institution blocked the funds, restricted the account, and escalated the case to the compliance officer on the same day. It will file the required blocking report with OFAC within ten business days
+of the blocking, which is a separate obligation under sanctions law and is distinct from this report. The funds remain blocked pending instruction from OFAC.
+The institution will cooperate fully with OFAC and with law enforcement, and any linked accounts or related parties will be screened and escalated. The institution did not inform the customer
+that this report was filed, and any communication with the customer was limited to a neutral statement that the account is under review.
  
 Point of contact: AML Compliance Officer, Clear Exchange Ltd.
  
-**END OF MOCK **
+**END OF MOCK SAR**
  
 ---
 
@@ -1424,8 +1435,8 @@ Thank you for your understanding.
 Clear Exchange, Compliance Team
 ```
  
-> Note what the letter does not say. It says nothing about a sanctions hit, a , OFAC, or any investigation. It commits only to a neutral "under review" status and a promise to follow up, which
-> is the maximum that can be said without tipping off.
+> Note what the letter does not say. It says nothing about a sanctions hit, a SAR, on OFAC blocking report, or any investigation. It commits only to a neutral "under review" status and a promise
+> to follow up, which is the maximum that can be said without tipping off.
  
 ---
  
@@ -1586,13 +1597,13 @@ for this case: the wallet risk report.
  
 | # | Date | Source | Finding (scenario) | Status | Evidence file |
 |---|---|---|---|---|---|
-| 1 | 14 Jun 2026 | OpenSanctions (Georgian declarations dataset) | PEP alert raised by the internal screening engine, which draws on this dataset. The attached screenshot shows a real Georgian PEP entry on opensanctions.org, demonstrating the record format: name in multiple scripts, birth date, classification, positions held, family members (Close Associate tag), and assets | Fact (source and format verified) | `osint/01-opensanctions-entry.png` (real portal, unrelated official, format) |
-| 2 | 14 Jun 2026 | declaration.acb.gov.ge | Declaration for 2025 (scenario): Deputy Director General, salary GEL 96,000. Note: the real declaration used for format illustration shows a business interest (100% in a private company) and modest bank balances, demonstrating the source structure | Fact (primary source) | `osint/02-declaration.pdf` (real portal, unrelated official, format) |
-| 3 | 14 Jun 2026 | companyinfo.ge (Transparency International Georgia, data from enreg.reestri.gov.ge) | Company information, affiliations, and ownership history shown for an unrelated Georgian company, illustrating the source format | Fact (source format verified) | `osint/03-company-registry-extract.html` + `osint/03-company-registry-extract_files/` (real portal, unrelated company, format) |
-| 4 | 14 Jun 2026 | Ministry of Foreign Affairs of Georgia, Diplomatic Protocol Directorate (mfa.gov.ge) | Official Diplomatic List (May 2026) confirms that MFA publishes diplomatic appointments publicly. Format demonstrates how ambassador-level appointments are verified from a primary government source | Fact (primary source format) | `osint/04-mfa-diplomatic-list.pdf` (real document, format only, unrelated officials) |
-| 5 | 14 Jun 2026 | mfa.gov.ge/en/news + civil.ge | Two independent sources covering a real Georgian senior official (Maka Botchorishvili, Vice PM and FM), demonstrating the media verification workflow: one official press release and one independent outlet | Fact (source format verified) | `osint/05-media-1.png` (mfa.gov.ge, full-page screenshot), `osint/05-media-2.html` + `osint/05-media-2_files/` (civil.ge, unrelated official, format) |
+| 1 | 14 Jun 2026 | OpenSanctions (Georgian declarations dataset) | PEP alert raised by the internal screening engine, which draws on this dataset. The attached screenshot shows a real Georgian PEP entry on opensanctions.org, demonstrating the record format: name in multiple scripts, birth date, classification, positions held, family members (Close Associate tag), and assets | Fact (source and format verified) | `osint/01-opensanctions-entry.png` (real portal, unrelated official, format only) |
+| 2 | 14 Jun 2026 | declaration.acb.gov.ge | Declaration for 2025 (scenario): Deputy Director General, salary GEL 96,000. Note: the real declaration used for format illustration shows a business interest (100% in a private company) and modest bank balances, demonstrating the source structure | Fact (primary source) | `osint/02-declaration.pdf` (real portal, unrelated official, format only) |
+| 3 | 14 Jun 2026 | companyinfo.ge (Transparency International Georgia, data from enreg.reestri.gov.ge) | Company information, affiliations, and ownership history shown for an unrelated Georgian company, illustrating the source format | Fact (source format verified) | `osint/03-company-registry-extract.html` + `osint/03-company-registry-extract_files/` (real portal, unrelated official, format only) |
+| 4 | 14 Jun 2026 | Ministry of Foreign Affairs of Georgia, Diplomatic Protocol Directorate (mfa.gov.ge) | Official Diplomatic List (May 2026) confirms that MFA publishes diplomatic appointments publicly. Format demonstrates how ambassador-level appointments are verified from a primary government source | Fact (primary source format) | `osint/04-mfa-diplomatic-list.pdf` (real document, unrelated officials, format only) |
+| 5 | 14 Jun 2026 | mfa.gov.ge/en/news + civil.ge | Two independent sources covering a real Georgian senior official (Maka Botchorishvili, Vice PM and FM), demonstrating the media verification workflow: one official press release and one independent outlet | Fact (source format verified) | `osint/05-media-1.png` (mfa.gov.ge, full-page screenshot), `osint/05-media-2.html` + `osint/05-media-2_files/` (civil.ge, unrelated official, format only) |
 | 6 | 14 Jun 2026 | TinEye reverse image search | Reverse image search on the applicant's submitted photo returned 385 results across multiple sources (CNN, kobieta.wp.pl, pictame.com), first appeared in March 2015. The photo is a widely distributed stock image unconnected to any individual. In a real case this would be a critical red flag: the applicant submitted a photo that does not belong to them | 🔴 RED FLAG (photo not genuine) | `osint/06-photo-match.png` (real TinEye result) |
-| 7 | 14 Jun 2026 | State Procurement Agency of Georgia (tenders.procurement.gov.ge) | Real tender record (NAT260011912) from the Georgian state procurement portal, demonstrating the interface and data fields available for vendor and procuring entity searches: announcement number, procuring entity, procurement type, estimated value, CPV codes, supplier details | Fact (source format verified) | `osint/07-procurement-vendor.png` (real portal, unrelated state entity, format) |
+| 7 | 14 Jun 2026 | State Procurement Agency of Georgia (tenders.procurement.gov.ge) | Real tender record (NAT260011912) from the Georgian state procurement portal, demonstrating the interface and data fields available for vendor and procuring entity searches: announcement number, procuring entity, procurement type, estimated value, CPV codes, supplier details | Fact (source format verified) | `osint/07-procurement-vendor.png` (real portal, unrelated state entity, format only) |
 | 8 | 14 Jun 2026 | Automated wallet screening | Initial: 64% of inbound value received in direct transfers from a high-risk exchange cluster, full tracing pending | Initial (service-level attribution) | `osint/08-wallet-report.png` (mock report, ChainScope, fictional data) |
  
 At the end of this step the status is confirmed on several independent primary sources: the customer is a foreign PEP, and he did not disclose it.
@@ -1724,3 +1735,57 @@ Tipping off:    Any communication stays neutral (31 U.S.C. § 5318(g)(2)).
 ```
  
 ---
+
+#### The four common PEP situations
+ 
+An analyst has to separate these four, because the correct action is different for each.
+ 
+**False positive (name collision).** The name matches a PEP entry, but the identifiers do not: the date of birth, the nationality, the role, or the photo rule the match out. 
+Resolved and documented like a sanctions false positive. A name is not a person.
+ 
+**RCA (relative or close associate).** The customer is not a PEP, but is the spouse, child, parent, or close business partner of one. OSINT through shared directorships, shared 
+addresses, and family links reveals the connection. An RCA is treated as the PEP, so EDD applies. The real question is who benefits.
+ 
+**Adverse media.** The customer is a PEP, and there is credible negative information, for example an open corruption investigation. I separate allegation from conviction and weigh the severity. 
+The action ranges from EDD with closer monitoring to decline and a SAR. An allegation raises risk but does not prove guilt.
+ 
+**Ex-PEP.** The customer left the public role some time ago. For a foreign PEP, many firms keep the status and the EDD, because the corruption risk does not vanish when the person leaves office. 
+For a domestic PEP, the risk can be stepped down over time. There is no automatic time limit. The safe answer is risk-based, not a fixed expiry.
+ 
+---
+ 
+#### Key learning
+ 
+A PEP is not a criminal, and a PEP match is not a refusal. For a foreign PEP, EDD is mandatory: senior management approval, source of wealth and source of funds, and enhanced monitoring. 
+The alert came from an aggregator, but the confirmation and the numbers came from primary sources: the declaration portal, the company registry, and the gazette. A salary of USD 35,000 per year does not 
+explain a net worth of USD 2,000,000 or a 350,000 USDT deposit, and the declaration does not see crypto at all, so the on-chain check is not optional. Every finding sits in the evidence log 
+with a saved file, as fact or allegation, and that log is what makes the conclusion defensible.
+ 
+---
+ 
+## PEP Screening Workflow
+ 
+```mermaid
+flowchart TD
+    A["Customer screened at onboarding"] --> B{"PEP alert?"}
+    B -->|"No"| C["Standard CDD"]
+    B -->|"Yes"| D{"Identifiers match?<br>(name · DOB · role)"}
+    D -->|"No, collision"| E["FALSE POSITIVE<br>Close + document"]
+    D -->|"Yes"| F{"PEP type?"}
+    F -->|"Foreign PEP / RCA"| G["EDD mandatory<br>(RCA treated as the PEP)"]
+    F -->|"Domestic / International organisation PEP"| L{"Higher-risk<br>relationship?"}
+    L -->|"Yes"| G
+    L -->|"No"| M["Standard CDD<br>+ ongoing monitoring"]
+    G --> H["Establish source of wealth<br>and source of funds (including on-chain)"]
+    H --> I{"Evidenced and no<br>serious adverse media?"}
+    I -->|"Yes"| J["Onboard with senior<br>management approval<br>+ enhanced monitoring"]
+    I -->|"No"| K["Decline / offboard<br>+ SAR"]
+ 
+    style A fill:#1A4A3C,color:#fff
+    style C fill:#2A6E54,color:#fff
+    style E fill:#2A6E54,color:#fff
+    style M fill:#2A6E54,color:#fff
+    style G fill:#B8860B,color:#fff
+    style J fill:#2A6E54,color:#fff
+    style K fill:#8b0000,color:#fff
+```
