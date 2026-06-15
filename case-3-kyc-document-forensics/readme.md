@@ -1662,7 +1662,19 @@ severity (a conviction is strong, an open investigation is only an allegation), 
  
 In this scenario the search returns no credible adverse media on the customer. A clean result does not lower the risk on its own, because the undisclosed PEP status, the unexplained wealth, and the source-of-funds exposure already require EDD. The absence of findings is recorded in the audit trail the same way as a hit. A name in a leak database is always a lead to confirm on identifiers, not proof, because those databases 
 warn that inclusion does not imply wrongdoing and that names collide.
+
+If adverse media is found, the response scales with its severity and credibility. The table below shows how I would handle each level.
  
+| Level | Example | Action |
+|---|---|---|
+| None | No result, or only neutral mentions (official appointments, work meetings) | Continue EDD as normal. Record the clean result in the audit trail. |
+| Weak | Unsourced claim on a low-quality site, or old political criticism with no specific allegation | Record as an allegation, lower the source weight, continue EDD. Usually no change to the decision. |
+| Medium | Name in a leak database (ICIJ, OCCRP), or an open investigation reported by reputable media | Confirm on identifiers, record as an allegation, increase the EDD intensity. Consider a SAR if combined with other red flags. |
+| Strong | A conviction for corruption, bribery, or fraud, or a major regulatory fine naming the customer | Likely decline. Recommend filing a SAR. If already a customer, consider offboarding. MLRO and legal review. |
+| Critical | A direct link to a sanctioned person or entity, or to terrorist financing | Immediate escalation and freeze. This moves from the PEP process into a sanctions or terrorist-financing review. |
+ 
+Three rules hold at every level: an allegation is not a fact, the weight is severity times credibility, and adverse media is never read on its own but together with the other red flags.
+
 ---
  
 #### Red flags
@@ -1789,3 +1801,52 @@ flowchart TD
     style J fill:#2A6E54,color:#fff
     style K fill:#8b0000,color:#fff
 ```
+
+---
+
+## Analyst Decision Tree (All Document Types)
+ 
+```mermaid
+flowchart TD
+    A["Document / profile<br>submitted"] --> B{"Identity verified?<br>(document genuine,<br>MRZ valid, face matches)"}
+    B -->|"No, tampered or fake"| C["REJECT<br>+ SAR if funds / fraud pattern"]
+    B -->|"Yes"| D{"Supporting docs<br>genuine? (PoA, SOF)"}
+    D -->|"Forged"| E["REJECT doc / request more<br>+ SAR if account active"]
+    D -->|"Genuine"| F{"Profile coherent?<br>(income vs wealth)"}
+    F -->|"Inconsistent"| G["EDD<br>+ SAR if suspicion confirmed"]
+    F -->|"Coherent"| H{"Sanctions screening?"}
+    H -->|"True positive"| J["FREEZE + SAR<br>+ OFAC report"]
+    H -->|"False positive"| I["CLOSE alert + document"]
+    I --> L
+    H -->|"Clear"| L{"PEP alert?"}
+    L -->|"Confirmed PEP"| M["EDD + senior approval<br>+ enhanced monitoring"]
+    L -->|"No / cleared"| K["ACCEPT<br>(standard CDD)"]
+ 
+    style A fill:#1A4A3C,color:#fff
+    style C fill:#8b0000,color:#fff
+    style E fill:#B5651D,color:#fff
+    style G fill:#B8860B,color:#fff
+    style I fill:#2A6E54,color:#fff
+    style J fill:#8b0000,color:#fff
+    style K fill:#2A6E54,color:#fff
+    style M fill:#B8860B,color:#fff
+```
+ 
+---
+ 
+## Summary - Decision Log
+ 
+| # | Document | Case type | Country | Primary red flag | Decision | SAR? |
+|---|---|---|---|---|---|---|
+| 1 | Passport | Tampered document | Italy | MRZ check-digit mismatch | ❌ Reject | If prior funds / fraud pattern |
+| 2 | Driver's licence | Edited document | USA (NY) | Front DOB ≠ back barcode | ❌ Reject | If prior funds / fraud pattern |
+| 3 | Selfie | Deepfake / AI-generated | (selfie) | AI artifacts, no camera metadata | ❌ Reject | ✅ Yes |
+| 4 | Passport + selfie | Stolen identity | Nigeria | Biometric mismatch | ❌ Reject | ✅ Yes |
+| 5 | Utility bill | Forged supporting document | UK | Font inconsistency | ⚠️ Request more | If refuses / fraud pattern |
+| 6 | Bank statement | Fabricated financial document | UAE | PDF = Word + math error | ❌ Reject | If active / fraud pattern |
+| 7 | Passport + financials | Synthetic identity | Ukraine | Income vs net-worth gap | ⚠️ EDD | ✅ Yes |
+| 8 | Passport | Sanctions false positive | Saudi Arabia | Name collision, IDs differ | ✅ Close | No |
+| 9 | Passport | Sanctions true positive | Russia | Confirmed SDN match (E.O. 14024) | 🔴 Freeze | ✅ + OFAC |
+| 10 | Passport | Hidden foreign PEP (OSINT) | Georgia | Undisclosed PEP, unexplained wealth | ⚠️ EDD + senior approval | If EDD fails |
+ 
+---
