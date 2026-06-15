@@ -4,7 +4,7 @@
  
 ### Date: June 2026
  
-### Tools: PRADO (EU public document register), ICAO 9303 MRZ logic, PDF/EXIF metadata viewer (metadata2go.com), Google Maps (address verification)
+### Tools: ICAO 9303 MRZ logic, PDF/EXIF metadata viewer (metadata2go.com), Google Maps, OpenSanctions, Georgian public registries, TinEye reverse image search
  
 ## Overview
  
