@@ -87,7 +87,7 @@ The first question in any onboarding is whether the person is who they claim to 
  
 **Document type:** Passport, Repubblica Italiana 
 
-**Specimen reference:** PRADO ITA-AO-02005 - https://www.consilium.europa.eu/prado/en/ITA-AO-02005/index.html
+**Specimen reference:** PRADO ITA-AO-02005 - https://www.consilium.europa.eu/prado/en/ITA-AO-02005/image-365289.html
  
 ![Italian passport (PRADO specimen)](images/doc-1-italy-passport.png)
  
@@ -576,7 +576,7 @@ Point of contact: AML Compliance Officer, Clear Exchange Ltd.
 
 **Document type:** Passport, Federal Republic of Nigeria
 
-**Specimen reference:** PRADO NGA-AO-03001 - https://www.consilium.europa.eu/prado/en/NGA-AO-03001/index.html
+**Specimen reference:** PRADO NGA-AO-03001 - https://www.consilium.europa.eu/prado/en/NGA-AO-03001/image-319086.html
  
 ![Nigerian passport (PRADO specimen)](images/doc-4-nigeria-passport.png)
  
@@ -996,7 +996,7 @@ I catch it by reasoning about the whole identity, not by inspecting a single doc
  
 **Document type:** Passport, Ukraine
 
-**Specimen reference:** PRADO UKR-AO-03003 - https://www.consilium.europa.eu/prado/en/UKR-AO-03003/index.html
+**Specimen reference:** PRADO UKR-AO-03003 - https://www.consilium.europa.eu/prado/en/UKR-AO-03003/image-374427.html
  
 ![Ukrainian passport specimen - PRADO UKR-AO-03003](images/doc-7-ukraine-passport.png)
  
@@ -1004,8 +1004,7 @@ I catch it by reasoning about the whole identity, not by inspecting a single doc
 
 #### The scenario
  
-A synthetic identity is a person who does not exist, built from a mixture of real-format and fabricated data. The passport may even pass document checks. The fraud appears when
-I test whether the whole profile is internally consistent and whether the person leaves any real-world footprint.
+A synthetic identity is a person who does not exist, built from a mixture of real-format and fabricated data. The passport may even pass document checks. The fraud appears when I test whether the whole profile is internally consistent and whether the person leaves any real-world footprint.
 
 ---
 
@@ -1157,7 +1156,7 @@ PEP screening and the OSINT workflow that supports it are covered in the last do
  
 **Document type:** Passport, Kingdom of Saudi Arabia
 
-**Specimen reference:** PRADO SAU-AO-02001 - https://www.consilium.europa.eu/prado/en/SAU-AO-02001/index.html
+**Specimen reference:** PRADO SAU-AO-02001 - https://www.consilium.europa.eu/prado/en/SAU-AO-02001/image-354218.html
  
 ![Saudi Arabian passport (PRADO specimen)](images/doc-8-saudi-passport.png)
  
@@ -1286,7 +1285,7 @@ The skill is not only clearing them, but documenting the disambiguation so the d
  
 **Document type:** Passport, Russian Federation
 
-**Specimen reference:** PRADO RUS-AO-03003 - https://www.consilium.europa.eu/prado/en/RUS-AO-03003/index.html
+**Specimen reference:** PRADO RUS-AO-03003 - https://www.consilium.europa.eu/prado/en/RUS-AO-03003/image-196854.html
  
 ![Russian passport (PRADO specimen)](images/doc-9-russia-passport.png)
  
