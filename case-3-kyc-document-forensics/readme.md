@@ -1853,7 +1853,7 @@ flowchart TD
  
 ## Key Takeaways
  
-1. No single red flag decides a case. Combinations do. A high net worth on its own is not suspicious. An undisclosed PEP status on its own is a compliance step, not a crime.
+1. **No single red flag decides a case. Combinations do.** A high net worth on its own is not suspicious. An undisclosed PEP status on its own is a compliance step, not a crime.
    But in Document 10 these arrive together with a 350,000 USDT deposit and 64% high-risk on-chain exposure, and that combination is what moves the case into EDD and a possible SAR.
 2. **MRZ check digits are the fastest way to catch a tampered passport.** They require only the ICAO 9303 algorithm and no equipment. A failed check digit is strong evidence of tampering, and
    the laser-perforated number adds a second check, because it cannot be altered on an existing passport.
