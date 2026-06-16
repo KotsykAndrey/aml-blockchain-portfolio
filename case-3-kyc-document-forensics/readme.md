@@ -1877,3 +1877,61 @@ flowchart TD
     does not show cryptocurrency, the on-chain source-of-funds check is mandatory.
     
 ---
+ 
+## Sources
+ 
+**Document specimens (PRADO, the Council of the EU public register):**
+- Italy, ITA-AO-02005: https://www.consilium.europa.eu/prado/en/ITA-AO-02005/index.html
+- Nigeria, NGA-AO-03001: https://www.consilium.europa.eu/prado/en/NGA-AO-03001/index.html
+- Ukraine, UKR-AO-03003: https://www.consilium.europa.eu/prado/en/UKR-AO-03003/index.html
+- Saudi Arabia, SAU-AO-02001: https://www.consilium.europa.eu/prado/en/SAU-AO-02001/index.html
+- Russia, RUS-AO-03003: https://www.consilium.europa.eu/prado/en/RUS-AO-03003/index.html
+- Georgia, GEO-AO-04001: https://www.consilium.europa.eu/prado/en/GEO-AO-04001/index.html
+  
+**Driver's licence sample (official US state source):**
+- New York State DMV, Sample Photo Documents: https://dmv.ny.gov/driver-license/sample-photo-documents
+  
+**Standards and references:**
+- ICAO Doc 9303: Machine Readable Travel Documents (MRZ specification and check-digit algorithm) https://www.icao.int/sites/default/files/publications/DocSeries/9303_p4_cons_en.pdf
+- FATF 40 Recommendations 2012, including Recommendation 10 (CDD), Recommendation 12 (Politically Exposed Persons), the FATF Glossary, and the FATF Guidance on PEPs.
+  The PEP definition and EDD measures in Document 10 follow these texts. https://www.fatf-gafi.org/content/dam/fatf-gafi/recommendations/FATF%20Recommendations%202012.pdf
+- OFAC SDN List and sanctions programs: https://sanctionslist.ofac.treas.gov/Home/SdnList
+- OFAC Sanctions Programs and Country Information (current comprehensive and targeted programs): https://ofac.treasury.gov/sanctions-programs-and-country-information
+- 31 U.S.C. § 5318(g)(2): tipping-off prohibition https://www.law.cornell.edu/uscode/text/31/5318
+- FinCEN SAR filing and BSA E-Filing guidance April 2026 https://bsaefiling.fincen.gov/resources/FinCENSARFilingInstructions.pdf
+  
+**Tools:**
+- PDF and EXIF metadata viewer metadata2go.com (used)
+- Google Maps for address verification (used)
+- Jumio, Onfido, and Sumsub automated KYC platforms (knowledge-level reference)
+- Сommercial sanctions screening engines (knowledge-level reference)
+
+  
+**OSINT sources (Document 10)**
+
+*Used in the case:*
+- OpenSanctions, free for non-commercial use: PEP and sanctions data, including the Georgian asset declarations dataset: https://www.opensanctions.org
+- declaration.acb.gov.ge: Anti-Corruption Bureau of Georgia, public asset declarations (the site has an English version, but the declarations are in Georgian only)
+- companyinfo.ge: Transparency International Georgia, company registry that aggregates data from the official Georgian Public Registry (enreg.reestri.gov.ge): https://www.companyinfo.ge
+- Ministry of Foreign Affairs of Georgia: diplomatic appointment lists and press releases: https://mfa.gov.ge
+- civil.ge: independent Georgian news outlet https://civil.ge/
+- tenders.procurement.gov.ge: Georgian State Procurement Agency https://tenders.procurement.gov.ge/public/?lang=en
+- TinEye reverse image search: https://tineye.com
+  
+*Knowledge-level reference (not used in this case):*
+- World-Check and Dow Jones Risk and Compliance: commercial PEP and adverse-media data http://www.world-check.com/    https://www.dowjones.com/company/resources/
+- OpenCorporates: cross-country company aggregator: https://opencorporates.com
+- ICIJ Offshore Leaks (https://offshoreleaks.icij.org) and OCCRP Aleph (https://aleph.occrp.org): investigative and leak databases
+- Legislative Herald of Georgia (https://matsne.gov.ge): legislation and presidential decrees
+- Google Lens and Yandex Images: image verification
+- Etherscan (https://etherscan.io), Chainalysis, Elliptic, and TRM Labs: blockchain explorer and on-chain analytics. The ChainScope wallet report in Step 4 is a mock modeled on these commercial tools.
+  
+---
+ 
+*Prepared by Andrey Kotsyk, AML / Blockchain Forensics Portfolio.*
+ 
+*All scenarios are fictional and for educational purposes only. Passport images are public PRADO specimens, and the driver's licence is an official NY DMV sample, used for educational reference with source links. 
+No real identities were used. Mock SARs and institution details are fictional. The fictional name in Document 10 was checked against public sources to rule out a collision with any real official.*
+ 
+*linkedin.com/in/andrey-kotsyk
+github.com/KotsykAndrey/aml-blockchain-portfolio*
