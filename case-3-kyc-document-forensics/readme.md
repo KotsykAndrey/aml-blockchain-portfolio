@@ -11,12 +11,12 @@
 This case is a practical demonstration of the following skills:
 1. KYC AI fraud prevention (deepfake, AI-generated images/videos/documents, synthetic identity)
 2. KYC verification (passport, driver's licence, proof of address, and establishing SoF / SoW). Detection of: tampered passports, MRZ mismatches, forged proof of address, fake bank statements, and stolen identities
-3. Sanctions screening (concept level; in a real case a tool such as world-check.com would be used)
+3. Sanctions screening (concept level; in a real case a commercial screening tool would be used)
 4. Red flag identification
 5. Writing alert disposition notes (documenting false/true positives, escalation to senior management, and RFIs to clients)
-6. Mock SAR for suspicious activity, and a mock OFAC blocking report for a true-positive sanctions match
+6. Mock SAR for suspicious activity, with an explanation of why a confirmed SDN match requires both a SAR and an OFAC blocking report as two separate legal duties
 7. PEP screening and OSINT verification (FATF Recommendation 12, a hidden foreign PEP, public registries, an evidence log, and source-of-wealth analysis)
-   
+
 This case contains ten fictional scenarios across different document types and jurisdictions. I split it into five parts that follow the real onboarding process. This matters specifically for a crypto platform. Onboarding KYC is the only point where a real-world identity is tied to an account, and from there to on-chain activity. A crypto withdrawal is irreversible and there is no chargeback, unlike a bank. 
 If a fraudster opens an account with a fake or stolen identity and moves funds out, the money is unrecoverable. An account opened on a synthetic identity is exactly what laundering and account-takeover theft rely on. Detecting fraudulent documents at onboarding is what prevents a fake identity from ever being attached to a wallet.
  
@@ -36,9 +36,9 @@ If a fraudster opens an account with a fake or stolen identity and moves funds o
 ---
  
 > **Disclaimer:** All scenarios are fictional and created only for educational and portfolio purposes. All passport images are specimens from the EU public document register. No real identities were used.
-> (the source for each document is linked at the end). Mock SARs are fictional. All institution details are fictional. The Georgian public portals named in Document 10 are real, but every record attributed to them
-> is mock data. For passports I use official PRADO specimens; the driver's licence is an official public sample from the New York State DMV. For the utility bill, which has no safe specimen, I use a schematic layout
-> that shows the structure. The bank statement is a test PDF I created myself to demonstrate the forensic method, not to reproduce a real document.
+> (the source for each document is linked at the end). Mock SARs are fictional. All institution details are fictional. The portals named in Document 10 are real, and the screenshots show real sources for format only;
+> any real record shown belongs to an unrelated official or company. For passports I use official PRADO specimens; the driver's licence is an official public sample from the New York State DMV. For the utility bill,
+> which has no safe specimen, I use a schematic layout that shows the structure. The bank statement is a test PDF I created myself to demonstrate the forensic method, not to reproduce a real document.
  
 ---
  
@@ -273,7 +273,7 @@ The laser-perforated number is a further data point on the passport itself. In t
 ---
 
 #### Key learning
- 
+
 Check digits are the fastest way to detect a tampered passport. I first confirmed that the genuine number validates (`KK6000533` produces check digit 3), then showed how an altered number breaks the check. 
 The laser-perforated number adds a second, independent check, because it cannot be altered on an existing passport: when the printed number and the MRZ read `KK6000538` but the perforation still reads `KK6000533`, 
 the document contradicts itself. On a scan UV is not available, so the perforated number and the OVD over the photo are the visual features I rely on, together with the MRZ calculation.
@@ -574,7 +574,7 @@ Point of contact: AML Compliance Officer, Clear Exchange Ltd.
 **END OF MOCK SAR**
  
 ---
-
+ 
 ### Document 4 - Stolen Identity (Nigerian Passport)
 
 **Document type:** Passport, Federal Republic of Nigeria
@@ -693,7 +693,7 @@ Tipping off:    Applicant not told a SAR was filed (31 U.S.C. § 5318(g)(2)).
 When the document is real, document checks are not enough. The whole defence rests on biometric comparison and velocity checks. A perfect document is not a clean customer.
  
 ---
-
+ 
 ## Part 2 - Supporting Documents
  
 Once identity is established, the next question is where the money comes from and whether the person actually lives where they say. These documents, utility bills and bank statements, are
@@ -1147,7 +1147,7 @@ Synthetic identities pass document checks but fail the coherence test. The most 
 I catch these by reasoning about the whole person, not by inspecting one document.
  
 ---
-
+ 
 ## Part 4 - Sanctions Screening
  
 This is the final gate before onboarding. Every customer is screened against sanctions lists. Two outcomes matter most and are the two hardest to handle correctly: the false positive, a name collision that
@@ -1284,7 +1284,7 @@ A name is not a person. Between 85% and 95% of sanctions alerts are false positi
 The skill is not only clearing them, but documenting the disambiguation so the decision is auditable. I never silently close a sanctions alert.
  
 ---
-
+ 
 ### Document 9 - Sanctions True Positive (Russian - SDN Match)
  
 **Document type:** Passport, Russian Federation
@@ -1369,7 +1369,7 @@ These are two different legal duties under two different laws. Filing one does n
  
 🔴 **FREEZE + SAR + OFAC BLOCKING REPORT.**
  
-Block the funds, restrict the account, escalate immediately, file the OFAC blocking report within 10 business days, and file a SAR. See the mock SAR below.
+Block the funds, restrict the account, escalate immediately, and recommend filing both the OFAC blocking report (within 10 business days) and a SAR (within 30 calendar days). See the mock SAR below.
  
 ---
  
@@ -1410,11 +1410,11 @@ Point of contact: AML Compliance Officer, Clear Exchange Ltd.
 **END OF MOCK SAR**
  
 ---
-
+ 
 #### Mock letter to the customer
  
 > **Disclaimer:** Fictional letter for educational purposes. Institution and customer details fictional.
-> **Note:** This is the hardest message to word correctly. The account is restricted because of a confirmed sanctions match, but the letter must be strictly neutral. It cannot mention sanctions, a , OFAC, an
+> **Note:** This is the hardest message to word correctly. The account is restricted because of a confirmed sanctions match, but the letter must be strictly neutral. It cannot mention sanctions, a SAR, OFAC, an
 > investigation, or law enforcement. Saying any of this risks unlawful tipping off and can prejudice enforcement. It only states, in general terms, that the account is under review.
  
 ```
@@ -1435,7 +1435,7 @@ Thank you for your understanding.
 Clear Exchange, Compliance Team
 ```
  
-> Note what the letter does not say. It says nothing about a sanctions hit, a SAR, on OFAC blocking report, or any investigation. It commits only to a neutral "under review" status and a promise
+> Note what the letter does not say. It says nothing about a sanctions hit, a SAR, an OFAC blocking report, or any investigation. It commits only to a neutral "under review" status and a promise
 > to follow up, which is the maximum that can be said without tipping off.
  
 ---
@@ -1572,11 +1572,11 @@ This is the core of the case. I confirm the status from public sources and build
  
 **The asset declaration.** The portal shows the customer's filing for 2025. The declaration is the strongest document in this case: a primary government source where the official himself states his role, income, and assets.
  
-![Asset declaration, 6 page](images/doc-10-asset-declaration.png)
+![Asset declaration, page 6](images/doc-10-asset-declaration.png)
  
 *Screenshot of declaration.acb.gov.ge, bank accounts section (page 6 of 13). The declaration is in Georgian only. The official shown is unrelated to this fictional scenario.*
  
-The mock declaration states:
+In the scenario, the declaration states:
 - Position: Deputy Director General, Iberia Energy Logistics JSC (state-owned), appointed 2019.
 - Annual income: GEL 96,000 in salary (about USD 35,000). No other income.
 - Assets: one apartment in Tbilisi, one vehicle, a bank deposit of GEL 40,000.
@@ -1641,10 +1641,10 @@ If the OSINT had shown that the customer was the spouse, child, or close busines
 #### Step 4 - Enhanced Due Diligence
  
 EDD answers two questions, and both now have numbers in them.
- 
+
 - **Source of wealth.** The customer claims about USD 2,000,000 from "investments and consulting". His own declaration shows a salary of about USD 35,000 per year and lists no investments and no consulting.
 The primary source does not support the wealth story. The gap must be evidenced by documents, or it remains unexplained wealth.
-- **Source of funds.** The attempted deposit of 350,000 USDT equals roughly ten years of the entire declared gross salary. The declaration does not cover crypto at all, so the on-chain check is the only way to see this   part. The transfer is on hold, so I can review the funding wallet before the funds are accepted. Automated wallet screening shows that 64% of the inbound value was received in direct transfers from a high-risk exchange cluster with weak KYC controls. This pattern is consistent with buying crypto for cash at services that do not identify their customers. This is an initial finding, and full tracing is pending. I attribute the cluster to a service, not to a named private individual, because on-chain attribution in this portfolio stops at the service level and does not target real private persons.
+- **Source of funds.** The attempted deposit of 350,000 USDT equals roughly ten years of the entire declared gross salary. The declaration does not cover crypto at all, so the on-chain check is the only way to see this  part. The transfer is on hold, so I can review the funding wallet before the funds are accepted. Automated wallet screening shows that 64% of the inbound value was received in direct transfers from a high-risk exchange cluster with weak KYC controls. This pattern is consistent with buying crypto for cash at services that do not identify their customers. This is an initial finding, and full tracing is pending. I attribute the cluster to a service, not to a named private individual, because on-chain attribution in this portfolio stops at the service level and does not target real private persons.
   
 ![Wallet risk screening, mock report](images/doc-10-wallet-risk-report.png)
  
@@ -1685,10 +1685,10 @@ Three rules hold at every level: an allegation is not a fact, the weight is seve
 | Claimed net worth of USD 2,000,000 against a declared salary of USD 35,000 per year | Unexplained wealth | 🔴 HIGH |
 | First deposit of 350,000 USDT, roughly ten years of declared gross salary | Profile mismatch | 🔴 HIGH |
 | Funding wallet: 64% of inbound value received directly from a high-risk exchange cluster (initial) | Source-of-funds risk | 🔴 HIGH |
-| Procurement vendor sharing an address with a relative of the customer | Conflict-of-interest lead | 🟡 MEDIUM |
+| Procurement vendor sharing an address with a relative of the customer (illustrative, if found) | Conflict-of-interest lead | 🟡 MEDIUM |
  
 ---
-
+ 
 #### Decision & Action
  
 ⚠️ **EDD, SENIOR MANAGEMENT APPROVAL, AND ENHANCED MONITORING.** A PEP match is not a refusal. The action path:
@@ -1747,7 +1747,7 @@ Tipping off:    Any communication stays neutral (31 U.S.C. § 5318(g)(2)).
 ```
  
 ---
-
+ 
 #### The four common PEP situations
  
 An analyst has to separate these four, because the correct action is different for each.
@@ -1904,7 +1904,9 @@ flowchart TD
 - PDF and EXIF metadata viewer metadata2go.com (used)
 - Google Maps for address verification (used)
 - Jumio, Onfido, and Sumsub automated KYC platforms (knowledge-level reference)
-- Сommercial sanctions screening engines (knowledge-level reference)
+- Commercial sanctions screening engines (knowledge-level reference)
+- BioCatch and NeuroID behavioural-biometrics platforms (knowledge-level reference, Document 4)
+- OBS and ManyCam virtual-camera software, named as liveness-bypass tools (knowledge-level reference, Document 3)
 
   
 **OSINT sources (Document 10)**
@@ -1919,7 +1921,7 @@ flowchart TD
 - TinEye reverse image search: https://tineye.com
   
 *Knowledge-level reference (not used in this case):*
-- World-Check and Dow Jones Risk and Compliance: commercial PEP and adverse-media data http://www.world-check.com/    https://www.dowjones.com/company/resources/
+- World-Check and Dow Jones Risk and Compliance: commercial sanctions, PEP, and adverse-media screening data: https://www.world-check.com, https://www.dowjones.com/company/resources/
 - OpenCorporates: cross-country company aggregator: https://opencorporates.com
 - ICIJ Offshore Leaks (https://offshoreleaks.icij.org) and OCCRP Aleph (https://aleph.occrp.org): investigative and leak databases
 - Legislative Herald of Georgia (https://matsne.gov.ge): legislation and presidential decrees
