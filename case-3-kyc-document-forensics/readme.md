@@ -1205,6 +1205,13 @@ compliance team to its risk appetite, so I am not free to invent them for each c
  
 87% is high enough to raise an alert, but it is not an automatic confirmed match. It must be reviewed by a human, which is my role.
 
+![OpenSanctions Advanced Screening search, Document 8 scenario](images/doc-8-opensanctions-search.png)
+
+*Screenshot of OpenSanctions Advanced Screening (opensanctions.org), dataset: US OFAC SDN, scoring method: logic-v2.
+The search illustrates how a real screening engine processes a name query and returns a fuzzy-matched result with a score and feature breakdown.
+The individual shown (Saad Rashed Mohammad Al-Faqih, score 74%) is a real OFAC SDN entry used here only to demonstrate the interface and scoring logic.
+This person has no connection to the fictional scenario in Document 8 or to any other scenario in this case.*
+
 ---
 
 #### Step 2 - Disambiguate using identifiers
