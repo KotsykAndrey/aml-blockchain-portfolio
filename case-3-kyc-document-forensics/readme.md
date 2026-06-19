@@ -285,7 +285,7 @@ the document contradicts itself. On a scan UV is not available, so the perforate
  
 ---
  
-### Document 2 - USA Driver's Licence (Edited Card / Front–Back Mismatch)
+### Document 2 - USA Driver's Licence (Edited Card / Front-Back Mismatch)
  
 **Document type:** Driver's licence, New York State (USA)
 
