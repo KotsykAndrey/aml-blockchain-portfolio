@@ -9,29 +9,33 @@
 ## Overview
  
 This case is a practical demonstration of the following skills:
-1. KYC AI fraud prevention (deepfake, AI-generated images/videos/documents, synthetic identity)
-2. KYC verification (passport, driver's licence, proof of address, and establishing SoF / SoW). Detection of: tampered passports, MRZ mismatches, forged proof of address, fake bank statements, and stolen identities
-3. Sanctions screening (concept level; in a real case a commercial screening tool would be used)
-4. Red flag identification
-5. Writing alert disposition notes (documenting false/true positives, escalation to senior management, and RFIs to clients)
-6. Mock SAR for suspicious activity, with an explanation of why a confirmed SDN match requires both a SAR and an OFAC blocking report as two separate legal duties
-7. PEP screening and OSINT verification (FATF Recommendation 12, a hidden foreign PEP, public registries, an evidence log, and source-of-wealth analysis)
+1. KYC document verification (passport, driver's licence, and proof-of-address review; establishing Source of Funds and Source of Wealth from bank statements and asset declarations)
+2. Fraud detection (AI-generated deepfakes with liveness countermeasures, tampered documents and MRZ mismatches, forged proof of address, fake bank statements, stolen and synthetic identities)
+3. Document and image metadata forensics (ICAO 9303 MRZ check digits, PDF metadata via metadata2go.com, EXIF camera fields, C2PA provenance, font and layout consistency)
+4. Sanctions screening (concept level: fuzzy matching algorithms, identifier disambiguation, sectoral vs comprehensive vs SDN designation logic)
+5. PEP screening and OSINT verification (FATF Recommendation 12, a hidden foreign PEP, public registries, and an evidence log)
+6. Adverse media screening (severity × credibility framework, allegation vs fact, leak databases)
+7. Wallet risk screening (concept level, demonstrated via a mock report)
+8. Red flag identification (single-signal vs combination reasoning)
+9. Alert disposition notes and customer RFIs (documenting false / true positives, escalation to senior management, and tipping-off-safe wording under 31 U.S.C. § 5318(g)(2))
+10. Mock SAR for suspicious activity, with an explanation of why a confirmed SDN match requires both a SAR and an OFAC blocking report as two separate legal duties
 
-This case contains ten fictional scenarios across different document types and jurisdictions. I split it into five parts that follow the real onboarding process. This matters specifically for a crypto platform. Onboarding KYC is the only point where a real-world identity is tied to an account, and from there to on-chain activity. A crypto withdrawal is irreversible and there is no chargeback, unlike a bank. 
-If a fraudster opens an account with a fake or stolen identity and moves funds out, the money is unrecoverable. An account opened on a synthetic identity is exactly what laundering and account-takeover theft rely on. Detecting fraudulent documents at onboarding is what prevents a fake identity from ever being attached to a wallet.
+This case contains ten fictional scenarios across different document types and jurisdictions. I split it into five parts that follow the real onboarding process. This is critical for a crypto platform. 
+Onboarding is the only stage where a real identity is linked to an account, and from the account to on-chain activity. A crypto withdrawal is irreversible. There is no chargeback, unlike a bank transfer. 
+If a fraudster opens an account with a fake or stolen identity and moves funds out, the money is unrecoverable. An account opened on a synthetic identity is exactly what laundering and account-takeover theft rely on. Detecting fraudulent documents at onboarding is what prevents a fake identity from ever being attached to an account.
  
 | # | Document | Country / Type | Fraud / risk type | Decision |
 |---|---|---|---|---|
-| 1 | Passport | Italy | Tampered (MRZ mismatch) | Reject (+ SAR if prior funds) |
-| 2 | Driver's licence | USA (New York) | Edited card / front–back mismatch | Reject (+ SAR if prior funds) |
-| 3 | Selfie | - | Deepfake / AI-generated | Reject + SAR |
-| 4 | Passport | Nigeria | Stolen identity | Reject + SAR |
-| 5 | Utility bill | UK | Forged proof of address | Request more (+ SAR if refuses) |
-| 6 | Bank statement | UAE bank | Fake (PDF metadata, arithmetic) | Reject (+ SAR if account active) |
-| 7 | Passport | Ukraine | Synthetic identity | EDD + SAR |
-| 8 | Passport | Saudi Arabia | Sanctions false positive | Close + document |
-| 9 | Passport | Russia | Sanctions true positive | Freeze + SAR + OFAC report |
-| 10 | Passport | Georgia | Hidden foreign PEP | EDD + senior approval |
+| 1 | [Passport](#document-1---italian-passport-tampered-mrz) | Italy | Tampered (MRZ mismatch) | Reject + SAR (if prior funds / fraud pattern) |
+| 2 | [Driver's licence](#document-2---usa-drivers-licence-edited-card--front-back-mismatch) | USA (New York) | Edited card / front–back mismatch | Reject + SAR (if prior funds / fraud pattern) |
+| 3 | [Selfie](#document-3---deepfake-selfie) | - | Deepfake / AI-generated | Reject + SAR |
+| 4 | [Passport](#document-4---stolen-identity-nigerian-passport) | Nigeria | Stolen identity | Reject + SAR |
+| 5 | [Utility bill](#document-5---forged-uk-utility-bill) | UK | Forged proof of address | Request more + SAR (if refuses / fraud pattern) |
+| 6 | [Bank statement](#document-6---fake-bank-statement-uae-bank) | UAE bank | Fake (PDF metadata, arithmetic) | Reject + SAR (if account active) |
+| 7 | [Passport](#document-7---synthetic-identity-ukrainian-passport) | Ukraine | Synthetic identity | EDD + SAR |
+| 8 | [Passport](#document-8---sanctions-false-positive-saudi-arabia) | Saudi Arabia | Sanctions false positive | Close + document |
+| 9 | [Passport](#document-9---sanctions-true-positive-russian---sdn-match) | Russia | Sanctions true positive | Freeze + SAR + OFAC blocking report |
+| 10 | [Passport](#document-10---hidden-foreign-pep-georgia) | Georgia | Hidden foreign PEP | EDD + senior approval |
  
 ---
  
@@ -91,7 +95,8 @@ The first question in any onboarding is whether the person is who they claim to 
  
 ![Italian passport (PRADO specimen)](images/doc-1-italy-passport.png)
  
-*Specimen source: PRADO (Council of the EU), document ITA-AO-02005. The data shown (ROSSI MARIA, passport KK6000533) is the public PRADO specimen. The tampering in the scenario below is fictional, applied to these specimen details for the exercise.*
+*Specimen source: PRADO (Council of the EU), document ITA-AO-02005. The data shown (ROSSI MARIA, passport KK6000533) is the public PRADO specimen. 
+The tampering in the scenario below is fictional, applied to these specimen details for the exercise.*
 
 ---
 
@@ -115,7 +120,7 @@ I check three features that are visible on a good scan:
  
 ![Italian passport facial photograph (PRADO specimen)](images/doc-1-italy-passport-personaldata.png)
  
-This screenshot shows the holder's photograph on the biodata page. On a genuine Italian passport the photograph is printed directly into the page surface during production, not attached on top, so it cannot be
+This screenshot shows the holder's photograph on the biodata page. On a genuine Italian passport, the photograph is printed directly onto the page surface during production, not attached on top, so it cannot be
 replaced without damaging the page. I check the photograph for signs of substitution. I look for edges that appear added, a print texture that differs from the rest of the page, or a face that does not sit
 naturally within the frame. A clean, evenly printed photograph that matches the surrounding page is what I expect on a genuine document.
 
@@ -243,7 +248,7 @@ I compare every data point across the passport, the MRZ, and the application for
 | DOB | 01/11/1990 | 901101 | 01/11/1990 |
  
 Here the names and the date of birth all agree. The problem is only the MRZ check digit on the altered passport number. In another common pattern the names would also disagree, for example a form name
-that is a different name from the one on the passport rather than a spelling variant, which would be a second independent red flag.
+that differs from the one on the passport rather than a spelling variant, which would be a second independent red flag.
 
 The laser-perforated number is a further data point on the passport itself. In this scenario it still reads KK6000533, while the printed number and the MRZ read KK6000538. This internal disagreement confirms that the printed number and the MRZ were altered after issue.
 
@@ -307,7 +312,7 @@ In the United States there is no national ID card, so the driver's licence is th
  
 There is also a card-type distinction that matters for compliance.
  
-- **Standard** licence. Marked "NOT FOR FEDERAL PURPOSES" in top right corner. Since 7 May 2025 it cannot be used to board a domestic US flight or enter a federal building.
+- **Standard** licence. Marked "NOT FOR FEDERAL PURPOSES" in the top right corner. Since 7 May 2025 it cannot be used to board a domestic US flight or enter a federal building.
 - **Enhanced (EDL)**. Has a US flag image and is REAL ID compliant.
 - **REAL ID**. Has a star and is REAL ID compliant.
 
@@ -410,8 +415,8 @@ Knowing the difference between the CID and the Document Number is what allows me
 
 #### The scenario
  
-The customer passes the document stage and submits a selfie for face matching and liveness. The selfie matches the document photo at a high score on commercial KYC platforms (Jumio, Onfido, Sumsub).
-That high match is expected here, because the image was AI-generated from the document holder's own photo, not captured live from the real person. The attacker takes the photo on the genuine document, usually
+The customer passes the document stage and submits a selfie for face matching and liveness. The selfie matches the document photo at a high score on commercial KYC platforms (Jumio, Onfido, and Sumsub).
+That high match is expected here, because the image was AI-generated from the document holder's own photo, not captured live from the real person. The attacker photographs the genuine document, usually
 stolen or purchased, and uses an AI model to produce a new image of that same face, which then passes the face-match check against the document. Several signals show that the selfie was AI-generated rather than
 taken by a real person in front of the camera.
 
@@ -428,7 +433,7 @@ Modern GAN and diffusion faces are convincing, but they still leave indicators. 
 - **Background.** The lighting on the face does not match the background lighting.
 - **Accessories.** Glasses frames or earrings that are asymmetric or blend into the skin.
 
-These visual indicators are useful, but they are weakening over time. Older models left clear artifacts, while current ai models can produce faces with none of the indicators listed above. 
+These visual indicators are useful, but they are weakening over time. Older models left clear artifacts, while current AI models can produce faces with none of the indicators listed above. 
 For that reason I treat the visual layer as corroborating, not decisive. The weight of the decision rests on the layers that remain more reliable against a strong generator: the provenance metadata in Step 2, 
 and the active or 3D liveness in Step 3.
 
@@ -480,7 +485,7 @@ File type         :   DNG (Apple ProRAW)                  PNG                   
 ```
  
 Two things expose the AI image. First, the absence of any camera capture data, because every phone and camera records make, model, and lens. Second, the presence of C2PA provenance that names the 
-generator and marks the file as AI-generated. The first is a negative signal and the second is a positive one, and together they are decisive.
+generator and marks the file as AI-generated. The first is a negative signal and the second is a positive signal, and together they are decisive.
 
 Metadata is not equally reliable in every case, and different AI tools behave differently. Mainstream generators such as ChatGPT now embed C2PA provenance that declares the image as AI-generated, but 
 specialised fraud tools do the opposite: they strip all metadata, or spoof the camera fields to imitate a real device, and they never add C2PA. So in practice I read the metadata together with the visual 
@@ -540,7 +545,7 @@ See the mock SAR below.
  
 > **Disclaimer:** Fictional SAR for educational purposes. Institution and subject details are fictional.
  
-**Filing institution:** Clear Exchange Ltd. (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
+**Filing institution:** Clear Exchange Ltd (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
 
 **Date of report:** June 18, 2026
 
@@ -550,7 +555,7 @@ See the mock SAR below.
  
 **Narrative**
  
-Clear Exchange Ltd. files this report to document an attempt to open an account using a genuine identity document together with an artificially generated (deepfake) selfie to pass identity verification.
+Clear Exchange Ltd files this report to document an attempt to open an account using a genuine identity document together with an artificially generated (deepfake) selfie to pass identity verification.
 No account was opened and no funds were received. The institution reports the attempt because the conduct shows a deliberate effort to defeat identity verification, which is
 consistent with the early stage of account-takeover or money-laundering activity.
  
@@ -792,7 +797,7 @@ Proof of address is normally accepted only if it was issued within the last 3 mo
 ⚠️ **REQUEST ADDITIONAL INFORMATION.** Do not onboard on this document.
  
 Why request more rather than reject outright? A proof of address is a supporting document, and the correct first step when one appears forged is to give the customer a clear opportunity to provide a genuine,
-independent one, which a legitimate customer can do easily. I do not accept the suspect bill, but I also do not yet assume crime. Further actions:
+independent one, which a legitimate customer can do easily. I do not accept the suspect bill, but I also do not yet assume a crime. Further actions:
 - Issue a Request for Information (RFI) asking for a second, independent proof of address.
 - Do not verify the address until it is confirmed from an independent source.
 - If the customer provides a clean document, proceed. The original is noted but set aside.
@@ -849,7 +854,7 @@ in the case, because a fake statement usually fails on several independent layer
  
 ---
  
-The submitted statement is shown below, captured from the actual PDF file (which is also attached). It uses a single amount column, where income is + and spending is −:
+The submitted statement is shown below, captured from the actual PDF file (which is also attached). It uses a single amount column, where income is positive and spending is negative:
  
 ![Fake Emirates First Bank statement screenshot](images/doc-6-bank-statement.png)
  
@@ -868,7 +873,7 @@ I would use on a submitted document. The result shows two separate red flags in 
  
 ![PDF metadata from metadata2go.com, the fake statement file](images/doc-6-metadata-word-creator.png)
  
-> **Note:** The "author" field shows "Andrey" because this is a test file I created specifically to demonstrate the forensic method. In a real case the author field would show the name of the person who fabricated
+> **Note:** The "author" field shows "Andrey" because this is a test file I created specifically to demonstrate the forensic method. In a real case the author field would show the username of the person who fabricated
 > the document, which is itself a red flag. The key indicators are `creator_tool` and `producer`, both showing Microsoft® Word for Microsoft 365, not a banking system.
  
 ```
@@ -885,7 +890,7 @@ A "bank statement" whose creator and producer are Microsoft Word was written in 
 In this file the `create_date`, 2026:06:09 17:30:02, matches the generation date printed on the statement, 09.06.2026 at 17:30, so that particular check is consistent. A careful forger sets the printed date 
 to match the file. The document is exposed by two other signals. First, the `creator` and `producer` are Microsoft Word for Microsoft 365, which a banking system would never produce. 
 Second, the `modify_date`, 17:37:15, is seven minutes later than the `create_date`, which proves the file was opened and edited after it was created. A genuine statement is generated once and is never edited, so 
-its create and modify dates are identical. Either signal on its own is enough to reject the document. The metadata carries smaller tells in the same direction: the author is a personal name rather than 
+its create and modify dates are identical. Either signal on its own is enough to reject the document. The metadata carries smaller tells in the same direction: the author is a personal username rather than 
 a banking system, the document language is set to Russian, and the `create_date` offset is +02:00 (Central European) rather than the +04:00 offset a UAE bank would use.
  
 > **Note:** I created and edited the fake statement myself in Microsoft Word to demonstrate the method. The metadata report was generated automatically by metadata2go.com from that file, not written by me.
@@ -1047,8 +1052,8 @@ A person who is supposedly established but has no history is suspicious.
  
 #### Step 3 - Document format
  
-I still verify the passport (MRZ, check digits, and the PRADO template). Ukrainian transliteration from Cyrillic to Latin can create legitimate spelling variants (Marko or Marco), so I am careful
-not to flag a normal transliteration as fraud. The red flag here is the profile, not the spelling.
+I still verify the passport (MRZ, check digits, and the PRADO template). Ukrainian transliteration from Cyrillic to Latin can create legitimate spelling variants (Marko or Marco), so 
+I am careful not to flag a normal transliteration as fraud. The red flag here is the profile, not the spelling.
 
 ---
 
@@ -1119,7 +1124,7 @@ Risk rating:    HIGH (pending EDD outcome)
  
 Trigger:        Profile coherence check failed at onboarding.
                 Stated income EUR 78,000/year versus claimed net worth
-                EUR 850,000, with vague SOW ("savings and trading").
+                EUR 850,000, with vague explanation of SOW ("savings and trading").
  
 Review conducted:
   - Income vs net worth gap assessed, not supportable on stated income
@@ -1150,11 +1155,11 @@ I catch these by reasoning about the whole person, not by inspecting one documen
  
 ## Part 4 - Sanctions Screening
  
-This is the final gate before onboarding. Every customer is screened against sanctions lists. Two outcomes matter most and are the two hardest to handle correctly: the false positive, a name collision that
+Every customer is screened against sanctions lists. Two outcomes matter most and are the two hardest to handle correctly: the false positive, a name collision that
 I must clear and document, and the true positive, a real designated party that I must freeze and report. Getting these two right, and knowing the difference, is a core compliance skill.
 
 Sanctions screening does not run alone. At onboarding it runs alongside PEP screening and adverse-media screening, which together form the standard screening set. This part covers sanctions. 
-PEP screening and the OSINT workflow that supports it are covered in the last document #10.
+PEP screening and the OSINT workflow that supports it are covered in the final document (Document 10).
  
 ### Document 8 - Sanctions False Positive (Saudi Arabia)
  
@@ -1174,7 +1179,7 @@ Common Arabic names produce many false positives because of transliteration. Moh
 
 ---
 
-#### Step 1 - Understand why the alert raised (fuzzy matching)
+#### Step 1 - Understand why the alert was raised (fuzzy matching)
  
 Screening does not use exact matching. It uses fuzzy matching to catch transliterations and typos. There are three algorithms, usually combined with different weights (this depends on internal policies and procedures).
  
@@ -1377,7 +1382,7 @@ Block the funds, restrict the account, escalate immediately, and recommend filin
  
 > **Disclaimer:** Fictional SAR for educational purposes. Institution and subject details are fictional.
  
-**Filing institution:** Clear Exchange Ltd. (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
+**Filing institution:** Clear Exchange Ltd (VASP / MSB), FinCEN Registration No. XXXXXXX, Wilmington, DE 19801
 
 **Date of report:** June 20, 2026
 
@@ -1387,7 +1392,7 @@ Block the funds, restrict the account, escalate immediately, and recommend filin
  
 **Narrative**
  
-Clear Exchange Ltd. files this report to document an attempt by a designated party to open and fund an account, and to record the resulting blocking of property.
+Clear Exchange Ltd files this report to document an attempt by a designated party to open and fund an account, and to record the resulting blocking of property.
 The institution reports the conduct because the customer is an individual on the OFAC Specially Designated Nationals (SDN) List, and any dealing with that individual's property is prohibited.
  
 On June 19, 2026, the customer attempted to onboard and to fund the account. During screening, the institution's sanctions system returned a high-confidence match against the SDN List.
@@ -1472,7 +1477,8 @@ PEP screening sits next to sanctions screening at onboarding. Documents 8 and 9 
  
 Two things make PEP screening different from sanctions screening.
  
-First, a PEP is not a criminal. A sanctions true positive is a hard stop. A PEP match is not. The status only means the customer holds, or recently held, a senior public role. This raises the risk of bribery and corruption money. The correct response is Enhanced Due Diligence (EDD), not refusal. FATF does not support refusing all PEPs, because this pushes honest customers out of the regulated system.
+First, a PEP is not a criminal. A sanctions true positive is a hard stop. A PEP match is not. The status only means the customer holds, or recently held, a senior public role. This raises the risk that funds derive 
+from bribery or corruption. The correct response is Enhanced Due Diligence (EDD), not refusal. FATF does not support refusing all PEPs, because this pushes honest customers out of the regulated system.
  
 Second, the status is often hidden. A customer can simply tick "not a PEP" on the form, and no database holds every official from every country. So the real skill is OSINT: confirm or uncover the status from public sources, then check where the wealth and the funds come from.
 
@@ -1539,7 +1545,7 @@ one step away from the official.
  
 #### The scenario
  
-A customer, **Tornike B. Machaladze**, a national of Georgia, submits a Georgian passport and onboards on Clear Exchange Ltd. The document checks pass (the template matches the PRADO specimen, and the MRZ is valid), sanctions screening returns no match, and the system opens the account automatically. On the application he writes his occupation as "private investor and consultant", estimates his net worth at about USD 2,000,000, and ticks "I am not a politically exposed person". The PEP alert from screening goes to the manual review queue, because a PEP match never blocks an account automatically. Before the review is complete, he attempts a first deposit of 350,000 USDT, and the transfer is placed on hold pending the review.
+A customer, **Tornike B. Machaladze**, a national of Georgia, submits a Georgian passport during onboarding at Clear Exchange Ltd. The document checks pass (the template matches the PRADO specimen, and the MRZ is valid), sanctions screening returns no match, and the system opens the account automatically. On the application he writes his occupation as "private investor and consultant", estimates his net worth at about USD 2,000,000, and ticks "I am not a politically exposed person". The PEP alert from screening goes to the manual review queue, because a PEP match never blocks an account automatically. Before the review is complete, he attempts a first deposit of 350,000 USDT, and the transfer is placed on hold pending the review.
  
 PEP screening returns an alert from the OpenSanctions Georgian declarations dataset. The OSINT review below confirms that the customer is the Deputy Director General of a state-owned enterprise, Iberia Energy 
 Logistics JSC (fictional). He is a foreign PEP, and he did not disclose it. An undisclosed status, a salary that cannot explain the claimed wealth, and a large crypto deposit move this case into EDD.
@@ -1602,13 +1608,14 @@ for this case: the wallet risk report.
 | 3 | 14 Jun 2026 | companyinfo.ge (Transparency International Georgia, data from enreg.reestri.gov.ge) | Company information, affiliations, and ownership history shown for an unrelated Georgian company, illustrating the source format | Fact (source format verified) | `osint/03-company-registry-extract.html` + `osint/03-company-registry-extract_files/` (real portal, unrelated official, format only) |
 | 4 | 14 Jun 2026 | Ministry of Foreign Affairs of Georgia, Diplomatic Protocol Directorate (mfa.gov.ge) | Official Diplomatic List (May 2026) confirms that MFA publishes diplomatic appointments publicly. Format demonstrates how ambassador-level appointments are verified from a primary government source | Fact (primary source format) | `osint/04-mfa-diplomatic-list.pdf` (real document, unrelated officials, format only) |
 | 5 | 14 Jun 2026 | mfa.gov.ge/en/news + civil.ge | Two independent sources covering a real Georgian senior official (Maka Botchorishvili, Vice PM and FM), demonstrating the media verification workflow: one official press release and one independent outlet | Fact (source format verified) | `osint/05-media-1.png` (mfa.gov.ge, full-page screenshot), `osint/05-media-2.html` + `osint/05-media-2_files/` (civil.ge, unrelated official, format only) |
-| 6 | 14 Jun 2026 | TinEye reverse image search | Reverse image search on the applicant's submitted photo returned 385 results across multiple sources (CNN, kobieta.wp.pl, pictame.com), first appeared in March 2015. The photo is a widely distributed stock image unconnected to any individual. In a real case this would be a critical red flag: the applicant submitted a photo that does not belong to them | 🔴 RED FLAG (photo not genuine) | `osint/06-photo-match.png` (real TinEye result) |
+| 6 | 14 Jun 2026 | TinEye reverse image search | Reverse image search on the applicant's submitted photo returned 385 results across multiple sources (CNN, kobieta.wp.pl, pictame.com), with the earliest appearance in March 2015. The photo is a widely distributed stock image unconnected to any individual. In a real case this would be a critical red flag: the applicant submitted a photo that does not belong to them | 🔴 RED FLAG (photo not genuine) | `osint/06-photo-match.png` (real TinEye result) |
 | 7 | 14 Jun 2026 | State Procurement Agency of Georgia (tenders.procurement.gov.ge) | Real tender record (NAT260011912) from the Georgian state procurement portal, demonstrating the interface and data fields available for vendor and procuring entity searches: announcement number, procuring entity, procurement type, estimated value, CPV codes, supplier details | Fact (source format verified) | `osint/07-procurement-vendor.png` (real portal, unrelated state entity, format only) |
 | 8 | 14 Jun 2026 | Automated wallet screening | Initial: 64% of inbound value received in direct transfers from a high-risk exchange cluster, full tracing pending | Initial (service-level attribution) | `osint/08-wallet-report.png` (mock report, ChainScope, fictional data) |
  
 At the end of this step the status is confirmed on several independent primary sources: the customer is a foreign PEP, and he did not disclose it.
  
-The reverse image search on the submitted photo returned 385 results across multiple sources, with the earliest appearance in March 2015. The photo is a widely distributed image with no connection to any individual. In a real case this is a critical red flag on its own: the applicant did not submit their own photo.
+The reverse image search on the submitted photo returned 385 results across multiple sources, with the earliest appearance in March 2015. The photo is a widely distributed image with no connection to any individual. 
+In a real case this is a critical red flag on its own: the applicant did not submit their own photo.
  
 ![Reverse image search, TinEye result](images/doc-10-tineye-result.png)
  
@@ -1644,7 +1651,7 @@ EDD answers two questions, and both now have numbers in them.
 
 - **Source of wealth.** The customer claims about USD 2,000,000 from "investments and consulting". His own declaration shows a salary of about USD 35,000 per year and lists no investments and no consulting.
 The primary source does not support the wealth story. The gap must be evidenced by documents, or it remains unexplained wealth.
-- **Source of funds.** The attempted deposit of 350,000 USDT equals roughly ten years of the entire declared gross salary. The declaration does not cover crypto at all, so the on-chain check is the only way to see this  part. The transfer is on hold, so I can review the funding wallet before the funds are accepted. Automated wallet screening shows that 64% of the inbound value was received in direct transfers from a high-risk exchange cluster with weak KYC controls. This pattern is consistent with buying crypto for cash at services that do not identify their customers. This is an initial finding, and full tracing is pending. I attribute the cluster to a service, not to a named private individual, because on-chain attribution in this portfolio stops at the service level and does not target real private persons.
+- **Source of funds.** The attempted deposit of 350,000 USDT equals roughly ten years of the entire declared gross salary. The declaration does not cover crypto at all, so the on-chain check is the only way to see this part. The transfer is on hold, so I can review the funding wallet before the funds are accepted. Automated wallet screening shows that 64% of the inbound value was received in direct transfers from a high-risk exchange cluster with weak KYC controls. This pattern is consistent with buying crypto for cash at services that do not identify their customers. This is an initial finding, and full tracing is pending. I attribute the cluster to a service, not to a named private individual, because on-chain attribution in this portfolio stops at the service level and does not target real private persons.
   
 ![Wallet risk screening, mock report](images/doc-10-wallet-risk-report.png)
  
@@ -1758,7 +1765,7 @@ Resolved and documented like a sanctions false positive. A name is not a person.
 **RCA (relative or close associate).** The customer is not a PEP, but is the spouse, child, parent, or close business partner of one. OSINT through shared directorships, shared 
 addresses, and family links reveals the connection. An RCA is treated as the PEP, so EDD applies. The real question is who benefits.
  
-**Adverse media.** The customer is a PEP, and there is credible negative information, for example an open corruption investigation. I separate allegation from conviction and weigh the severity. 
+**Adverse media.** The customer is a PEP, and there is credible negative information, for example an open corruption investigation. I separate allegation from fact and weigh the severity. 
 The action ranges from EDD with closer monitoring to decline and a SAR. An allegation raises risk but does not prove guilt.
  
 **Ex-PEP.** The customer left the public role some time ago. For a foreign PEP, many firms keep the status and the EDD, because the corruption risk does not vanish when the person leaves office. 
@@ -1769,8 +1776,9 @@ For a domestic PEP, the risk can be stepped down over time. There is no automati
 #### Key learning
  
 A PEP is not a criminal, and a PEP match is not a refusal. For a foreign PEP, EDD is mandatory: senior management approval, source of wealth and source of funds, and enhanced monitoring. 
-The alert came from an aggregator, but the confirmation and the numbers came from primary sources: the declaration portal, the company registry, and the gazette. A salary of USD 35,000 per year does not 
-explain a net worth of USD 2,000,000 or a 350,000 USDT deposit, and the declaration does not see crypto at all, so the on-chain check is not optional. Every finding sits in the evidence log 
+The alert came from an aggregator, but the confirmation and the numbers came from primary sources: the declaration portal, the company registry, and the gazette. 
+A salary of USD 35,000 per year does not explain a net worth of USD 2,000,000 or a 350,000 USDT deposit, and the declaration does not see crypto at all, so the on-chain check is not optional. 
+Every finding sits in the evidence log 
 with a saved file, as fact or allegation, and that log is what makes the conclusion defensible.
  
 ---
@@ -1842,8 +1850,8 @@ flowchart TD
 | 2 | Driver's licence | Edited document | USA (NY) | Front DOB ≠ back barcode | ❌ Reject | If prior funds / fraud pattern |
 | 3 | Selfie | Deepfake / AI-generated | (selfie) | AI artifacts, no camera metadata | ❌ Reject | ✅ Yes |
 | 4 | Passport + selfie | Stolen identity | Nigeria | Biometric mismatch | ❌ Reject | ✅ Yes |
-| 5 | Utility bill | Forged supporting document | UK | Font inconsistency | ⚠️ Request more | If refuses / fraud pattern |
-| 6 | Bank statement | Fabricated financial document | UAE | PDF = Word + math error | ❌ Reject | If active / fraud pattern |
+| 5 | Utility bill | Forged supporting document | UK | Font inconsistency | ⚠️ Request more | If the customer refuses / fraud pattern |
+| 6 | Bank statement | Fabricated financial document | UAE | PDF = Word + math error | ❌ Reject | If account active |
 | 7 | Passport + financials | Synthetic identity | Ukraine | Income vs net-worth gap | ⚠️ EDD | ✅ Yes |
 | 8 | Passport | Sanctions false positive | Saudi Arabia | Name collision, IDs differ | ✅ Close | No |
 | 9 | Passport | Sanctions true positive | Russia | Confirmed SDN match (E.O. 14024) | 🔴 Freeze | ✅ + OFAC |
